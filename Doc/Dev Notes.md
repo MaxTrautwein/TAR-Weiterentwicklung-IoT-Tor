@@ -62,6 +62,9 @@ kp was mich davon abgehalten hat das früher zu realisiren...
 <br/> dabei ist der input teil bei etwa `4068` ; der output bei `4123`
 - send Messages over multible Outputs: https://nodered.org/docs/user-guide/writing-functions#multiple-messages
 <br/> Format `["PORT 1","Port 2","Port 3" , ... "Port n"]`
+- https://stackoverflow.com/questions/7306669/how-to-get-all-properties-values-of-a-javascript-object-without-knowing-the-key Helpful for debugging
+- `RED.nodes.addLink(link1);` is defined at `node-red\packages\node_modules\@node-red\editor-client\src\js\nodes.js` This could be helpful
+- The `d` atrribute of `red-ui-flow-link` defines on how the link line looks. This needs to be Updated to support the Visuals but it *likely* has no effect on the function
 
 - TODO Support Inputs removal
 - TODO Support Resize based on inputs
