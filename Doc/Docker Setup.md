@@ -35,3 +35,9 @@ der parameter `-p` bindet den container internen port 1880 auf den lokalen port 
 Dies ermöglicht im folgenden den Zugriff auf das Node Red interface unter [localhost:1880](localhost:1880).
 
 _Der run befehl unterstützt auch noch weitereass parameter. Erwähnenswert ist hir der parameter `-v`, dieser erlaubt es einen lokalen pfad für den Container freizugeben. unglücklicherwiese ist dies mit einer funktionalität welche in diesem setup benötigt wird inkompatible, weshalb es hir nicht werendet wird._
+
+## Datenaustausch & Zugriff
+Das Webinterface von Node-Red ist unter  [localhost:1880](localhost:1880) verfügbar.
+<br/>Um direkten zugriff auf die Daten in dem container zu erhalten empfehle ich das [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) sowie das [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) Addon für Visual Studio Code.
+
+Um Weitereintwicklungen zu sichern empfiehlt es sich diese direkt mit git zu commiten und auf ein remote repository zu laden.
