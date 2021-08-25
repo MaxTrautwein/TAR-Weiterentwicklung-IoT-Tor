@@ -81,7 +81,7 @@ Um den Broker in diesem fall `mosquitto` zu installieren bitte folgende befehle 
 wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
  
 # Den Key lokal hinzufügen
-cd /etc/apt/sources.list.d/
+sudo apt-key add mosquitto-repo.gpg.key
  
 #Verzeichnis wechseln
 cd /etc/apt/sources.list.d/
