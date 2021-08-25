@@ -68,7 +68,7 @@ Der erste schritt nach dem Flashen sollte immer ein Update sein. damit wird die 
 ```
 sudo apt-get update
 sudo apt-get upgrade
-sudo apt-get distupgrade #TODO Check syntax
+sudo apt-get dist-upgrade
 ```
  
 ### 2.2 Den Broker installieren
