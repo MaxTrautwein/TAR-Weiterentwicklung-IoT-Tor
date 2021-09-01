@@ -74,3 +74,56 @@ kp was mich davon abgehalten hat das früher zu realisiren...
 - TODO Support Input selection / eVENTS IN sw
 - TODO The rest
 
+
+---
+# Line GUI
+Initial attempt at understanding it. 
+
+```html
+<path class="red-ui-flow-link-line red-ui-flow-link-path red-ui-flow-subflow-link" d="M 200 120 C 375 120 395 200 470 200"></path>
+```
+`d="M 200 120 C 375 120 395 200 470 200"`
+
+`d="M -A- -B- C -C- -D- -E- -F- -G- -H-"`
+
+`-A-` --> X Position
+<br/>`-B-` --> Y Pos
+<br/>`-C-` --> Mid point psition / abngle of line
+<br/>`-D-` --> Mid point psition / abngle of line
+<br/>`-E-` --> Mid point psition / abngle of line (Y ?)
+<br/>`-F-` --> 
+<br/>`-G-` --> 
+<br/>`-H-` --> 
+
+## erkentniss
+bei diesem syntax handelt es sich um ein standard feature.
+
+infos:
+https://developer.mozilla.org/de/docs/Web/SVG/Element/path
+https://www.w3schools.com/graphics/svg_path.asp
+
+```html
+<svg height="210" width="400">
+  <path  d="M 200 120 C 375 120 395 200 470 200" fill="none" stroke="black" stroke-width="3"/>
+</svg>
+```
+
+### Try out setup:
+https://www.w3schools.com/graphics/tryit.asp?filename=trysvg_path
+```HTML
+<!DOCTYPE html>
+<html>
+<body>
+
+<svg height="210" width="400">
+  <path  d="M 200 120 C 375 120 395 200 470 200" fill="none" stroke="black" stroke-width="3"/>
+</svg>
+
+</body>
+</html>
+```
+
+im falle von node-red kommen die style parameter `stroke`, `stroke-width` und `fill` von `.red-ui-flow-link-line`
+
+Hilfreiches video:
+https://www.youtube.com/watch?v=k6TWzfLGAKo
