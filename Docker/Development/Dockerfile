@@ -20,14 +20,14 @@ RUN apt-get -q -y install mosquitto-clients
 #Setup mosquitto dev account
 RUN mosquitto_passwd -c -b /etc/mosquitto/pwfile test test
 WORKDIR /etc/mosquitto/conf.d
-RUN wget https://github.com/MaxTrautwein/TAR-Weiterentwiklung-IoT-Tor/blob/master/Doc/Configs/mosquitto_dev.conf
+RUN wget https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/blob/master/Doc/Configs/mosquitto_dev.conf
 
 #Get Git repositorys 
 WORKDIR /home
 #Clone the forked node-red repo
 RUN git clone https://github.com/MaxTrautwein/node-red.git
 #Clone the primary TAR repository
-RUN git clone https://github.com/MaxTrautwein/TAR-Weiterentwiklung-IoT-Tor
+RUN git clone https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor
 
 #prepare the Multi Input Support
 WORKDIR /home/node-red

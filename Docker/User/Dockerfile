@@ -20,7 +20,7 @@ RUN apt-get -q -y install mosquitto-clients
 #Setup mosquitto dev account
 RUN mosquitto_passwd -c -b /etc/mosquitto/pwfile test test
 WORKDIR /etc/mosquitto/conf.d
-RUN wget https://github.com/MaxTrautwein/TAR-Weiterentwiklung-IoT-Tor/blob/master/Doc/Configs/mosquitto_dev.conf
+RUN wget https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/blob/master/Doc/Configs/mosquitto_dev.conf
 
 #Get Git repositorys 
 WORKDIR /home

@@ -18,9 +18,9 @@ Es stehen zwei optionen zur wahl.
 <br/>(1) Im falle dass ein reguläres setup zum testen benötigt wird
 <br/>(2) Im falle dass Setup für die erweiterungen dieser Technikerarbeit benötigt wird. 
  
-1. **Für default Setup:** https://github.com/MaxTrautwein/TAR-Weiterentwiklung-IoT-Tor/blob/master/Docker/User/Dockerfile
+1. **Für default Setup:** https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/blob/master/Docker/User/Dockerfile
  
-2. **Für Setup mit den live änderungen für Multi Input Nods:** https://github.com/MaxTrautwein/TAR-Weiterentwiklung-IoT-Tor/blob/master/Docker/Development/Dockerfile
+2. **Für Setup mit den live änderungen für Multi Input Nods:** https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/blob/master/Docker/Development/Dockerfile
  
 
 Bitte laden sie eine der beiden dateien herunter.
