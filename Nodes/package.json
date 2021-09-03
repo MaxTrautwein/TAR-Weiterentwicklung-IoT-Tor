@@ -1,0 +1,19 @@
+{
+  "name": "tar-nodes",
+  "version": "1.0.0",
+  "description": "Nodes for TAR",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor.git"
+  },
+  "author": "Max Trautwein",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/issues"
+  },
+  "homepage": "https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor#readme"
+}
