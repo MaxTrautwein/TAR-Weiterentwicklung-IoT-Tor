@@ -42,3 +42,21 @@ Das Webinterface von Node-Red ist unter  [localhost:1880](localhost:1880) verfü
 <br/>Um direkten zugriff auf die Daten in dem container zu erhalten empfehle ich das [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) sowie das [Remote Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) Addon für Visual Studio Code.
 
 Um Weitereintwicklungen zu sichern empfiehlt es sich diese direkt mit git zu commiten und auf ein remote repository zu laden.
+
+## Problembehandlung
+
+### (Windows) Error response from daemon: Ports are not available
+vollständige Fehlermeldung:
+```
+docker: Error response from daemon: Ports are not available: listen tcp 0.0.0.0:1880: bind: An attempt was made to access a socket in a way forbidden by its access permissions.
+```
+
+Sollte dieser fehler auftreten so öffnen sie ein terminal mit administrator rechten und führen sie folgenden befehl aus:
+```
+net stop winnat
+```
+nun sollten sie den Container starten können. Anschließend können sie `winnat` wieder starten.
+```
+net start winnat
+```
+_Quelle: https://github.com/docker/for-win/issues/3171#issuecomment-739740248_

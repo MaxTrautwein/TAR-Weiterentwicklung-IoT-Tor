@@ -127,3 +127,6 @@ im falle von node-red kommen die style parameter `stroke`, `stroke-width` und `f
 
 Hilfreiches video:
 https://www.youtube.com/watch?v=k6TWzfLGAKo
+
+Das wichtigste für mich ist dass der 5. & 6. parameter für das `C` Kommando die endposition angibt. [Siehe Spezifikation](https://svgwg.org/specs/paths/#PathDataCubicBezierCommands)
+
