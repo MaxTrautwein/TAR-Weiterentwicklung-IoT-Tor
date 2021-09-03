@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/issues"
   },
-  "homepage": "https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor#readme"
+  "homepage": "https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor#readme",
+
+  "node-red" : {
+    "nodes": {
+        "and": "Logical/and.js"
+    }
+}
 }
