@@ -19,7 +19,8 @@
 
   "node-red" : {
     "nodes": {
-        "and": "Logical/and.js"
+        "and": "Logical/and.js",
+        "or": "Logical/or.js"
     }
 }
 }
