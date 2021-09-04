@@ -29,6 +29,12 @@ RUN git clone https://github.com/MaxTrautwein/node-red.git
 #Clone the primary TAR repository
 RUN git clone https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor
 
+#Setup Node Link
+WORKDIR /home/TAR-Weiterentwicklung-IoT-Tor/Nodes
+RUN npm link
+WORKDIR /root/.node-red
+RUN npm link tar-nodes
+
 #prepare the Multi Input Support
 WORKDIR /home/node-red
 RUN git checkout Multi_Input_Support
