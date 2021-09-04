@@ -20,7 +20,8 @@
   "node-red" : {
     "nodes": {
         "and": "Logical/and.js",
-        "or": "Logical/or.js"
+        "or": "Logical/or.js",
+        "ton":"Time/TurnOnDelay.js"
     }
 }
 }
