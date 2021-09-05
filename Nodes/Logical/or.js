@@ -15,11 +15,11 @@ module.exports = function(RED) {
             //cache Recived Value
             config.data[msg.__port] = msg.payload;
 
-            //And Logic
-            var result = true;
+            //Or Logic
+            var result = false;
             config.data.forEach(element => {
-                if (element == false){
-                    result = false; 
+                if (element == true){
+                    result = true; 
                 }
             });
 
@@ -29,5 +29,5 @@ module.exports = function(RED) {
         });
     }
     //Register Node
-    RED.nodes.registerType("and",AndNode);
+    RED.nodes.registerType("or",AndNode);
 }
