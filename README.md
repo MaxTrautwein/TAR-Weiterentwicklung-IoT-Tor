@@ -1,15 +1,12 @@
 # TAR-Weiterentwicklung-IoT-Tor
 
-Dies ist das Offizielle Repository für meine Technikerarbeit.
+Dies ist das offizielle Repository für meine Technikerarbeit.
 
-Das Thema ist die Weiterenwicklung des IoT Tor Lernmodells mit einem fokus auf die Software.
+Das Thema ist die Weiterenwicklung des IoT Tor Lernmodells mit einem Fokus auf die Software.
 
 ## Ziele
 
-Mithilfe dieser Erweiterung soll der Einstig in Smarthome, IoT sowie andere moderne Steuerungs-Systeme für berufsschühler erleichtert werden.
-Dabei soll diese bekannte logik bauschteine in der Node Red umgebung wiederfinden.
-
-
+Mithilfe dieser Erweiterung soll der Einstig in Smarthome, IoT sowie andere moderne Steuerungssysteme für Berufsschüler erleichtert werden.
 
 ## Links
 
