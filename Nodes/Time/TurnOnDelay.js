@@ -5,9 +5,6 @@ module.exports = function(RED) {
     function AndNode(config) {
         RED.nodes.createNode(this,config);
         
-        //TODO get size from inputs property
-        //Array().fill may not work with IE
-        
         this.time = config.time;
         
 
