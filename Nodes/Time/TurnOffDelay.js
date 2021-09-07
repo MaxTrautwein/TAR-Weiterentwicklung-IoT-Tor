@@ -28,6 +28,10 @@ module.exports = function(RED) {
             }
             if (config.trimer !== undefined && ( trigger === true || reset == true)){
                 clearTimeout(config.trimer)
+                if (reset == true){
+                    msg.payload = false;
+                    node.send(msg);
+                }
             }
 
             config.lastval = trigger
