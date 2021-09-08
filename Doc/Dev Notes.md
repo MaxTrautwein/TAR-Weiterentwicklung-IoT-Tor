@@ -69,7 +69,6 @@ kp was mich davon abgehalten hat das früher zu realisiren...
 - The `d` atrribute of `red-ui-flow-link` defines on how the link line looks. This needs to be Updated to support the Visuals but it *likely* has no effect on the function
 
 - TODO Support Inputs removal
-- TODO Support Resize based on inputs
 - TDOO Support Correct Input linking
 - TODO Support Input selection / eVENTS IN sw
 - TODO The rest
@@ -129,4 +128,78 @@ Hilfreiches video:
 https://www.youtube.com/watch?v=k6TWzfLGAKo
 
 Das wichtigste für mich ist dass der 5. & 6. parameter für das `C` Kommando die endposition angibt. [Siehe Spezifikation](https://svgwg.org/specs/paths/#PathDataCubicBezierCommands)
+
+---
+node debug Test code
+```js
+   if (conifg.data[msg.__port] == undefined){
+                msg.payload += "first message!! "
+            }else{
+                msg.payload += "last value: " + config.data[msg.__port] + " || "
+            }
+
+            msg.payload += "Recived msg on Port: " + msg.__port;
+```
+
+---
+
+# Tasmota install
+Web: https://arendst.github.io/Tasmota-firmware/
+Chrome / edge only
+
+I can't get the web tool to work, its stick on inizializing...
+
+
+## esp tool
+https://tasmota.github.io/docs/Getting-Started/#esptoolpy
+
+Note: the flash command stated online is invalid as the flash size is too small 1MB for 1.4MB binary. the ESP32 has 4MB.
+
+Download binary here: http://ota.tasmota.com/tasmota32/release/
+
+```
+#Backup
+esptool.exe --port COM3 read_flash 0x00000 0x100000 fwbackup.bin
+
+#Erase
+esptool.exe --port COM3 erase_flash
+
+#Flash
+esptool.exe  --port COM3 write_flash --flash_size detect -fm dout 0x0 tasmota32.bin
+```
+
+doing the above dose not work at all.
+
+## The working setup
+
+Some issues pont to: https://tasmota.github.io/docs/ESP32/
+extra files needed from https://github.com/tasmota/install/tree/main/static
+for me: https://github.com/tasmota/install/tree/main/static/esp32
+```
+esptool.py --chip esp32 --port COM3 --baud 921600 --before default_reset --after hard_reset write_flash -z --flash_mode dout --flash_freq 40m --flash_size detect 0x1000 bootloader_dout_40m.bin 0x8000 partitions.bin 0xe000 boot_app0.bin 0x10000 tasmota32.bin
+
+```
+
+after that the Wifi is visible & can be configured
+
+
+--
+
+## extended mqtt Broker setup Steps:
+
+```
+#Start server
+#for some reason i have to manually specify the config file
+#from my understanding that should happen automaticly
+mosquitto -v -c /etc/mosquitto/conf.d/mosquitto_dev.conf 
+
+#Subscribe to all Topics
+mosquitto_sub -u test -P test -t '#'
+
+#Send message
+mosquitto_pub -u test -P test -t dev/test -m "Hey"
+
+```
+
+
 
