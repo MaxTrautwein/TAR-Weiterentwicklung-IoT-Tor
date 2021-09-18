@@ -141,6 +141,27 @@ node debug Test code
             msg.payload += "Recived msg on Port: " + msg.__port;
 ```
 
+```js
+    /**
+     * This function is used to debug print Objects
+     * 
+     * @param {object} o The object in question
+     * @param {string} str Use empty string when calling
+     */
+    function DebugObject(o,str){
+        for(var key in o) {
+            var value = o[key];
+            var bstr = str + " o[" + key + "]  --> ";
+            if (typeof value === 'object' && value !== null){
+                DebugObject(value,bstr);
+            }else{
+                console.log(bstr + value);
+            }    
+        }
+    }
+```
+
+
 ---
 
 # Tasmota install
@@ -202,4 +223,83 @@ mosquitto_pub -u test -P test -t dev/test -m "Hey"
 ```
 
 
+This seems to contain modbus stuff
+https://tasmota.github.io/docs/Smart-Meter-Interface/
 
+**Note:** the sw found on the NORVI is considured invalid by `esptool.exe --chip esp32 image_info fwbackup_Scalt_4M.bin` the `image magic` byte apperes to be invalide with `0xff`
+
+---
+
+# Combine Multible Git Commits to one
+somthing like this should apperently work
+```
+#https://tasmota.github.io/docs/Sensor-API/#managing-a-forked-branch
+git merge --squash <temp_branch>
+
+
+```
+
+---
+
+# Tasmota Links
+Für die Console
+https://tasmota.github.io/docs/Commands/
+
+---
+
+# Tasmota Dev
+
+`xnrg_18_sdm72.ino` Smat metre sample
+
+`TasmotaModbus.h`
+
+`C:\Users\Max\Desktop\TAR\Git\Tasmota\tasmota\xdrv_03_energy.ino` base code for all smart mtrers
+... That one contains MQTT Publish Code 
+
+The `TasmotaModbus::Send` is very spezialized in the lib.
+It only support sending of 4 Data byte no more no less
+
+The base serial lib seems to support all data lenghts
+
+## Understanding the Base libs of Tasmota
+For the most of the code i was unable to find any kind of documentation
+The Names themselfs also aren't selfexplanetory at least not atm.
+
+### TODO
+
+- Find MQTT Recive Callbacks
+- Find Modbus Recive Callbacks
+- Find MQTT Send functions (What function should be used. what are tge diffrences)
+- How will my code be called
+- UI / GUI Stuff in Tasmota
+
+Tasmota appears to use this: https://pubsubclient.knolleary.net/api.html#state Libary
+That one is mentioned once in the code as a btw we use those codes....
+That Libary is a lot clrearer to me.
+
+#### Callback path:
+Used https://pubsubclient.knolleary.net/api.html#state `setCallback (callback)` to register the following callback:
+```cpp
+//https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/xdrv_02_9_mqtt.ino
+void MqttDataHandler(char* mqtt_topic, uint8_t* mqtt_data, unsigned int data_len)
+```
+That one will then call the following:
+
+```cpp
+//https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/support_command.ino
+void CommandHandler(char* topicBuf, char* dataBuf, uint32_t data_len)
+```
+
+##### Speculations:
+
+- The MQTT Message needs a special Topic to be routed correctly
+- You need an entry in `bool (* const xdrv_func_ptr[])(uint8_t)` under https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/xdrv_interface.ino
+
+## compiling
+the reccomend palatformIO for compiling including a extension for VisualStudio.
+I can't get that one working. there are always errors logged
+
+https://github.com/tasmota/docker-tasmota should work i hope. but sadly I can't get it working.
+
+
+https://github.com/Jason2866/Portable_VSC_PlatformIO **Appers to work**
