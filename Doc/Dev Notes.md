@@ -289,11 +289,61 @@ That one will then call the following:
 //https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/support_command.ino
 void CommandHandler(char* topicBuf, char* dataBuf, uint32_t data_len)
 ```
+in turn that one will call
+```cpp
+//https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/support.ino
+DecodeCommand(const char* haystack, void (* const MyCommand[])(void), const uint8_t *synonyms)
+```
 
-##### Speculations:
+`DecodeCommand` will then check if the supplied Command string can be located in
+```cpp
+//https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/support_command.ino
+//The constants used in that list are defined in: https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/i18n.h
+const char kTasmotaCommands[] PROGMEM
+```
+If that is the case then the position fo that match will be used to call the command located in the follwing list:
 
-- The MQTT Message needs a special Topic to be routed correctly
+```cpp
+//https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/support_command.ino
+void (* const TasmotaCommand[])(void) PROGMEM
+```
+And the Defind command will be executed.
+All commands contained in the list above must be defined in the same file.
+They may use the `XdrvMailbox` to retrive deiails about the issued command.
+
+The command refrended in the list must be defind in the following file: https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/support_command.ino
+
+
+
+<details>
+<summary><b>Further Speculations</b></summary>
+
+- whats a "SetOption synonym"
+  - may relate to "CmndSetoptionBase" 
 - You need an entry in `bool (* const xdrv_func_ptr[])(uint8_t)` under https://github.com/MaxTrautwein/Tasmota/blob/development/tasmota/xdrv_interface.ino
+
+</details>
+<br/><br/><br/>
+
+
+
+**MQTT Message Composition**
+
+This section assumes that the MQTT Settings have been left at thair default as shown here:
+![alt text](https://i.postimg.cc/y8LggXy1/mqtt-config2.png "Logo Title Text 1"
+<br/>**Specificly:**
+<br/>**Full Topic:** `%prefix%/%topic%/`
+
+**Command Structur:**
+```
+cmnd/<Topic>/<Command>
+```
+`<Topic>` is the MQTT Topic that has been configured for this Tasmota device. _Defaut as shown above is `Tasmota`_
+<br/>`<Command>` is the Command to execute. _a Compleate list of already implemented Commands can be found at: https://tasmota.github.io/docs/Commands/_
+
+If the Payload is **empty** that the command will be seen as a status request
+Otherwise Payload may be used to execute the command.
+
 
 ## compiling
 the reccomend palatformIO for compiling including a extension for VisualStudio.
