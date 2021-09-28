@@ -344,6 +344,10 @@ cmnd/<Topic>/<Command>
 If the Payload is **empty** that the command will be seen as a status request
 Otherwise Payload may be used to execute the command.
 
+### Tasmota MQTT Subscribe
+
+Subscribing to individual Topics for MQTT seems not nessesary for Tasmota as it automaticly subscribes to `#` eg: all topics.
+
 
 ## compiling
 the reccomend palatformIO for compiling including a extension for VisualStudio.
@@ -353,3 +357,53 @@ https://github.com/tasmota/docker-tasmota should work i hope. but sadly I can't 
 
 
 https://github.com/Jason2866/Portable_VSC_PlatformIO **Appers to work**
+
+### .ino vs .cpp & .h
+see: https://forum.arduino.cc/t/guidance-issues-with-using-defines-in-ino-for-use-in-libraries/530114/2
+all .ino files are combined into one .cpp file at compile time.
+Therefor refrences are not an issue. however .cpp files are compiled seperatly so extra stepps are needed
+
+Simply defining the Method in any .h file resolves the issue.
+TODO Create a seperate .h file for this purpos instead of including it with the other stuff
+
+### Testing custom tasmota build
+What causes the command error Response to be set for Tasmota?
+<br/>`XdrvMailbox.data` seems to contain randm data !? Where is the sent payload?
+
+### Understanding **XdrvMailbox**
+
+```cpp
+struct XDRVMAILBOX {
+  bool          grpflg;
+  bool          usridx;
+  uint16_t      command_code;
+  uint32_t      index;
+  uint32_t      data_len;
+  int32_t       payload;
+  char         *topic;
+  char         *data;
+  char         *command;
+} XdrvMailbox;
+```
+
+MQTT Command Sent:
+```
+Topic: "cmnd/dev/test/mqttbridge"
+msg.payload : "Hello World"
+```
+_`""` are not acctually sent. they are there to indicate what data is acctually sent._ 
+
+
+**Response / Data**
+```
+grpflg        => false ??
+usridx        => false ??
+command_code  => 93 (Index of command in array?)
+index         => 1 ??
+data_len      => 11 Length of the data in data
+payload       => -99 ??
+topic         => "MQTTBRIDGE" (Why all caps?)
+data          => "Hello World"
+command       => "mqttbridge"
+```
+
