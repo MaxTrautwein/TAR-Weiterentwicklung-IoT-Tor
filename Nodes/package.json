@@ -21,6 +21,9 @@
     "nodes": {
         "and": "Logical/and.js",
         "or": "Logical/or.js",
+        "xor": "Logical/xor.js",
+        "nor": "Logical/nor.js",
+        "not": "Logical/not.js",
         "ton":"Time/TurnOnDelay.js",
         "tof":"Time/TurnOffDelay.js"
     }
