@@ -20,6 +20,7 @@
   "node-red" : {
     "nodes": {
         "and": "Logical/and.js",
+        "nand": "Logical/nand.js",
         "or": "Logical/or.js",
         "xor": "Logical/xor.js",
         "nor": "Logical/nor.js",
