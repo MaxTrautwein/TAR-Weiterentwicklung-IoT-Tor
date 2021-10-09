@@ -26,7 +26,9 @@
         "nor": "Logical/nor.js",
         "not": "Logical/not.js",
         "ton":"Time/TurnOnDelay.js",
-        "tof":"Time/TurnOffDelay.js"
+        "tof":"Time/TurnOffDelay.js",
+        "rs":"Memory/rs.js",
+        "counter":"Memory/counter.js"
     }
 }
 }
