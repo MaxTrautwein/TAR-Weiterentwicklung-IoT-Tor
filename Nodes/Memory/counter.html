@@ -1,0 +1,57 @@
+<script type="text/javascript">
+    var hostParameterValidator = function(node,v){
+        var mode = getMode(node)
+        if(mode === "triggered"){
+            return true;
+        }
+        return v != ""
+    }
+    var getMode = function(node){
+        if(node){
+            return node.mode
+        } else {
+            let $mode = $( "#node-input-mode" );
+            return $mode.val();
+        }
+    }
+
+
+
+    RED.nodes.registerType('counter',{
+        category: 'Memory',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            data: {value:undefined},
+            cnt: {value:0},
+            trigger: {value:10},
+            reset: {value:0}
+        },
+        inputs:3,
+        outputs:1,
+        inputLabels:["Reset","Count","Dir (h: Up ; l; Down)"],
+        icon: "file.png",
+        label: function() {
+            return this.name||"counter";
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="counter">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-trigger"><i class="fa fa-tag"></i> trigger</label>
+        <input type="number" id="node-input-trigger" placeholder="10">
+    </div>
+    <div class="form-row">
+        <label for="node-input-reset"><i class="fa fa-tag"></i> reset</label>
+        <input type="number" id="node-input-reset" placeholder="0">
+    </div>
+</script>
+
+<script type="text/html" data-help-name="counter">
+    <p>TBD</p>
+</script>
