@@ -41,4 +41,4 @@ RUN git checkout Multi_Input_Support
 
 
 RUN npm install
-CMD [ "grunt", "dev" ]
+CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; grunt dev

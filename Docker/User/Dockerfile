@@ -31,4 +31,4 @@ RUN git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
 
 
 RUN npm install
-CMD [ "grunt", "dev" ]
+CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; grunt dev
