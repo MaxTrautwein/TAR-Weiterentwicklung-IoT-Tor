@@ -11,3 +11,4 @@ Mithilfe dieser Erweiterung soll der Einstig in Smarthome, IoT sowie andere mode
 ## Links
 
 [Forked node-red repo mit Mehrfach eingangs Support](https://github.com/MaxTrautwein/node-red/tree/Multi_Input_Support)
+<br/>[Forked Tasmota repo mit generellem Modbus Tx/Rx Support](https://github.com/MaxTrautwein/Tasmota/tree/modbus_bridge)
