@@ -1,0 +1,38 @@
+<script type="text/javascript">
+    RED.nodes.registerType('hardware-config',{
+        category: 'config',
+        defaults: {
+            configur:{value:undefined},
+            name: {value:""}
+        },
+        label: function() {
+            
+            if (this.configur != undefined){
+                return JSON.parse(this.configur)["Name"];
+            }
+            return this.name|| "Config Node";
+        },
+        oneditprepare: function() {
+            $("#node-config-input-configur").typedInput({
+            type:"json",
+            types:["json"]
+            })
+        }
+
+    });
+    
+</script>
+
+<script type="text/html" data-template-name="hardware-config">
+    <div class="form-row">
+        <label for="node-config-input-configur"><i class="fa fa-bookmark"></i> Config</label>
+        <input type="text" id="node-config-input-configur">
+    </div>
+
+    <div class="form-row">
+        <label for="node-config-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-config-input-name" placeholder="Name">
+    </div>
+
+
+</script>

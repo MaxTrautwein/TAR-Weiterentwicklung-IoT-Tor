@@ -1,0 +1,127 @@
+<script type="text/javascript">
+    var hostParameterValidator = function(node,v){
+        var mode = getMode(node)
+        if(mode === "triggered"){
+            return true;
+        }
+        return v != ""
+    }
+    var getMode = function(node){
+        if(node){
+            return node.mode
+        } else {
+            let $mode = $( "#node-input-mode" );
+            return $mode.val();
+        }
+    }
+    var ConfigJson = undefined;
+
+    function getOptions(data){
+        if (data == undefined){
+            return [{ value: "apple", label: "Apple"},{ value: "banana", label: "Banana"},{ value: "cherry", label: "Cherry"}];
+        }
+        console.log(data);
+        var Ports = data["Output"];
+        var Data = [];
+        var len = Ports.length;
+        for (var i = 0 ; i<len;i++){
+            Data.push({value:i, label:Ports[i]["Name"]});
+        }
+        return Data;
+    }
+
+
+
+    RED.nodes.registerType('Output',{
+        category: 'IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            configuration: {value:"",type:"hardware-config"},
+            AusgangName: {value:""},
+            AusgangID:{value:0},
+            allports:{value:false},
+        },
+        inputs:1,
+        outputs:0,
+        label: function() {
+            if (this.AusgangName != ""){
+                var Confnode =  RED.nodes.node(this.configuration);
+                var dataconf = JSON.parse(Confnode.configur);
+                return dataconf["Output"][this.AusgangName]["Name"];
+            }
+
+            return this.AusgangName||"Output";
+        },
+        oneditprepare: function(){
+            $(".my-button-group").on("click", function() {
+                $(".my-button-group").removeClass("selected");
+                $(this).addClass("selected");
+                if ($(this).attr('id') === "OutputModeAll"){
+                    allports = true;
+                    $("#div-node-input-AusgangName").hide();
+                }else {
+                    allports = false; 
+                    $("#div-node-input-AusgangName").show();
+                }
+            })
+            var Confnode =  RED.nodes.node(this.configuration);
+            var dataconf = JSON.parse(Confnode.configur);
+            $("#node-input-AusgangName").typedInput({
+                types: [
+                    {
+                        value: "Outputs",
+                        options: getOptions(dataconf)
+                    }
+                ]
+            })
+            /*
+            $("#node-input-AusgangID").change(function(){
+                if (this.AusgangID == undefined){
+                    this.AusgangID = 0;
+                }
+                let tmp = dataconf["Output"][this.AusgangID]
+                if (tmp === undefined){
+                    this.AusgangName = "";
+                    console.log("undefinded; this.AusgangID: " + this.AusgangID);
+                }else{
+                    this.AusgangName = tmp["Name"];
+                    console.log("this.AusgangName: " + this.AusgangName)
+                }
+                
+            });*/
+           
+
+
+        }
+
+    });
+</script>
+
+<script type="text/html" data-template-name="Output">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-configuration"><i class="fa fa-globe"></i>Configuration</label>
+        <input type="text" id="node-input-configuration">
+    </div>
+
+    <span class="button-group">
+        <button type="button" id="OutputModeSingle" class="red-ui-button toggle selected my-button-group">Einfach</button>
+        <button type="button" id="OutputModeAll" class="red-ui-button toggle my-button-group">Alle</button>
+    </span>
+
+
+    <div id="div-node-input-AusgangName" class="form-row">
+        <label for="node-input-AusgangName"></i>Output</label>
+        <input type="text" id="node-input-AusgangName">
+    </div>
+    
+
+</script>
+
+<script type="text/html" data-help-name="Output">
+    <p>TBD</p>
+</script>

@@ -28,7 +28,9 @@
         "ton":"Time/TurnOnDelay.js",
         "tof":"Time/TurnOffDelay.js",
         "rs":"Memory/rs.js",
-        "counter":"Memory/counter.js"
+        "counter":"Memory/counter.js",
+        "hardware-config":"Config/HardwareConfig.js",
+        "Output":"IO/Output.js"
     }
 }
 }
