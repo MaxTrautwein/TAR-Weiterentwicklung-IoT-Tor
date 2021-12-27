@@ -67,12 +67,14 @@
                 this.allports =  $("#node-input-allports").prop('checked');
                 if(this.allports === true){
                     $("#div-node-input-AusgangName").hide();
-                    this.inputs = dataconf["Output"].length;
+                    $("#node-input-inputs").val( dataconf["Output"].length);
                 }else{
                     $("#div-node-input-AusgangName").show();
-                    this.inputs = 1;                    
+                    
+                    $("#node-input-inputs").val(1);                 
                 }
                 //TODO Figgur out how to redraw
+                //Working for outputs
             })
             
             var oopt = getOptions(dataconf,"Output");
@@ -104,7 +106,7 @@
             configuration: {value:"",type:"hardware-config"},
             EingangName: {value:0},
             allportsi:{value:false},
-            inputs: {value:1}
+            outputs: {value:1}
         },
         inputs:1,
         outputs:1,
@@ -130,12 +132,11 @@
                 this.allportsi =  $("#node-input-allportsi").prop('checked');
                 if(this.allportsi === true){
                     $("#div-node-input-EingangName").hide();
-                    this.outputs = dataconf["Input"].length;
+                    $("#node-input-outputs").val( dataconf["Input"].length);
                 }else{
                     $("#div-node-input-EingangName").show();
-                    this.outputs = 1;                    
+                    $("#node-input-outputs").val(1);            
                 }
-                //TODO Figgur out how to redraw
             })
             
             var oopt = getOptions(dataconf,"Input");
@@ -176,6 +177,7 @@
     <div class="form-row">
         <label for="node-input-allports"></i>All in One</label>
         <input type="checkbox" id="node-input-allports">
+        <input type="hidden" id="node-input-inputs" value="1">
     </div>
 
     <div id="div-node-input-AusgangName" class="form-row">
@@ -209,6 +211,7 @@
     <div class="form-row">
         <label for="node-input-allportsi"></i>All in One</label>
         <input type="checkbox" id="node-input-allportsi">
+        <input type="hidden" id="node-input-outputs" value="1">
     </div>
 
     <div id="div-node-input-EingangName" class="form-row">
