@@ -1,0 +1,40 @@
+{
+"Name":"DevSetup",
+"Input":[
+    {
+    "Name":"Taster",
+    "Description":"Taster für XYZ",
+    "Topic":"cmnd/but/POWER",
+    "Interpreter":"PulseTrue"
+    }
+    
+    
+],
+"Output":[
+
+        {
+            "Name":"LED",
+            "Description":"Change LED State",
+            "Topic":"cmnd/dev/test/LedPower",
+            "Interpreter":"DoubleOnTrueDelay",
+            "Iparameter":0.5,
+            "payload":"2"
+        },
+        {
+            "Name":"Relay 1 5s Puls",
+            "Description":"Send A message to Trigger a 5s Puls for Relay 1",
+            "Topic":"cmnd/dev/test/mqttbridge",
+            "Interpreter":"SingleOnTrue",
+            "payload":{
+                    "Address": "0x01",
+                    "Function": "0x06",
+                    "Data": [
+                        "0x00",
+                        "0x01",
+                        "0x06",
+                        "0x0A"
+                    ]
+                }
+            }
+]
+}

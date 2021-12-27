@@ -269,7 +269,7 @@ The Names themselfs also aren't selfexplanetory at least not atm.
 
 - Find MQTT Recive Callbacks
 - Find Modbus Recive Callbacks
-- Find MQTT Send functions (What function should be used. what are tge diffrences)
+- Find MQTT Send functions (What function should be used. what are the diffrences)
 - How will my code be called
 - UI / GUI Stuff in Tasmota
 
@@ -406,4 +406,69 @@ topic         => "MQTTBRIDGE" (Why all caps?)
 data          => "Hello World"
 command       => "mqttbridge"
 ```
+## Tasmota MQTT - RS485 RTU Data format
+
+```json
+{
+  "Address":"1 BYTE",
+  "Function":"1 BYTE",
+  "Data":"0 - 252 BYTE",
+  "CRC":"(Optional) 2 BYTE Override / Info"
+}
+```
+
+
+---
+
+# Snippeds from Testing:
+
+Testing MQTT RX
+```cpp
+char str[20];
+
+std::string data = "command: ";
+data.append(XdrvMailbox.command);
+data.append(" data: ");
+data.append(XdrvMailbox.data);
+data.append(" topic: ");
+data.append(XdrvMailbox.topic);
+data.append(" payload: ");
+
+sprintf(str,"%d", XdrvMailbox.payload);
+data.append(str);
+data.append(" data_len: ");
+sprintf(str,"%d",XdrvMailbox.data_len);
+data.append(str);
+data.append(" index: ");
+sprintf(str,"%d",XdrvMailbox.index);
+data.append(str);
+data.append(" command_code: ");
+sprintf(str,"%d",XdrvMailbox.command_code);
+data.append(str);
+data.append(" usridx: ");
+data.append(XdrvMailbox.usridx ? "true" : "false");
+data.append(" grpflg: ");
+data.append(XdrvMailbox.grpflg ? "true" : "false");
+
+```
+
+# C# Client
+https://github.com/chkr1011/MQTTnet
+
+# Dashbord
+
+--> Grafana
+https://github.com/grafana/mqtt-datasource
+
+--> Influx DB is causing issues. Maybe use somthing else instead
+
+
+# SVG Editor
+Opem soure Editor used for Node Red Icons
+
+https://inkscape.org/
+
+https://gitlab.com/inkscape/inkscape
+
+
 
