@@ -80,7 +80,7 @@ module.exports = function(RED) {
 
 
         this.configuration = RED.nodes.getNode(config.configuration);
-        this.EingangName = config.AusgangName;
+        this.EingangName = config.EingangName;
         this.allportsi = config.allportsi;
         //this.AusgangName = config.AusgangName;
 
@@ -95,7 +95,7 @@ module.exports = function(RED) {
                 HandleOI(outputConfig,msg,this);
             }else{
                 //Handle Single
-                let outputConfig = this.jsonC["Input"][parseInt(this.AusgangName)];
+                let outputConfig = this.jsonC["Input"][parseInt(this.EingangName)];
                 HandleOI(outputConfig,msg,this);
             }
         });
