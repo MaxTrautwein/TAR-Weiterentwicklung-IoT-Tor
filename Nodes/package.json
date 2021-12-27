@@ -30,7 +30,7 @@
         "rs":"Memory/rs.js",
         "counter":"Memory/counter.js",
         "hardware-config":"Config/HardwareConfig.js",
-        "Output":"IO/Output.js"
+        "Output":"IO/InputOutput.js"
     }
 }
 }
