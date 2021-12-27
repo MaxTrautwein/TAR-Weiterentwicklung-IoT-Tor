@@ -1,0 +1,227 @@
+<script type="text/javascript">
+    
+   
+   var hostParameterValidator = function(node,v){
+        var mode = getMode(node)
+        if(mode === "triggered"){
+            return true;
+        }
+        return v != ""
+    }
+    var getMode = function(node){
+        if(node){
+            return node.mode
+        } else {
+            let $mode = $( "#node-input-mode" );
+            return $mode.val();
+        }
+    }
+    var ConfigJson = undefined;
+
+    function getOptions(data,dir){
+        if (data == undefined){
+            return [{ value: "apple", label: "Apple"},{ value: "banana", label: "Banana"},{ value: "cherry", label: "Cherry"}];
+        }
+        console.log(data);
+        var Ports = data[dir];
+        var Data = [];
+        var len = Ports.length;
+        for (var i = 0 ; i<len;i++){
+            Data.push({value:i, label:Ports[i]["Name"]});
+        }
+        return Data;
+    }
+    
+
+    RED.nodes.registerType('Output',{
+        category: 'IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            configuration: {value:"",type:"hardware-config"},
+            AusgangName: {value:0},
+            AusgangID:{value:0},
+            allports:{value:false},
+            inputs: {value:1}
+        },
+        inputs:1,
+        outputs:1,
+        label: function() {
+            if (this.AusgangName != ""){
+                var Confnode =  RED.nodes.node(this.configuration);
+                var dataconf = JSON.parse(Confnode.configur);
+                return dataconf["Output"][this.AusgangName]["Name"];
+            }
+
+            return this.AusgangName||"Output";
+        },
+        oneditprepare: function(){
+            var Confnode =  RED.nodes.node(this.configuration);
+            var dataconf = JSON.parse(Confnode.configur);
+
+            //Get Name 
+
+
+
+            $("#node-input-allports").change(function(){
+                this.allports =  $("#node-input-allports").prop('checked');
+                if(this.allports === true){
+                    $("#div-node-input-AusgangName").hide();
+                    this.inputs = dataconf["Output"].length;
+                }else{
+                    $("#div-node-input-AusgangName").show();
+                    this.inputs = 1;                    
+                }
+                //TODO Figgur out how to redraw
+            })
+            
+            var oopt = getOptions(dataconf,"Output");
+            $("#node-input-AusgangName").typedInput({
+                default:"int",
+                type:"int",
+                types: [
+                    {
+                        value: "int",
+                        options: oopt /*getOptions(dataconf)*/
+                    }
+                ]
+            })
+            //TODO: Fix issue that the lable is not displayed
+            //
+            $("#node-input-AusgangName").typedInput("value",this.AusgangName);
+
+
+        }
+
+    });
+
+
+    RED.nodes.registerType('Input',{
+        category: 'IO',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""},
+            configuration: {value:"",type:"hardware-config"},
+            EingangName: {value:0},
+            allportsi:{value:false},
+            inputs: {value:1}
+        },
+        inputs:1,
+        outputs:1,
+        label: function() {
+            if (this.AusgangName != ""){
+                var Confnode =  RED.nodes.node(this.configuration);
+                var dataconf = JSON.parse(Confnode.configur);
+                return dataconf["Input"][this.EingangName]["Name"];
+            }
+
+            return this.AusgangName||"Input";
+        },
+        oneditprepare: function(){
+            var Confnode =  RED.nodes.node(this.configuration);
+            var dataconf = JSON.parse(Confnode.configur);
+            if (this.allportsi === undefined) this.allportsi = false;
+            if (this.EingangName === undefined) his.EingangName =0;
+            //Get Name 
+
+
+
+            $("#node-input-allportsi").change(function(){
+                this.allportsi =  $("#node-input-allportsi").prop('checked');
+                if(this.allportsi === true){
+                    $("#div-node-input-EingangName").hide();
+                    this.outputs = dataconf["Input"].length;
+                }else{
+                    $("#div-node-input-EingangName").show();
+                    this.outputs = 1;                    
+                }
+                //TODO Figgur out how to redraw
+            })
+            
+            var oopt = getOptions(dataconf,"Input");
+            $("#node-input-EingangName").typedInput({
+                default:"int",
+                type:"int",
+                types: [
+                    {
+                        value: "int",
+                        options: oopt /*getOptions(dataconf)*/
+                    }
+                ]
+            })
+            //TODO: Fix issue that the lable is not displayed
+            //
+            $("#node-input-EingangName").typedInput("value",this.EingangName);
+
+
+        }
+
+    });
+
+
+
+
+</script>
+
+<script type="text/html" data-template-name="Output">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-configuration"><i class="fa fa-globe"></i>Configuration</label>
+        <input type="text" id="node-input-configuration">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-allports"></i>All in One</label>
+        <input type="checkbox" id="node-input-allports">
+    </div>
+
+    <div id="div-node-input-AusgangName" class="form-row">
+        <label for="node-input-AusgangName"></i>Output</label>
+        <input type="text" id="node-input-AusgangName">
+    </div>
+    
+
+</script>
+
+<script type="text/html" data-help-name="Output">
+    <p>TBD</p>
+</script>
+
+<!-- 
+    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+    |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+-->
+
+<script type="text/html" data-template-name="Input">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-configuration"><i class="fa fa-globe"></i>Configuration</label>
+        <input type="text" id="node-input-configuration">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-allportsi"></i>All in One</label>
+        <input type="checkbox" id="node-input-allportsi">
+    </div>
+
+    <div id="div-node-input-EingangName" class="form-row">
+        <label for="node-input-EingangName"></i>Input</label>
+        <input type="text" id="node-input-EingangName">
+    </div>
+    
+
+</script>
+
+<script type="text/html" data-help-name="Input">
+    <p>TBD</p>
+</script>
+
+
+
