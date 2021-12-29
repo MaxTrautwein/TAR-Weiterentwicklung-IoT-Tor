@@ -1,9 +1,34 @@
 <script type="text/javascript">
-    
    
-   var hostParameterValidator = function(node,v){
-        var mode = getMode(node)
-        if(mode === "triggered"){
+    function getJsonConfig(id){
+        let jd = undefined;
+        let cn = undefined;
+        try{
+            cn =  RED.nodes.node(id);
+            jd = JSON.parse(cn.configur);
+        }catch (e) {
+            return jd;
+        }
+        return jd;
+   }
+
+    function configureTypedName(conf,dir,id){
+        if (conf === undefined ) return;
+        let oopt = getOptions(conf,dir);
+        $(id).typedInput({
+            default:"int",
+            type:"int",
+            types: [
+                {
+                    value: "int",
+                    options: oopt /*getOptions(dataconf)*/
+                }
+            ]
+        })
+   }
+   
+    var hostParameterValidator = function(node,v){
+        if(getMode(node) === "triggered"){
             return true;
         }
         return v != ""
@@ -16,13 +41,11 @@
             return $mode.val();
         }
     }
-    var ConfigJson = undefined;
 
     function getOptions(data,dir){
         if (data == undefined){
-            return [{ value: "apple", label: "Apple"},{ value: "banana", label: "Banana"},{ value: "cherry", label: "Cherry"}];
+            return [{ value: "N/A", label: "N/A"}];
         }
-        console.log(data);
         var Ports = data[dir];
         var Data = [];
         var len = Ports.length;
@@ -33,41 +56,58 @@
     }
     
 
+    function getNodeLables(data,dir,all,id){
+        var Lables = [];
+        console.log(all);
+        if (all){
+            for (var i = 0 ; i<data[dir].length;i++){
+            Lables.push(data[dir][i]["Description"]);
+            }
+        }else{
+            var t = data[dir][id];
+            if (t === undefined){
+                console.log(id);
+                return [""];
+            }
+            Lables.push(data[dir][id]["Description"]);
+        }
+        return Lables;
+
+    }
+    var testLable = ["Test"];
+
     RED.nodes.registerType('Output',{
         category: 'IO',
         color: '#a6bbcf',
         defaults: {
             name: {value:""},
-            configuration: {value:"",type:"hardware-config"},
+            configuration: {value:"",type:"hardware-config" , required:true},
             AusgangName: {value:0},
-            AusgangID:{value:0},
             allports:{value:false},
             inputs: {value:1}
         },
+        outputLabels:["Connect to MQTT Out Node"],
+        /*inputLabels:getNodeLables(this,"Output",this.allports,this.AusgangName),*/
         inputs:1,
         outputs:1,
         label: function() {
             if (this.AusgangName != ""){
-                var Confnode =  RED.nodes.node(this.configuration);
-                var dataconf = JSON.parse(Confnode.configur);
-                return dataconf["Output"][this.AusgangName]["Name"];
+                let Confnode =  RED.nodes.node(this.configuration);
+                let dataconf_l = JSON.parse(Confnode.configur);
+                return dataconf_l["Output"][this.AusgangName]["Name"];
             }
 
             return this.AusgangName||"Output";
         },
         oneditprepare: function(){
-            var Confnode =  RED.nodes.node(this.configuration);
-            var dataconf = JSON.parse(Confnode.configur);
-
-            //Get Name 
-
-
+            var dataconf_o = getJsonConfig(this.configuration);
 
             $("#node-input-allports").change(function(){
+                if (dataconf_o === undefined) return;
                 this.allports =  $("#node-input-allports").prop('checked');
                 if(this.allports === true){
                     $("#div-node-input-AusgangName").hide();
-                    $("#node-input-inputs").val( dataconf["Output"].length);
+                    $("#node-input-inputs").val( dataconf_o["Output"].length);
                 }else{
                     $("#div-node-input-AusgangName").show();
                     
@@ -75,24 +115,23 @@
                 }
                 //TODO Figgur out how to redraw
                 //Working for outputs
-            })
-            
-            var oopt = getOptions(dataconf,"Output");
-            $("#node-input-AusgangName").typedInput({
-                default:"int",
-                type:"int",
-                types: [
-                    {
-                        value: "int",
-                        options: oopt /*getOptions(dataconf)*/
-                    }
-                ]
-            })
-            //TODO: Fix issue that the lable is not displayed
-            //
-            $("#node-input-AusgangName").typedInput("value",this.AusgangName);
+            });
 
+            configureTypedName(dataconf_o,"Output","#node-input-AusgangName");
 
+            if (dataconf_o !== undefined) {
+                $("#node-input-AusgangName").typedInput("value",this.AusgangName);
+                $(".red-ui-typedInput-option-label")[0].innerHTML = getOptions(dataconf_o,"Output")[this.AusgangName].label;
+            }
+            //Load dataconf once availibale
+            $("#node-input-configuration").change(function(){
+                let val = $("#node-input-configuration").val();
+               
+                if (val !== "_ADD_" && val !== "" && val !== undefined){
+                    dataconf_o = getJsonConfig(val);
+                    configureTypedName(dataconf_o,"Output","#node-input-AusgangName");
+                }
+            });
         }
 
     });
@@ -106,10 +145,22 @@
             configuration: {value:"",type:"hardware-config"},
             EingangName: {value:0},
             allportsi:{value:false},
-            outputs: {value:1}
+            outputs: {value:1},
+            outputLabels2: {value:[""]}
         },
         inputs:1,
         outputs:1,
+        inputLabels:["Connect to MQTT Input #"],
+        outputLabels: function(index){
+            
+            return this.outputLabels2[index];
+        },
+        
+        /* this.outputLabels,*//*function(){
+            var res =getNodeLables(this,"Input",this.allportsi,this.EingangName);
+            console.log(res);
+            return res;
+        },*/
         label: function() {
             if (this.AusgangName != ""){
                 var Confnode =  RED.nodes.node(this.configuration);
@@ -120,41 +171,38 @@
             return this.AusgangName||"Input";
         },
         oneditprepare: function(){
-            var Confnode =  RED.nodes.node(this.configuration);
-            var dataconf = JSON.parse(Confnode.configur);
-            if (this.allportsi === undefined) this.allportsi = false;
-            if (this.EingangName === undefined) his.EingangName =0;
-            //Get Name 
-
-
+            var dataconf = getJsonConfig(this.configuration);
 
             $("#node-input-allportsi").change(function(){
+                if (dataconf === undefined) return;
                 this.allportsi =  $("#node-input-allportsi").prop('checked');
                 if(this.allportsi === true){
                     $("#div-node-input-EingangName").hide();
                     $("#node-input-outputs").val( dataconf["Input"].length);
                 }else{
                     $("#div-node-input-EingangName").show();
-                    $("#node-input-outputs").val(1);            
+                    $("#node-input-outputs").val(1);
                 }
-            })
+                var tmp = getNodeLables(dataconf,"Input",this.allportsi,this.EingangName);
+                this.outputLabels2 =  tmp;
+            });
             
-            var oopt = getOptions(dataconf,"Input");
-            $("#node-input-EingangName").typedInput({
-                default:"int",
-                type:"int",
-                types: [
-                    {
-                        value: "int",
-                        options: oopt /*getOptions(dataconf)*/
-                    }
-                ]
-            })
-            //TODO: Fix issue that the lable is not displayed
-            //
-            $("#node-input-EingangName").typedInput("value",this.EingangName);
+            configureTypedName(dataconf,"Input","#node-input-EingangName");
 
+            if (dataconf !== undefined) {
+                $("#node-input-EingangName").typedInput("value",this.EingangName);
+                $(".red-ui-typedInput-option-label")[0].innerHTML = getOptions(dataconf,"Input")[this.EingangName].label;
+            }
 
+            //Load dataconf once availibale
+            $("#node-input-configuration").change(function(){
+                let val = $("#node-input-configuration").val();
+               
+                if (val !== "_ADD_" && val !== "" && val !== undefined){
+                    dataconf = getJsonConfig(val);
+                    configureTypedName(dataconf,"Input","#node-input-EingangName");
+                }
+            });
         }
 
     });
