@@ -2,11 +2,17 @@
 "Name":"DevSetup",
 "Input":[
     {
-    "Name":"Taster",
-    "Description":"Taster für XYZ",
-    "Topic":"cmnd/but/POWER",
-    "Interpreter":"PulseTrue"
-    }
+        "Name":"Taster",
+        "Description":"Taster für XYZ",
+        "Topic":"cmnd/but/POWER",
+        "Interpreter":"PulseTrue"
+    },
+    {
+        "Name":"Schalter",
+        "Description":"Schalter für XYZ",
+        "Topic":"stat/dev/test/RESULT",
+        "Interpreter":"SwitchModeOnOFF"
+        }
     
     
 ],
