@@ -1,0 +1,243 @@
+<script type="text/html" data-help-name="nand">
+    <p>TBD</p>
+    <h3>Wahrheitstabelle</h3>
+    <p>
+      <style>
+        .nc {color: #6600cc;}
+        .true {color: #009901;}
+        .false {color: #9A0000;}
+        .header {background-color: silver;font-weight:bold;}
+        .rowhelp {background-color: #f9f9f9;}
+      </style>
+      <table style="width: 100%;" border="1">
+        <tbody>
+          <tr>
+            <td class="header">Eingang 1</td>
+            <td class="header">Eingang 2</td>
+            <td class="header">Eingang 3</td>
+            <td class="header">Eingang 4</td>
+            <td class="header">Ausgang</td>
+          </tr>
+          <tr>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="false">False / Undefiened</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span><br>
+            </td>
+            <td><span class="nc">NC</span></td>
+            <td><span class="nc">NC</span></td>
+            <td><span class="nc">NC</span></td>
+            <td><span class="false">False</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span><br>
+            </td>
+            <td><span class="nc">NC</span></td>
+            <td><span class="nc">NC</span></td>
+            <td><span class="nc">NC</span></td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="false">False</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="false">False</span></td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span></td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false"></span><span class="true">True</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span></td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td> <span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="nc">NC</span> </td>
+            <td><span class="false">False</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td style="height: 20px;"><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td style="height: 20px;"><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr class="rowhelp">
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+            <td><span class="true">True</span> </td>
+          </tr>
+          <tr>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="true">True</span> </td>
+            <td><span class="false">False</span> </td>
+          </tr>
+        </tbody>
+      </table>
+    </p>
+</script>
