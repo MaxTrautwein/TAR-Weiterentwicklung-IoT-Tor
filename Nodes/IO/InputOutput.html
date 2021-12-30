@@ -55,26 +55,15 @@
         return Data;
     }
     
-
-    function getNodeLables(data,dir,all,id){
-        var Lables = [];
-        console.log(all);
-        if (all){
-            for (var i = 0 ; i<data[dir].length;i++){
-            Lables.push(data[dir][i]["Description"]);
-            }
-        }else{
-            var t = data[dir][id];
-            if (t === undefined){
-                console.log(id);
-                return [""];
-            }
-            Lables.push(data[dir][id]["Description"]);
+    function get_Labels(config ,index,dir){
+        try{
+            let d = config[dir][index]["Description"];
+            return d;
+        }catch (e){
+            return "";
         }
-        return Lables;
-
+        
     }
-    var testLable = ["Test"];
 
     RED.nodes.registerType('Output',{
         category: 'IO',
@@ -87,7 +76,21 @@
             inputs: {value:1}
         },
         outputLabels:["Connect to MQTT Out Node"],
-        /*inputLabels:getNodeLables(this,"Output",this.allports,this.AusgangName),*/
+        inputLabels:function(index){
+            let cval = this.configuration
+            let jval = undefined;
+            if (cval !== "_ADD_" && cval !== "" && cval !== undefined){
+                jval = getJsonConfig(cval);
+            }
+            if (jval !== undefined){
+                if (this.allports === true){
+                    return get_Labels(jval,index,"Output");
+                }else if (this.allports === false && this.AusgangName !== undefined){
+                    return get_Labels(jval,this.AusgangName,"Output");
+                }
+            }
+            return "";
+        },
         inputs:1,
         outputs:1,
         label: function() {
@@ -146,21 +149,25 @@
             EingangName: {value:0},
             allportsi:{value:false},
             outputs: {value:1},
-            outputLabels2: {value:[""]}
         },
         inputs:1,
         outputs:1,
         inputLabels:["Connect to MQTT Input #"],
         outputLabels: function(index){
-            
-            return this.outputLabels2[index];
+            let cval = this.configuration
+            let jval = undefined;
+            if (cval !== "_ADD_" && cval !== "" && cval !== undefined){
+                jval = getJsonConfig(cval);
+            }
+            if (jval !== undefined){
+                if (this.allportsi === true){
+                    return get_Labels(jval,index,"Input");
+                }else if (this.allportsi === false && this.EingangName !== undefined){
+                    return get_Labels(jval,this.EingangName,"Input");
+                }
+            }
+            return "";
         },
-        
-        /* this.outputLabels,*//*function(){
-            var res =getNodeLables(this,"Input",this.allportsi,this.EingangName);
-            console.log(res);
-            return res;
-        },*/
         label: function() {
             if (this.AusgangName != ""){
                 var Confnode =  RED.nodes.node(this.configuration);
@@ -183,8 +190,6 @@
                     $("#div-node-input-EingangName").show();
                     $("#node-input-outputs").val(1);
                 }
-                var tmp = getNodeLables(dataconf,"Input",this.allportsi,this.EingangName);
-                this.outputLabels2 =  tmp;
             });
             
             configureTypedName(dataconf,"Input","#node-input-EingangName");

@@ -103,9 +103,6 @@ module.exports = function(RED) {
         this.configuration = RED.nodes.getNode(config.configuration);
         this.AusgangName = config.AusgangName;
         this.allports = config.allports;
-            
-        this.outputLabels2 = config.outputLabels2;
-        //this.AusgangName = config.AusgangName;
 
 
        this.jsonC = JSON.parse( this.configuration.configur);
