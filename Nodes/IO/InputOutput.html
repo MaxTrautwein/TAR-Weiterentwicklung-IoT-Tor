@@ -65,6 +65,17 @@
         
     }
 
+    function getNodeName(id,dir,all,config){
+        let name = dir;
+        if (config === "_ADD_" || config === undefined || config === "") return name;
+        if(all){
+            return "All " + name + "s";
+        }else{
+            let dataconf_l = getJsonConfig(config);
+            return dataconf_l[dir][id]["Name"];
+        }
+    }
+    
     RED.nodes.registerType('Output',{
         category: 'IO',
         color: '#a6bbcf',
@@ -94,13 +105,7 @@
         inputs:1,
         outputs:1,
         label: function() {
-            if (this.AusgangName != ""){
-                let Confnode =  RED.nodes.node(this.configuration);
-                let dataconf_l = JSON.parse(Confnode.configur);
-                return dataconf_l["Output"][this.AusgangName]["Name"];
-            }
-
-            return this.AusgangName||"Output";
+            return getNodeName(this.AusgangName,"Output",this.allports,this.configuration);
         },
         oneditprepare: function(){
             var dataconf_o = getJsonConfig(this.configuration);
@@ -169,13 +174,7 @@
             return "";
         },
         label: function() {
-            if (this.AusgangName != ""){
-                var Confnode =  RED.nodes.node(this.configuration);
-                var dataconf = JSON.parse(Confnode.configur);
-                return dataconf["Input"][this.EingangName]["Name"];
-            }
-
-            return this.AusgangName||"Input";
+            return getNodeName(this.EingangName,"Input",this.allportsi,this.configuration);
         },
         oneditprepare: function(){
             var dataconf = getJsonConfig(this.configuration);
