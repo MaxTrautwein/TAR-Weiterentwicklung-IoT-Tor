@@ -1,6 +1,57 @@
 module.exports = function(RED) {
-    //Node Functionality
+    //General
 
+    function getOnOff_to_TrueFalse(obj,name,act){
+       try{
+            let val = obj[name][act];
+            switch(val){
+                case "ON":
+                    return true;
+                    break;
+                case "OFF":
+                    return false;
+                    break;
+                default:
+                    console.log("Error unexpected Value for getOnOff_to_TrueFalse");
+                    console.log(val);
+                    return null;
+            }
+        }catch (e){
+            return null;
+        }
+    }
+
+
+    //----------------------------------------------------------------------------------------------------------------------------------------
+    // MQTT -> Node Red
+    // (May have more then one Output Port depending on User Settings)
+    //----------------------------------------------------------------------------------------------------------------------------------------
+    function PulseTrue(t,payload,ref,port){
+        var sendarr =  Array(ref.outputs).fill(null);
+        sendarr[port] = {payload:true};
+        ref.send(sendarr);
+        sendarr[port] = {payload:false};
+        ref.send(sendarr);
+
+    }
+    function SwitchModeOnOFF(t,payload,ref,port){
+        let sendarr =  Array(ref.outputs).fill(null);
+        let val = getOnOff_to_TrueFalse(JSON.parse(payload),"Switch1","Action");
+        if (val === null){
+            return;
+        }
+        sendarr[port] = {payload:val};
+        ref.send(sendarr);
+    }
+
+
+
+
+    //----------------------------------------------------------------------------------------------------------------------------------------
+    // Node Red -> MQTT
+    //----------------------------------------------------------------------------------------------------------------------------------------
+ 
+    
     function DoubleOnTrue(t,payload,ref){
         var msg = { payload:payload, topic:t };
         ref.send(msg);
@@ -11,16 +62,11 @@ module.exports = function(RED) {
         var msg = { payload:payload, topic:t };
         ref.send(msg);
     }
-    function PulseTrue(t,payload,ref,port){
-        var sendarr =  Array(ref.outputs).fill(null);
-        sendarr[port] = {payload:true};
-        ref.send(sendarr);
-        sendarr[port] = {payload:false};
-        ref.send(sendarr);
 
-    }
-
-    function HandleOI(conf,msg,ref){
+    //----------------------------------------------------------------------------------------------------------------------------------------
+    // Handler
+    //----------------------------------------------------------------------------------------------------------------------------------------
+    function HandleOI(conf,msg,ref,port = 0){
         switch(conf["Interpreter"]){
             case "DoubleOnTrueDelay":
                 //Back Compat
@@ -37,12 +83,19 @@ module.exports = function(RED) {
                 break;
             case "PulseTrue":
                 if(msg.topic !== conf["Topic"]) break;
-                PulseTrue(conf["Topic"],conf["payload"],ref,msg.__port);
+                PulseTrue(conf["Topic"],msg.payload,ref,port);
+                break;
+            case "SwitchModeOnOFF":
+                if(msg.topic !== conf["Topic"]) break;
+                SwitchModeOnOFF(conf["Topic"],msg.payload,ref,port);
                 break;
         }
     }
 
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------
+    // Node Red Logic --> MQTT
+    // (May have more then one Input depending on User Setting)
+    //-------------------------------------------------------------------------------------------------------------------------------------------
     function OutputNode(config) {
         RED.nodes.createNode(this,config);
 
@@ -50,6 +103,8 @@ module.exports = function(RED) {
         this.configuration = RED.nodes.getNode(config.configuration);
         this.AusgangName = config.AusgangName;
         this.allports = config.allports;
+            
+        this.outputLabels2 = config.outputLabels2;
         //this.AusgangName = config.AusgangName;
 
 
@@ -72,9 +127,8 @@ module.exports = function(RED) {
     RED.nodes.registerType("Output",OutputNode);
 
     //-------------------------------------------------------------------------------------------------------------------------------------------
+    // MQTT -> Node Red Logic
     //-------------------------------------------------------------------------------------------------------------------------------------------
-    //-------------------------------------------------------------------------------------------------------------------------------------------
-
     function InputNode(config) {
         RED.nodes.createNode(this,config);
 
@@ -91,8 +145,11 @@ module.exports = function(RED) {
             //this.log("this.AusgangName: " + this.AusgangName);
             if (this.allportsi){
                 //Handle allports
-                let outputConfig = this.jsonC["Input"][msg.__port];
-                HandleOI(outputConfig,msg,this);
+                for(let i = 0; i< this.jsonC["Input"].length;i++){
+                    HandleOI(this.jsonC["Input"][i],msg,this,i);
+                }
+                //let outputConfig = this.jsonC["Input"][msg.__port];
+                
             }else{
                 //Handle Single
                 let outputConfig = this.jsonC["Input"][parseInt(this.EingangName)];
