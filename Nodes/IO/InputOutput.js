@@ -29,9 +29,17 @@ module.exports = function(RED) {
     function PulseTrue(t,payload,ref,port){
         var sendarr =  Array(ref.outputs).fill(null);
         sendarr[port] = {payload:true};
-        ref.send(sendarr);
+        if (ref.outputs === 1){
+            ref.send(sendarr[port]);
+        }else{
+            ref.send(sendarr);
+        }
         sendarr[port] = {payload:false};
-        ref.send(sendarr);
+        if (ref.outputs === 1){
+            ref.send(sendarr[port]);
+        }else{
+            ref.send(sendarr);
+        }
 
     }
     function SwitchModeOnOFF(t,payload,ref,port){
@@ -41,7 +49,11 @@ module.exports = function(RED) {
             return;
         }
         sendarr[port] = {payload:val};
-        ref.send(sendarr);
+        if (ref.outputs === 1){
+            ref.send(sendarr[port]);
+        }else{
+            ref.send(sendarr);
+        }
     }
 
 
@@ -133,6 +145,7 @@ module.exports = function(RED) {
         this.configuration = RED.nodes.getNode(config.configuration);
         this.EingangName = config.EingangName;
         this.allportsi = config.allportsi;
+        this.outputs = config.outputs;
         //this.AusgangName = config.AusgangName;
 
 
