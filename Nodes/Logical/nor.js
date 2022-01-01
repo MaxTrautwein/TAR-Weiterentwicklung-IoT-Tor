@@ -8,7 +8,17 @@ module.exports = function(RED) {
         //Array().fill may not work with IE
         config.data = Array(4).fill(undefined);
         
-        
+        //Find All Used Inputs
+        var tid = this.id;
+        RED.nodes.eachNode(function(n){
+            if (n.wires === undefined) return;
+            for(let i = 0 ; i<n.wires.length;i++){
+                if (n.wires[i][0] == tid){
+                    let tp = n.full_wires[i][0]["target_port"];
+                    config.data[tp] = true;
+                }
+            }
+        });
 
         var node = this;
         node.on('input', function(msg) {
