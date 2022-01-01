@@ -22,8 +22,7 @@
             "Name":"LED",
             "Description":"Change LED State",
             "Topic":"cmnd/dev/test/LedPower",
-            "Interpreter":"DoubleOnTrueDelay",
-            "Iparameter":0.5,
+            "Interpreter":"DoubleOnTrue",
             "payload":"2"
         },
         {
