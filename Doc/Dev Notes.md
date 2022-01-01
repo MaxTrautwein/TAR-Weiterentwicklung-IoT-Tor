@@ -148,7 +148,7 @@ node debug Test code
      * @param {object} o The object in question
      * @param {string} str Use empty string when calling
      */
-    function DebugObject(o,str){
+    function DebugObject(o,str=""){
         for(var key in o) {
             var value = o[key];
             var bstr = str + " o[" + key + "]  --> ";
@@ -472,3 +472,5 @@ https://gitlab.com/inkscape/inkscape
 
 
 
+# js Dev
+`istanbul` Test tool. maybe look into that
