@@ -42,9 +42,10 @@ module.exports = function(RED) {
         }
 
     }
-    function SwitchModeOnOFF(t,payload,ref,port){
+    function SwitchModeOnOFF(conf,payload,ref,port){
         let sendarr =  Array(ref.outputs).fill(null);
-        let val = getOnOff_to_TrueFalse(JSON.parse(payload),"Switch1","Action");
+        let switchN = "Switch" + conf["arg"];
+        let val = getOnOff_to_TrueFalse(JSON.parse(payload),switchN,"Action");
         if (val === null){
             return;
         }
@@ -68,7 +69,6 @@ module.exports = function(RED) {
         var msg = { payload:payload, topic:t };
         ref.send(msg);
         ref.send(msg);
-      //  setTimeout(ref.send(msg),dely *1000);
     }
     function SingleOnTrue(t,payload,ref){
         var msg = { payload:payload, topic:t };
@@ -99,7 +99,7 @@ module.exports = function(RED) {
                 break;
             case "SwitchModeOnOFF":
                 if(msg.topic !== conf["Topic"]) break;
-                SwitchModeOnOFF(conf["Topic"],msg.payload,ref,port);
+                SwitchModeOnOFF(conf,msg.payload,ref,port);
                 break;
         }
     }
