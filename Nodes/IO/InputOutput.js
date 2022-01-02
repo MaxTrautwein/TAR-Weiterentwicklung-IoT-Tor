@@ -74,6 +74,21 @@ module.exports = function(RED) {
         var msg = { payload:payload, topic:t };
         ref.send(msg);
     }
+    function TrueFalseMessage(conf,ref,msg){
+        switch (msg.payload) {
+            case true:
+                ref.send({ payload:conf["payload"], topic:conf["Topic"] });
+                break;
+            case false:
+                ref.send({ payload:conf["payload_alt"], topic:conf["Topic"] });
+                break;
+            default:
+                console.log(msg.payload);
+                //Should not happen
+                break;
+        }
+    }
+
 
     //----------------------------------------------------------------------------------------------------------------------------------------
     // Handler
@@ -101,6 +116,8 @@ module.exports = function(RED) {
                 if(msg.topic !== conf["Topic"]) break;
                 SwitchModeOnOFF(conf,msg.payload,ref,port);
                 break;
+            case "TrueFalseMessage":
+                TrueFalseMessage(conf,ref,msg);
         }
     }
 
