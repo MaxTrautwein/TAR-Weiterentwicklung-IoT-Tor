@@ -11,7 +11,8 @@
         "Name":"Schalter",
         "Description":"Schalter für XYZ",
         "Topic":"stat/dev/test/RESULT",
-        "Interpreter":"SwitchModeOnOFF"
+        "Interpreter":"SwitchModeOnOFF",
+        "arg":1
         }
     
     
