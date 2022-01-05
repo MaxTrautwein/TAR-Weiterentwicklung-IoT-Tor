@@ -358,6 +358,28 @@ https://github.com/tasmota/docker-tasmota should work i hope. but sadly I can't 
 
 https://github.com/Jason2866/Portable_VSC_PlatformIO **Appers to work**
 
+### as of 03.01.22 When updating to the latest version
+The compiler from above nolonger works...
+
+but i got the docker container working.
+
+open `entrypoint.sh` with **notepad++** and change the line ending to only `LF`, then save the file.
+
+add the following line at the end befor the `COPY` instruction:
+```
+RUN platformio platform install https://github.com/tasmota/platform-espressif32/releases/download/v2.0.2/platform-tasmota-espressif32-2.0.2.zip --with-package framework-arduinoespressif32
+```
+this will install the platform on build so you dont have to do that on each compile
+
+Compile with:
+```
+docker run -ti --rm -v <PATH/TO/GIT/REPO>:/tasmota docker-tasmota -e tasmota32
+```
+
+
+
+
+
 ### .ino vs .cpp & .h
 see: https://forum.arduino.cc/t/guidance-issues-with-using-defines-in-ino-for-use-in-libraries/530114/2
 all .ino files are combined into one .cpp file at compile time.
