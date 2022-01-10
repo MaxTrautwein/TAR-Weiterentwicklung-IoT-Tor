@@ -28,9 +28,9 @@
      width="40px"
      inkscape:snap-page="true"
      inkscape:snap-center="true"
-     inkscape:zoom="22.627417"
-     inkscape:cx="16.440233"
-     inkscape:cy="10.451922"
+     inkscape:zoom="4"
+     inkscape:cx="62.125"
+     inkscape:cy="77.375"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="1912"
@@ -38,7 +38,9 @@
      inkscape:window-maximized="1"
      inkscape:current-layer="layer1"
      inkscape:object-paths="true"
-     inkscape:snap-intersection-paths="true" />
+     inkscape:snap-intersection-paths="true"
+     height="50px"
+     lock-margins="false" />
   <defs
      id="defs2" />
   <g
@@ -46,20 +48,44 @@
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 10,2 H 6 V 0.5 H 1 V 2 H 0"
-       id="path483" />
+       style="fill:none;stroke:#000000;stroke-width:0.273189px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 10.583333,2.5291667 H 9.5716722 v -1.5 h -5.33056 v 1.5 H 3.1750001"
+       id="path483"
+       sodipodi:nodetypes="cccccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 0,4.3872446 H 3.3242937 V 2.8872444 H 6.0000001 V 4.3872446 H 10"
-       id="path818" />
+       d="M 3.1750001,6.5039114 H 6.4992939 V 5.0039112 h 2.6757064 v 1.5000002 h 1.4083327"
+       id="path818"
+       sodipodi:nodetypes="cccccc" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.132292;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.132292, 0.132292;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 1.066112,2 V 4.3872446"
-       id="path886" />
+       d="m 4.2411122,2.5291667 0,3.7928435"
+       id="path886"
+       sodipodi:nodetypes="cc" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:0.132292;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.132292, 0.132292;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 3.2583951,2.8872444 V 0.5"
+       style="fill:none;stroke:#000000;stroke-width:0.169991;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.169991, 0.169991;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 6.4333953,4.9708382 V 1.0291667"
        id="path1703" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="0.79374999"
+       y="3.0592446"
+       id="text2037"><tspan
+         sodipodi:role="line"
+         id="tspan2035"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="0.79374999"
+         y="3.0592446">I</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.88056px;line-height:1.25;font-family:'Noto Serif';-inkscape-font-specification:'Noto Serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="0.068085283"
+       y="7.2945185"
+       id="text2037-0"><tspan
+         sodipodi:role="line"
+         id="tspan5544"
+         x="0.068085283"
+         y="7.2945185">O</tspan></text>
   </g>
 </svg>
