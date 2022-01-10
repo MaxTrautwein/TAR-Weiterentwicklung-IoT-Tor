@@ -484,6 +484,8 @@ https://github.com/grafana/mqtt-datasource
 
 --> Influx DB is causing issues. Maybe use somthing else instead
 
+--> https://flows.nodered.org/node/node-red-dashboard ist au ne option. abder der code ist dann in node red --> kann ungünstig sein
+
 
 # SVG Editor
 Opem soure Editor used for Node Red Icons
@@ -496,3 +498,10 @@ https://gitlab.com/inkscape/inkscape
 
 # js Dev
 `istanbul` Test tool. maybe look into that
+
+
+# influx alternetive
+https://prometheus.io/
+https://hub.docker.com/r/prom/prometheus
+https://github.com/hikhvar/mqtt2prometheus
+
