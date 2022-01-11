@@ -1,0 +1,149 @@
+{
+    "Name":"IoT Tor",
+    "Input":[
+        {
+            "Name":"Notaus",
+            "Description":"Notaus Schalter (öffner)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":1
+        },
+        {
+            "Name":"Entlage Zu",
+            "Description":"S8 (öffner)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":2
+        },
+        {
+            "Name":"Entlage Auf",
+            "Description":"S9 (öffner)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":3
+        },
+        {
+            "Name":"Lischtschranke 1",
+            "Description":"B1",
+            "Topic":"stat/n2/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":1
+        },
+        {
+            "Name":"Lischtschranke 2",
+            "Description":"B2",
+            "Topic":"stat/n2/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":2
+        },
+        {
+            "Name":"Kontaktleiste Tor",
+            "Description":"S12 Schlißer",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":4
+        },
+        {
+            "Name":"Stopp",
+            "Description":"S6 (öffner)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg": 5
+        },
+        {
+            "Name":"Tor Freigabe",
+            "Description":"S3 (schließer)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":6
+        },
+        {
+            "Name":"Tor auf",
+            "Description":"S2 (schließer)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":7
+        },
+        {
+            "Name":"Tor zu",
+            "Description":"S1 (schließer)",
+            "Topic":"stat/n1/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":8
+        }
+        
+    ],
+    "Output":[
+            {
+                "Name":"Horn",
+                "Description":"H8 Ton",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"V1",
+                "Description":"V1 LED Tor bewegt sich",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"Tor Auf",
+                "Description":"K2 Relais",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"Tor Zu",
+                "Description":"K1 Relais",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"Leuchttaster Tor zu",
+                "Description":"H1 Leuchte Weiß für S1",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"Leuchttaster Tor auf",
+                "Description":"H2 Leuchte Weiß für S2",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"Leuchttaster Tor stopp",
+                "Description":"H6 Leuchte Rot für S6",
+                "Topic":"cmnd/n1/xyz"
+            },
+            {
+                "Name":"Lüfter 1",
+                "Description":"M2",
+                "Topic":"cmnd/n2/xyz"
+            },
+            {
+                "Name":"Lüfter 2",
+                "Description":"M3",
+                "Topic":"cmnd/n2/xyz"
+            },
+            {
+                "Name":"Lüfter 3",
+                "Description":"M4",
+                "Topic":"cmnd/n2/xyz"
+            },
+            {
+                "Name":"Lüfter 4",
+                "Description":"M5",
+                "Topic":"cmnd/n2/xyz"
+            },
+            {
+                "Name":"Ampel Grün",
+                "Description":"P7",
+                "Topic":"cmnd/n2/xyz"
+            },
+            {
+                "Name":"Ampel Gelb",
+                "Description":"P8",
+                "Topic":"cmnd/n2/xyz"
+            },
+            {
+                "Name":"Ampel Rot",
+                "Description":"P9",
+                "Topic":"cmnd/n2/xyz"
+            }
+    
+    ]
+    }
