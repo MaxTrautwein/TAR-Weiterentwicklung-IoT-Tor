@@ -77,72 +77,128 @@
             {
                 "Name":"Horn",
                 "Description":"H8 Ton",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power1",
+                "Topic_alt":"cmnd/n1/power1",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"V1",
                 "Description":"V1 LED Tor bewegt sich",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power2",
+                "Topic_alt":"cmnd/n1/power2",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Tor Auf",
                 "Description":"K2 Relais",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power3",
+                "Topic_alt":"cmnd/n1/power3",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Tor Zu",
                 "Description":"K1 Relais",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power4",
+                "Topic_alt":"cmnd/n1/power4",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Leuchttaster Tor zu",
                 "Description":"H1 Leuchte Weiß für S1",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power5",
+                "Topic_alt":"cmnd/n1/power5",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Leuchttaster Tor auf",
                 "Description":"H2 Leuchte Weiß für S2",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power6",
+                "Topic_alt":"cmnd/n1/power6",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Leuchttaster Tor stopp",
                 "Description":"H6 Leuchte Rot für S6",
-                "Topic":"cmnd/n1/xyz"
+                "Topic":"cmnd/n1/power7",
+                "Topic_alt":"cmnd/n1/power7",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Lüfter 1",
                 "Description":"M2",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power1",
+                "Topic_alt":"cmnd/n2/power1",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Lüfter 2",
                 "Description":"M3",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power2",
+                "Topic_alt":"cmnd/n2/power2",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Lüfter 3",
                 "Description":"M4",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power3",
+                "Topic_alt":"cmnd/n2/power3",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Lüfter 4",
                 "Description":"M5",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power4",
+                "Topic_alt":"cmnd/n2/power4",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Ampel Grün",
                 "Description":"P7",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power5",
+                "Topic_alt":"cmnd/n2/power5",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Ampel Gelb",
                 "Description":"P8",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power6",
+                "Topic_alt":"cmnd/n2/power6",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             },
             {
                 "Name":"Ampel Rot",
                 "Description":"P9",
-                "Topic":"cmnd/n2/xyz"
+                "Topic":"cmnd/n2/power7",
+                "Topic_alt":"cmnd/n2/power7",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
             }
     
     ]
