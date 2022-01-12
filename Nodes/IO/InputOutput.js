@@ -75,6 +75,10 @@ module.exports = function(RED) {
         ref.send(msg);
     }
     function TrueFalseMessage(conf,ref,msg){
+        var topic2 = conf["Topic"];
+        if (conf["Topic_alt"] !== undefined){
+            topic2 = conf["Topic_alt"];
+        }
         switch (msg.payload) {
             case true:
                 ref.send({ payload:conf["payload"], topic:conf["Topic"] });
