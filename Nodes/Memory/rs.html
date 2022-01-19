@@ -23,7 +23,8 @@
         defaults: {
             name: {value:""},
             data: {value:undefined},
-            state: {value:false}
+            state: {value:false},
+            debugmode: {value:false}
         },
         inputs:2,
         outputs:1,
@@ -39,4 +40,9 @@
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row">
+        <label for="node-input-debugmode">Debug Modus</label>
+        <input type="checkbox" id="node-input-debugmode">
+    </div>
 </script>

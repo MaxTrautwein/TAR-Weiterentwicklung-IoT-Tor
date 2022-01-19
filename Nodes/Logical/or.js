@@ -20,10 +20,19 @@ module.exports = function(RED) {
             }
         });
 
+        //Imidiatly reset Debug Mode
+        if (!config.debugmode)  this.status({});
+
         var node = this;
         node.on('input', function(msg) {
+            
+            if (msg.__port === undefined){
+                node.error("Error msg.__port is undefined");
+            }
+            
             //cache Recived Value
             config.data[msg.__port] = msg.payload;
+
 
             //Or Logic
             var result = false;
@@ -35,6 +44,13 @@ module.exports = function(RED) {
 
             var msg = { payload:result }
             node.send(msg);
+
+            //Debug Mode Handeling
+            if (config.debugmode){
+                this.status({fill:"yellow",shape:"dot",text:"0: " + config.data[0] +" 1: " + config.data[1] +" 2: " + config.data[2] +" 3: " + config.data[3] +" Out: " + result });
+            }else{
+                this.status({});
+            }
 
         });
     }
