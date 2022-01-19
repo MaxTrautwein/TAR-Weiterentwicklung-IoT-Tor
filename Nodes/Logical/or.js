@@ -3,25 +3,16 @@ module.exports = function(RED) {
     
     function AndNode(config) {
         RED.nodes.createNode(this,config);
-        
+        const lib  = require("../resources/library")
+
         //TODO get size from inputs property
         //Array().fill may not work with IE
         config.data = Array(4).fill(undefined);
         
         //Find All Used Inputs
-        var tid = this.id;
-        RED.nodes.eachNode(function(n){
-            if (n.wires === undefined) return;
-            for(let i = 0 ; i<n.wires.length;i++){
-                if (n.wires[i][0] == tid){
-                    let tp = n.full_wires[i][0]["target_port"];
-                    config.data[tp] = false;
-                }
-            }
-        });
+        lib.InputDetection(this.id,RED,config.data)
 
-        //Imidiatly reset Debug Mode
-        if (!config.debugmode)  this.status({});
+        lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "],[config.data[0],config.data[1],config.data[2],config.data[3]]);
 
         var node = this;
         node.on('input', function(msg) {
@@ -46,12 +37,8 @@ module.exports = function(RED) {
             node.send(msg);
 
             //Debug Mode Handeling
-            if (config.debugmode){
-                this.status({fill:"yellow",shape:"dot",text:"0: " + config.data[0] +" 1: " + config.data[1] +" 2: " + config.data[2] +" 3: " + config.data[3] +" Out: " + result });
-            }else{
-                this.status({});
-            }
-
+            lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "," Out: "],[config.data[0],config.data[1],config.data[2],config.data[3],result]);
+            
         });
     }
     //Register Node

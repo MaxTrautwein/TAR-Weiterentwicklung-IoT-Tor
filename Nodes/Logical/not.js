@@ -3,6 +3,7 @@ module.exports = function(RED) {
     
     function AndNode(config) {
         RED.nodes.createNode(this,config);
+        const lib  = require("../resources/library")
 
         var node = this;
         node.on('input', function(msg) {
