@@ -8,9 +8,9 @@ module.exports = function(RED) {
      */
     function mapDirLable(val){
         if (val === false){
-            return "Runter"
-        }else if(val === true){
             return "Hoch"
+        }else if(val === true){
+            return "Runter"
         }
         //This should never happen
         return "N/A"
@@ -37,10 +37,10 @@ module.exports = function(RED) {
 
             if (pflank == true && msg.__port == 1)
             {
-                if(config.data[2] === true){
+                if(config.data[2] === false){
                     config.cnt++;
                 }
-                else
+                else if (config.cnt > 0)
                 {
                     config.cnt--;
                 }
@@ -49,7 +49,7 @@ module.exports = function(RED) {
                 config.cnt = config.reset;
             }
 
-            var result = config.cnt == config.trigger;
+            var result = config.cnt >= config.trigger;
 
             var msg = { payload: result}
             node.send(msg);

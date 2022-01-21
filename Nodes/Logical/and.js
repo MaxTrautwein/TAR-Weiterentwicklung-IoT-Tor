@@ -15,6 +15,11 @@ module.exports = function(RED) {
         
         var node = this;
         node.on('input', function(msg) {
+            if (msg.__port === undefined){
+                console.log("FATAL AND " + this.id + " recived msg on undefined port!");
+                lib.DebugObject(msg);
+                console.log("------------------");
+            }
             //cache Recived Value
             config.data[msg.__port] = msg.payload;
 
