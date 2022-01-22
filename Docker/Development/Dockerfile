@@ -41,4 +41,8 @@ RUN git checkout Multi_Input_Support
 
 
 RUN npm install
+
+#Install Official Dashboard Nodes
+RUN npm install node-red-dashboard
+
 CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; grunt dev
