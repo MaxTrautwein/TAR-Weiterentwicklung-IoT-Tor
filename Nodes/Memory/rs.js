@@ -9,6 +9,9 @@ module.exports = function(RED) {
         //Array().fill may not work with IE
         config.data = Array(2).fill(undefined);
         
+        //Output is "Unknown" at the start
+        config.state = undefined;
+
         //Find All Used Inputs
         lib.InputDetection(this.id,RED,config.data)
         

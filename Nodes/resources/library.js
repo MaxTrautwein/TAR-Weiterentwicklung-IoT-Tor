@@ -53,14 +53,17 @@ function DebugObject(o,str=""){
  * @param {Array} arr Buffer Array to write to
  * @param {bool} val Value to set for connected ports on default (defaults to `false`)
  */
-function InputDetection(tid,red,arr,val=false){
+function InputDetection(tid,red,arr,val=false){    
     red.nodes.eachNode(function(n){
         if (n.wires === undefined) return;
         for(let i = 0 ; i<n.wires.length;i++){
-            if (n.wires[i][0] == tid){
-                let tp = n.full_wires[i][0]["target_port"];
-                arr[tp] = val;
+            for (let t = 0;t<n.wires[i].length;t++){
+                if (n.wires[i][t] == tid){
+                    let tp = n.full_wires[i][t]["target_port"];
+                    arr[tp] = val;
+                }
             }
+            
         }
     });
 }
