@@ -505,3 +505,9 @@ https://prometheus.io/
 https://hub.docker.com/r/prom/prometheus
 https://github.com/hikhvar/mqtt2prometheus
 
+# node-red-dashboard
+Add custom UI: https://github.com/node-red/node-red-dashboard/wiki/Creating-New-Dashboard-Widgets
+
+
+# Node red
+Checkout projects
