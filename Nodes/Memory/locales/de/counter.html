@@ -1,4 +1,10 @@
 
 <script type="text/html" data-help-name="counter">
-    <p>TBD</p>
+   
+    <img src="resources/tar-nodes/Counter_Flow.svg" width="100%"> 
+    <p>Wen der “Dir” Eingang auf False steht dann inkrementiert der Counter den internen zählwert bei einer positiven flanke auf dem “Count” eingang.</p>
+    <p>Sollte der “Dir” Eingang den wert False enthalten so wird stattdessen dekrementiert.</p>
+    <p>Der Counter lässt sich mit einem “Trigger” und einem “Reset” Wert konfigurieren</p>
+    <p>Wenn der interne zählwert größer oder gleich dem “Trigger” Wert entspricht dann wird der Ausgang auf True gesetzt. Andernfalls ist der Ausgang False.</p>
+    <p>Eine Positive Flanke auf dem “Reset” Eingang setzt den internen zählwert auf den konfigurierten “Reset” wert.</p>
 </script>
