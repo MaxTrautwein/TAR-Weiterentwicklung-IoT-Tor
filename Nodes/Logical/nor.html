@@ -1,22 +1,4 @@
 <script type="text/javascript">
-    var hostParameterValidator = function(node,v){
-        var mode = getMode(node)
-        if(mode === "triggered"){
-            return true;
-        }
-        return v != ""
-    }
-    var getMode = function(node){
-        if(node){
-            return node.mode
-        } else {
-            let $mode = $( "#node-input-mode" );
-            return $mode.val();
-        }
-    }
-
-
-
     RED.nodes.registerType('nor',{
         category: 'Logic',
         color: '#a6bbcf',
@@ -44,4 +26,3 @@
         <input type="checkbox" id="node-input-debugmode">
     </div>
 </script>
-

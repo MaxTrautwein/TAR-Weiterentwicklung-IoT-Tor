@@ -1,22 +1,4 @@
 <script type="text/javascript">
-    var hostParameterValidator = function(node,v){
-        var mode = getMode(node)
-        if(mode === "triggered"){
-            return true;
-        }
-        return v != ""
-    }
-    var getMode = function(node){
-        if(node){
-            return node.mode
-        } else {
-            let $mode = $( "#node-input-mode" );
-            return $mode.val();
-        }
-    }
-
-
-
     RED.nodes.registerType('counter',{
         category: 'Memory',
         color: '#a6bbcf',
@@ -24,8 +6,8 @@
             name: {value:""},
             data: {value:undefined},
             cnt: {value:0},
-            trigger: {value:10},
-            reset: {value:0},
+            trigger: {value:10,reqierd:true,validate:RED.validators.number()},
+            reset: {value:0,reqierd:true,validate:RED.validators.number()},
             debugmode: {value:false}
         },
         inputs:3,
@@ -33,7 +15,8 @@
         inputLabels:["Reset","Count","Dir (h: Down ; l: Up)"],
         icon: "counter.svg",
         label: function() {
-            return this.name||"counter";
+            let prefix = this.name||"Count To"
+            return prefix + " " + this.trigger;
         }
     });
 </script>

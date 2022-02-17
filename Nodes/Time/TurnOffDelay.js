@@ -1,7 +1,5 @@
 module.exports = function(RED) {
     //Node Functionality
-
-
     function AndNode(config) {
         RED.nodes.createNode(this,config);
         
@@ -10,8 +8,8 @@ module.exports = function(RED) {
         config.data = Array(2).fill(undefined);
 
         this.time = config.time;
+        this.timeUnit = config.timeUnit;
         
-
         var node = this;
         node.on('input', function(msg) {
             //cache Recived Value
@@ -24,7 +22,7 @@ module.exports = function(RED) {
 
             //TODO Should undefined count as true?
             if (config.lastval === true && trigger === false){
-               config.trimer = setTimeout(function(){  config.trimer = undefined; node.send({ payload:trigger }); },this.time * 1000);
+               config.trimer = setTimeout(function(){  config.trimer = undefined; node.send({ payload:trigger }); },this.time * this.timeUnit);
             }
             if (config.trimer !== undefined && ( trigger === true || reset == true)){
                 clearTimeout(config.trimer)

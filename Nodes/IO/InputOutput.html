@@ -27,21 +27,6 @@
         })
    }
    
-    var hostParameterValidator = function(node,v){
-        if(getMode(node) === "triggered"){
-            return true;
-        }
-        return v != ""
-    }
-    var getMode = function(node){
-        if(node){
-            return node.mode
-        } else {
-            let $mode = $( "#node-input-mode" );
-            return $mode.val();
-        }
-    }
-
     function getOptions(data,dir){
         if (data == undefined){
             return [{ value: "N/A", label: "N/A"}];

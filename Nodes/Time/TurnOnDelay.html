@@ -1,30 +1,13 @@
 <script type="text/javascript">
-    var hostParameterValidator = function(node,v){
-        var mode = getMode(node)
-        if(mode === "triggered"){
-            return true;
-        }
-        return v != ""
-    }
-    var getMode = function(node){
-        if(node){
-            return node.mode
-        } else {
-            let $mode = $( "#node-input-mode" );
-            return $mode.val();
-        }
-    }
-
-
-
     RED.nodes.registerType('ton',{
         category: 'Time',
         color: '#a6bbcf',
         defaults: {
             name: {value:""},
-            time: {value:5},
+            time: {value:5,reqierd:true,validate:RED.validators.number()},
             lastval: {value:undefined},
             trimer: {value:undefined},
+            timeUnit:{value:1000},
         },
         inputs:1,
         outputs:1,
@@ -39,7 +22,14 @@
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
     <div class="form-row">
         <label for="node-input-time"><i class="fa fa-tag"></i> Einschaltverzögerung</label>
-        <input type="num" id="node-input-time" placeholder="Delay is s">
+        <input type="num" id="node-input-time" placeholder="Delay is s" style="width: 50px;">
+        <select id="node-input-timeUnit">
+            <option value="1">ms</option>
+            <option value="1000">s</option>
+            <option value="60000">min</option>
+        </select>
+    </div>
 </script>

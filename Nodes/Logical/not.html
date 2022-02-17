@@ -1,22 +1,4 @@
 <script type="text/javascript">
-    var hostParameterValidator = function(node,v){
-        var mode = getMode(node)
-        if(mode === "triggered"){
-            return true;
-        }
-        return v != ""
-    }
-    var getMode = function(node){
-        if(node){
-            return node.mode
-        } else {
-            let $mode = $( "#node-input-mode" );
-            return $mode.val();
-        }
-    }
-
-
-
     RED.nodes.registerType('not',{
         category: 'Logic',
         color: '#a6bbcf',
@@ -36,4 +18,5 @@
     <div class="form-row">
         <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
         <input type="text" id="node-input-name" placeholder="Name">
+    </div>
 </script>
