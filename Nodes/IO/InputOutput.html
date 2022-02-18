@@ -1,5 +1,10 @@
 <script type="text/javascript">
-   
+
+    /**
+     * Attempts to parse the `configur` valibale of a HardwareConfig Node by its `id`
+     * @param {*} id HardwareConfig Node id
+     * @returns Json or undefined
+     */
     function getJsonConfig(id){
         let jd = undefined;
         let cn = undefined;
@@ -10,8 +15,15 @@
             return jd;
         }
         return jd;
-   }
+    }
 
+    /**
+     * Configurs the Input / Output Selection TypedInput
+     * @param {*} conf Json data from `getJsonConfig(id)`
+     * @param {string} dir `Output` or `Input`
+     * @param {string} id jQuery ID 
+     * @returns nothing
+     */
     function configureTypedName(conf,dir,id){
         if (conf === undefined ) return;
         let oopt = getOptions(conf,dir);
@@ -21,12 +33,18 @@
             types: [
                 {
                     value: "int",
-                    options: oopt /*getOptions(dataconf)*/
+                    options: oopt
                 }
             ]
         })
-   }
-   
+    }
+    
+    /**
+     * Reads Options From `getJsonConfig(id)`
+     * @param {*} data Json data from `getJsonConfig(id)`
+     * @param {string} dir `Output` or `Input`
+     * @returns Array of `{value:x,lable:y}` 
+     */
     function getOptions(data,dir){
         if (data == undefined){
             return [{ value: "N/A", label: "N/A"}];
@@ -40,6 +58,13 @@
         return Data;
     }
     
+    /**
+     * Returns Lables for the Node Ports
+     * @param {*} config Json data from `getJsonConfig(id)`
+     * @param {number} index Port index
+     * @param {string} dir `Output` or `Input`
+     * @returns 
+     */
     function get_Labels(config ,index,dir){
         try{
             let d = config[dir][index]["Description"];
@@ -49,7 +74,15 @@
         }
         
     }
-
+    
+    /**
+     * Returns the Lable for the Node
+     * @param {*} id Port ID
+     * @param {string} dir `Output` or `Input`
+     * @param {boolean} all All Ports or a specific one?
+     * @param {*} config HardwareConfig Node id
+     * @returns Lable String
+     */
     function getNodeName(id,dir,all,config){
         let name = dir;
         if (config === "_ADD_" || config === undefined || config === "") return name;
