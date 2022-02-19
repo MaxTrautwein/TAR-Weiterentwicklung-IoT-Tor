@@ -7,7 +7,9 @@ module.exports = function(RED) {
 
         var node = this;
         node.on('input', function(msg) {
-            
+            //Do nothing if input is invalid
+            if (!lib.IsBoolInput(this,msg.payload,msg.__port,[]))  return;
+
             var msg = { payload:!msg.payload }
             node.send(msg);
 

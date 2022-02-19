@@ -33,7 +33,12 @@ module.exports = function(RED) {
             //TODO Check expected Logic & maybe add options
            
             var pflank = (msg.payload !== config.data[msg.__port] ) && msg.payload === true;
-            config.data[msg.__port] = msg.payload;
+            
+            if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
+                config.data[msg.__port] = msg.payload;
+            }else{
+                return;
+            }
 
             if (pflank == true && msg.__port == 1)
             {

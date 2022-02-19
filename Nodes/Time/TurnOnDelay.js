@@ -9,6 +9,8 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
 
+            if (!lib.IsBoolInput(this,msg.payload,msg.__port,[])) return;
+
             //TODO Should undefined count as false?
             if (config.lastval === false && msg.payload === true){
                config.trimer = setTimeout(function(){  config.trimer = undefined; node.send(msg); },this.time * this.timeUnit);

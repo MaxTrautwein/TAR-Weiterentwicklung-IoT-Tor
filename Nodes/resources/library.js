@@ -68,5 +68,24 @@ function InputDetection(tid,red,arr,val=false){
     });
 }
 
+/**
+ * Checks if the payload is a bool.
+ * If not a error will be logged
+ * @param {*} ref Node
+ * @param {*} payload msg Payload
+ * @param {number} port Input Port
+ * @param {Array<number>} exclude Ports that should be excluded
+ * @returns `True` or `False`
+ */
+function IsBoolInput(ref,payload,port,exclude){
+    if (exclude.includes(port)) return true;
+    if (payload === true || payload === false){
+        return true;
+    }else{
+        ref.error("Error unexpected Input type for port: " + port + "\nValue will be ignored.");
+        return false;
+    }
+}
 
-module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection};
+
+module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput};

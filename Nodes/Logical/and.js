@@ -21,18 +21,21 @@ module.exports = function(RED) {
                 console.log("------------------");
             }
             //cache Recived Value
-            config.data[msg.__port] = msg.payload;
+            if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
+                config.data[msg.__port] = msg.payload;
+            }else{
+                return;
+            }
 
             //And Logic
             var result = true;
             config.data.forEach(element => {
-                if (element == false){
+                if (element === false){
                     result = false; 
                 }
             });
 
-            var msg = { payload:result }
-            node.send(msg);
+            node.send({ payload:result });
             lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "," Out: "],[config.data[0],config.data[1],config.data[2],config.data[3],result]);
         });
     }

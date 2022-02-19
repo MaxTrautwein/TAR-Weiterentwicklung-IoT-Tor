@@ -18,7 +18,11 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             //cache Recived Value
-            config.data[msg.__port] = msg.payload;
+            if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
+                config.data[msg.__port] = msg.payload;
+            }else{
+                return;
+            }
 
             //nOr Logic
             var result = false;

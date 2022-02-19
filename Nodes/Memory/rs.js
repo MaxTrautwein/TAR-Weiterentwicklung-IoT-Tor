@@ -26,7 +26,11 @@ module.exports = function(RED) {
             }
             
             //cache Recived Value
-            config.data[msg.__port] = msg.payload;
+            if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
+                config.data[msg.__port] = msg.payload;
+            }else{
+                return;
+            }
             
             //Use local variables for better readability
             let set = config.data[0];
