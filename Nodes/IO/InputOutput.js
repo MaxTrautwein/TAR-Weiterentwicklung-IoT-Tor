@@ -1,6 +1,11 @@
 module.exports = function(RED) {
-    //General
-
+    /**
+     * Attempts to get and convert the `ON` / `OFF` response from a Tasmota msg and retun it as `True`/`False`
+     * @param {*} obj Json object
+     * @param {string} name Name example: `Switch1`
+     * @param {string} act parameter example: `Action`
+     * @returns `True`/`False` on error: `null`
+     */
     function getOnOff_to_TrueFalse(obj,name,act){
        try{
             let val = obj[name][act];
@@ -21,11 +26,13 @@ module.exports = function(RED) {
         }
     }
 
-
-    //----------------------------------------------------------------------------------------------------------------------------------------
-    // MQTT -> Node Red
-    // (May have more then one Output Port depending on User Settings)
-    //----------------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * (MQTT -> Node Red) Sends a `True` Pulse
+     * @param {*} t unused
+     * @param {*} payload unused
+     * @param {*} ref Node
+     * @param {*} port Node Port
+     */
     function PulseTrue(t,payload,ref,port){
         var sendarr =  Array(ref.outputs).fill(null);
         sendarr[port] = {payload:true};
@@ -42,6 +49,14 @@ module.exports = function(RED) {
         }
 
     }
+    /**
+     * (MQTT -> Node Red) Translates Tasmota Switch msgs
+     * @param {*} conf Json Port config
+     * @param {*} payload msg Playload
+     * @param {*} ref Node
+     * @param {*} port Node Port
+     * @returns nothing
+     */
     function SwitchModeOnOFF(conf,payload,ref,port){
         let sendarr =  Array(ref.outputs).fill(null);
         let switchN = "Switch" + conf["arg"];
@@ -57,23 +72,35 @@ module.exports = function(RED) {
         }
     }
 
-
-
-
-    //----------------------------------------------------------------------------------------------------------------------------------------
-    // Node Red -> MQTT
-    //----------------------------------------------------------------------------------------------------------------------------------------
- 
-    
+    /**
+     * (Node Red -> MQTT) Sends a Msg twice
+     * @param {*} t MQTT Topic
+     * @param {*} payload MQTT Payload
+     * @param {*} ref Node
+     */
     function DoubleOnTrue(t,payload,ref){
         var msg = { payload:payload, topic:t };
         ref.send(msg);
         ref.send(msg);
     }
+
+    /**
+     * (Node Red -> MQTT) Sends a Msg once
+     * @param {*} t MQTT Topic
+     * @param {*} payload MQTT Payload
+     * @param {*} ref Node
+     */
     function SingleOnTrue(t,payload,ref){
         var msg = { payload:payload, topic:t };
         ref.send(msg);
     }
+
+    /**
+     * (Node Red -> MQTT) Sends Diffrent Msg based on input (`True`,`False`) on possibly diffrent Topics
+     * @param {*} conf Json Port config
+     * @param {*} ref Node
+     * @param {*} msg NodeRed Msg object
+     */
     function TrueFalseMessage(conf,ref,msg){
         var topic2 = conf["Topic"];
         if (conf["Topic_alt"] !== undefined){
@@ -93,10 +120,13 @@ module.exports = function(RED) {
         }
     }
 
-
-    //----------------------------------------------------------------------------------------------------------------------------------------
-    // Handler
-    //----------------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * Handels Input and Output msgs
+     * @param {*} conf Json Port config
+     * @param {*} msg Tasmota msg object
+     * @param {*} ref Node
+     * @param {*} port Node Red Output Port
+     */
     function HandleOI(conf,msg,ref,port = 0){
         switch(conf["Interpreter"]){
             case "DoubleOnTrueDelay":
@@ -125,23 +155,20 @@ module.exports = function(RED) {
         }
     }
 
-    //-------------------------------------------------------------------------------------------------------------------------------------------
-    // Node Red Logic --> MQTT
-    // (May have more then one Input depending on User Setting)
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * (Node Red -> MQTT) OutputNode
+     * @param {*} config 
+     */
     function OutputNode(config) {
         RED.nodes.createNode(this,config);
-
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.AusgangName = config.AusgangName;
         this.allports = config.allports;
 
-
-       this.jsonC = JSON.parse( this.configuration.configur);
+        this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
         node.on('input', function(msg) {
-            //this.log("this.AusgangName: " + this.AusgangName);
             if (this.allports){
                 //Handle allports
                 let outputConfig = this.jsonC["Output"][msg.__port];
@@ -156,31 +183,26 @@ module.exports = function(RED) {
     //Register Node
     RED.nodes.registerType("Output",OutputNode);
 
-    //-------------------------------------------------------------------------------------------------------------------------------------------
-    // MQTT -> Node Red Logic
-    //-------------------------------------------------------------------------------------------------------------------------------------------
+    /**
+     * (MQTT -> Node Red) InputNode
+     * @param {*} config 
+     */
     function InputNode(config) {
         RED.nodes.createNode(this,config);
-
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.EingangName = config.EingangName;
         this.allportsi = config.allportsi;
         this.outputs = config.outputs;
-        //this.AusgangName = config.AusgangName;
 
-
-       this.jsonC = JSON.parse( this.configuration.configur);
+        this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
         node.on('input', function(msg) {
-            //this.log("this.AusgangName: " + this.AusgangName);
             if (this.allportsi){
                 //Handle allports
                 for(let i = 0; i< this.jsonC["Input"].length;i++){
                     HandleOI(this.jsonC["Input"][i],msg,this,i);
                 }
-                //let outputConfig = this.jsonC["Input"][msg.__port];
-                
             }else{
                 //Handle Single
                 let outputConfig = this.jsonC["Input"][parseInt(this.EingangName)];
