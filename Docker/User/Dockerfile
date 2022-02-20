@@ -18,7 +18,9 @@ RUN apt-get update
 RUN apt-get -q -y install mosquitto
 RUN apt-get -q -y install mosquitto-clients
 #Setup mosquitto dev account
-RUN mosquitto_passwd -c -b /etc/mosquitto/pwfile test test
+RUN mosquitto_passwd -c -b /etc/mosquitto/pwfile nodered nodered_pw
+RUN mosquitto_passwd -b /etc/mosquitto/pwfile tasmota tasmota_pw
+
 WORKDIR /etc/mosquitto/conf.d
 RUN wget https://raw.githubusercontent.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/master/Doc/Configs/mosquitto_dev.conf
 
