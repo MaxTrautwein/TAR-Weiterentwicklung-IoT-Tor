@@ -1,4 +1,4 @@
-FROM node:16-buster
+FROM node:bullseye
 #Expose Ports for Node-Red
 EXPOSE 80
 EXPOSE 1880
@@ -13,7 +13,7 @@ WORKDIR /home
 RUN wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 RUN apt-key add mosquitto-repo.gpg.key
 WORKDIR /etc/apt/sources.list.d/
-RUN wget http://repo.mosquitto.org/debian/mosquitto-buster.list
+RUN wget http://repo.mosquitto.org/debian/mosquitto-bullseye.list
 RUN apt-get update
 RUN apt-get -q -y install mosquitto
 RUN apt-get -q -y install mosquitto-clients
