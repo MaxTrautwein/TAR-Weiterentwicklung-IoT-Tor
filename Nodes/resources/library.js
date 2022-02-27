@@ -87,5 +87,21 @@ function IsBoolInput(ref,payload,port,exclude){
     }
 }
 
+/**
+ * Attemps to Parse data as JSON
+ * 
+ * @param {string} data Data that is expected to be JSON
+ * @returns Parsed JSON or null if it is not JSON
+ */
+function TryParseJson(data){
+    let result;
+    try{
+        result = JSON.parse(data);
+    }catch{
+        return null;
+    }
+    return result;
+}
 
-module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput};
+
+module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson};

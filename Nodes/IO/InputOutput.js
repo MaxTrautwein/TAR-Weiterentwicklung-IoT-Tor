@@ -189,6 +189,7 @@ module.exports = function(RED) {
      */
     function InputNode(config) {
         RED.nodes.createNode(this,config);
+        const lib  = require("../resources/library")
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.EingangName = config.EingangName;
@@ -198,6 +199,7 @@ module.exports = function(RED) {
         this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
         node.on('input', function(msg) {
+            if (!lib.TryParseJson(msg.payload)) return;
             if (this.allportsi){
                 //Handle allports
                 for(let i = 0; i< this.jsonC["Input"].length;i++){
