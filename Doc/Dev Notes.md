@@ -474,6 +474,13 @@ data.append(XdrvMailbox.grpflg ? "true" : "false");
 
 ```
 
+# addr2line
+
+```
+xtensa-esp32-elf-addr2line.exe -a -e C:\Users\Max\Desktop\TAR\Git\Tasmota\.pio\build\tasmota32\firmware.elf -p -f <add1> <add_n>
+```
+
+
 # C# Client
 https://github.com/chkr1011/MQTTnet
 
