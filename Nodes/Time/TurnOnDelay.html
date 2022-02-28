@@ -1,3 +1,4 @@
+<script src="/resources/tar-nodes/html_lib.js"></script> 
 <script type="text/javascript">
     RED.nodes.registerType('ton',{
         category: 'Time',
@@ -13,7 +14,8 @@
         outputs:1,
         icon: "ton.svg",
         label: function() {
-            return this.name||"ton";
+            let prefix = this.name||"ton";
+            return prefix + " (" + this.time + timeUnitToStr(this.timeUnit) + ")"
         }
     });
 </script>

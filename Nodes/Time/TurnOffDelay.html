@@ -1,3 +1,4 @@
+<script src="/resources/tar-nodes/html_lib.js"></script> 
 <script type="text/javascript">
     RED.nodes.registerType('tof',{
         category: 'Time',
@@ -15,7 +16,8 @@
         inputLabels:["Trigger","Reset"],
         icon: "tof.svg",
         label: function() {
-            return this.name||"tof";
+            let prefix = this.name||"tof";
+            return prefix + " (" + this.time + timeUnitToStr(this.timeUnit) + ")"
         }
     });
 </script>
