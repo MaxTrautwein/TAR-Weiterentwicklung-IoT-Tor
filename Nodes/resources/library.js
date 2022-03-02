@@ -103,5 +103,23 @@ function TryParseJson(data){
     return result;
 }
 
+/**
+ * Attempts to find the best unit and corrosbonding value for a duration
+ * 
+ * @param {number} value 
+ * @returns array [value,Unit-multiplicator] 
+ */
+function FindTimeAndUnitCombo(value){
+    let ismin = value / 60000;
+    if (ismin >= 1){
+        return [ismin,60000];
+    }
+    let issec = ismin * 60;
+    if (issec >= 1){
+        return [issec,1000];
+    }else{
+        return [value,1];
+    }
+}
 
-module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson};
+module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson,FindTimeAndUnitCombo};

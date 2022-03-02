@@ -10,10 +10,19 @@
             trimer: {value:undefined},
             timeUnit:{value:1000},
         },
-        inputs:1,
+        inputs:2,
+        inputLabels:["Input","(opt) Verzögerung"],
         outputs:1,
         icon: "ton.svg",
         label: function() {
+           RED.comms.subscribe("confupdate/" + this.id ,function(topic,msg) {
+                var node = RED.nodes.node(topic.split("/")[1]);
+                node.time = msg.time; 
+                node.timeUnit = msg.timeUnit;    
+                node.dirty = true;
+                RED.view.redraw();
+            });
+
             let prefix = this.name||"ton";
             return prefix + " (" + this.time + timeUnitToStr(this.timeUnit) + ")"
         }

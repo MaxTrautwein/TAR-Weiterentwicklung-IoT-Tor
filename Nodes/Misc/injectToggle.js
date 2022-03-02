@@ -16,10 +16,6 @@ module.exports = function(RED) {
     RED.httpAdmin.post("/injecttoggle/:id", RED.auth.needsPermission("inject.write"), function(req,res) {
         var node = RED.nodes.getNode(req.params.id);
 
-        //Force a Redraw to update the lable
-        node.status({fill:"red",shape:"ring",text:"-"});
-        node.status({});
-
         if (node != null) {
             try {
                 node.send({ payload:req.body.val})

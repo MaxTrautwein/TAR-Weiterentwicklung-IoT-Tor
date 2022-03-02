@@ -38,11 +38,12 @@
         button: {
             onclick: function () {
                 doInject(this);
+                this.dirty = true;
+                RED.view.redraw();
             }
         },
         label: function() {
-            console.log(this.oval)
-            return this.oval.toString();;
+            return this.oval.toString();
         }
     });
 </script>
