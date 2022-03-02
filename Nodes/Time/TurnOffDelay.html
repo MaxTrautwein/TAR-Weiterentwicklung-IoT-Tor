@@ -11,11 +11,19 @@
             data: {value:undefined},
             timeUnit:{value:1000},
         },
-        inputs:2,
+        inputs:3,
         outputs:1,
-        inputLabels:["Trigger","Reset"],
+        inputLabels:["Trigger","Reset","(opt) Verzögerung"],
         icon: "tof.svg",
         label: function() {
+            RED.comms.subscribe("confupdate/" + this.id ,function(topic,msg) {
+                var node = RED.nodes.node(topic.split("/")[1]);
+                node.time = msg.time; 
+                node.timeUnit = msg.timeUnit;    
+                node.dirty = true;
+                RED.view.redraw();
+            });
+            
             let prefix = this.name||"tof";
             return prefix + " (" + this.time + timeUnitToStr(this.timeUnit) + ")"
         }

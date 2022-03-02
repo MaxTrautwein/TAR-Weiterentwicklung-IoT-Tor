@@ -1,11 +1,12 @@
 module.exports = function(RED) {
     //Node Functionality
-    function AndNode(config) {
+    function TofNode(config) {
         RED.nodes.createNode(this,config);
+        const lib  = require("../resources/library")
         
         //TODO get size from inputs property
         //Array().fill may not work with IE
-        config.data = Array(2).fill(undefined);
+        config.data = Array(3).fill(undefined);
 
         this.time = config.time;
         this.timeUnit = config.timeUnit;
@@ -13,10 +14,20 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             //cache Recived Value
-            if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
+            if (lib.IsBoolInput(this,msg.payload,msg.__port,[2])) {
                 config.data[msg.__port] = msg.payload;
             }else{
                 return;
+            }
+
+            if (msg.__port === 2 && !isNaN(msg.payload) && msg.payload != ""){
+                let timeout = parseFloat(msg.payload);
+                
+                //Update the Editor
+                let combo = lib.FindTimeAndUnitCombo(timeout);
+                node.time = combo[0];
+                node.timeUnit = combo[1];
+                RED.comms.publish("confupdate/" + this.id,{time:node.time,timeUnit:node.timeUnit});
             }
 
             //Port 0 == Trigger
@@ -46,5 +57,5 @@ module.exports = function(RED) {
         });
     }
     //Register Node
-    RED.nodes.registerType("tof",AndNode);
+    RED.nodes.registerType("tof",TofNode);
 }

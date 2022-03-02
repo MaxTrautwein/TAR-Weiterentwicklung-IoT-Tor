@@ -16,15 +16,17 @@ module.exports = function(RED) {
         return "N/A"
     }
 
-    function AndNode(config) {
+    function CountNode(config) {
         RED.nodes.createNode(this,config);
         const lib  = require("../resources/library")
 
         
         //TODO get size from inputs property
         //Array().fill may not work with IE
-        config.data = Array(3).fill(undefined);
+        config.data = Array(5).fill(undefined);
         config.cnt = 0;
+        
+        lib.InputDetection(this.id,RED,config.data);
         
         lib.DebugMode_UpdateStatus(config.debugmode,this,["Dir: "," Val: "," Target: "],[mapDirLable(config.data[2]),config.cnt,config.trigger]);
 
@@ -34,11 +36,21 @@ module.exports = function(RED) {
            
             var pflank = (msg.payload !== config.data[msg.__port] ) && msg.payload === true;
             
-            if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
+            if (lib.IsBoolInput(this,msg.payload,msg.__port,[3,4])) {
                 config.data[msg.__port] = msg.payload;
             }else{
                 return;
             }
+            if (msg.__port === 3 && !isNaN(msg.payload) && msg.payload != ""){
+                config.trigger = parseInt(msg.payload);
+            }else if (msg.__port === 4 && !isNaN(msg.payload) && msg.payload != ""){
+                config.reset = parseInt(msg.payload);
+            }
+            if (msg.__port === 4 || msg.__port === 3){
+                RED.comms.publish("confupdate/" + this.id,{reset:config.reset,trigger:config.trigger});
+            }
+
+
 
             if (pflank == true && msg.__port == 1)
             {
@@ -63,5 +75,5 @@ module.exports = function(RED) {
         });
     }
     //Register Node
-    RED.nodes.registerType("counter",AndNode);
+    RED.nodes.registerType("counter",CountNode);
 }

@@ -10,11 +10,19 @@
             reset: {value:0,reqierd:true,validate:RED.validators.number()},
             debugmode: {value:false}
         },
-        inputs:3,
+        inputs:5,
         outputs:1,
-        inputLabels:["Reset","Count","Dir (h: Down ; l: Up)"],
+        inputLabels:["Reset","Count","Dir (h: Down ; l: Up)","(opt) ziel","(opt) reset"],
         icon: "counter.svg",
         label: function() {
+            RED.comms.subscribe("confupdate/" + this.id ,function(topic,msg) {
+                var node = RED.nodes.node(topic.split("/")[1]);
+                node.trigger = msg.trigger; 
+                node.reset = msg.reset;    
+                node.dirty = true;
+                RED.view.redraw();
+            });
+
             let prefix = this.name||"Count To"
             return prefix + " " + this.trigger + " Reset: " + this.reset;
         }
