@@ -153,5 +153,29 @@ function UpdateTimeParameter(ref,msg,publish_fuc){
     }
 }
 
+/**
+ * Validates the expected Integer input for the Counter node
+ * @param {*} ref Node refrence
+ * @param {*} msg msg object
+ * @returns Integer or null if invalid
+ */
+function ValidateIntegerParameter(ref,msg){
+    if (!isNaN(msg.payload) && msg.payload !== ""){
+        let number = parseInt(msg.payload);
+        //This is needed as `false` is a number but `parseInt(false)` is NaN
+        if (isNaN(number)){
+            ref.error("Unexpected data: '" + msg.payload + "' is not a number");
+            return null;
+        }
+        if (number < 0){
+            ref.error("Unexpected negative value");
+            return null;
+        }
+        return number;
+    }else{
+        ref.error("Unexpected data: '" + msg.payload + "' is not a number");
+    }
+    return null;
+}
 
-module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson,FindTimeAndUnitCombo,UpdateTimeParameter};
+module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson,FindTimeAndUnitCombo,UpdateTimeParameter,ValidateIntegerParameter};

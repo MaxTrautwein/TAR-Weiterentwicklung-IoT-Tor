@@ -7,7 +7,7 @@ module.exports = function(RED) {
      * @returns 
      */
     function mapDirLable(val){
-        if (val === false){
+        if (val === false || val === undefined){
             return "Hoch"
         }else if(val === true){
             return "Runter"
@@ -41,20 +41,27 @@ module.exports = function(RED) {
             }else{
                 return;
             }
-            if (msg.__port === 3 && !isNaN(msg.payload) && msg.payload != ""){
-                config.trigger = parseInt(msg.payload);
-            }else if (msg.__port === 4 && !isNaN(msg.payload) && msg.payload != ""){
-                config.reset = parseInt(msg.payload);
+            let didupdate = false;
+            if (msg.__port === 3){
+                let valupdate = lib.ValidateIntegerParameter(this,msg);
+                if (valupdate !== null){
+                    config.trigger = valupdate;
+                    didupdate = true;
+                }
+            }else if (msg.__port === 4){
+                let valupdate = lib.ValidateIntegerParameter(this,msg);
+                if (valupdate !== null){
+                    config.reset = valupdate;
+                    didupdate = true;
+                }
             }
-            if (msg.__port === 4 || msg.__port === 3){
+            if ((msg.__port === 4 || msg.__port === 3) && didupdate){
                 RED.comms.publish("confupdate/" + this.id,{reset:config.reset,trigger:config.trigger});
             }
 
-
-
             if (pflank == true && msg.__port == 1)
             {
-                if(config.data[2] === false){
+                if(config.data[2] === false || config.data[2] === undefined){
                     config.cnt++;
                 }
                 else if (config.cnt > 0)
