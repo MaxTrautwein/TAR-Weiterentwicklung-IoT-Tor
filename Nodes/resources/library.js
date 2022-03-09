@@ -122,4 +122,36 @@ function FindTimeAndUnitCombo(value){
     }
 }
 
-module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson,FindTimeAndUnitCombo};
+/**
+ * Updates `time` & `timeUnit` based on the msg
+ * To be used with the TON & TOF Nodes
+ * @param {*} ref Node refrence
+ * @param {*} msg msg object
+ * @param {function} publish_fuc RED.comms.publish
+ * @returns nothing
+ */
+function UpdateTimeParameter(ref,msg,publish_fuc){
+    if (!isNaN(msg.payload) && msg.payload !== ""){
+        let timeout = parseFloat(msg.payload);
+        //This is needed as `false` is a number but `parseFloat(false)` is NaN
+        if (isNaN(timeout)){
+            ref.error("Unexpected data: '" + msg.payload + "' is not a number");
+            return;
+        }
+        if (timeout < 0){
+            ref.error("Unexpected negative value");
+            return;
+        }
+
+        //Update the Editor
+        let combo = FindTimeAndUnitCombo(timeout);
+        ref.time = combo[0];
+        ref.timeUnit = combo[1];
+        publish_fuc("confupdate/" + ref.id,{time:ref.time,timeUnit:ref.timeUnit});
+    }else{
+        ref.error("Unexpected data: '" + msg.payload + "' is not a number");
+    }
+}
+
+
+module.exports = {DebugMode_UpdateStatus,DebugObject,InputDetection,IsBoolInput,TryParseJson,FindTimeAndUnitCombo,UpdateTimeParameter};

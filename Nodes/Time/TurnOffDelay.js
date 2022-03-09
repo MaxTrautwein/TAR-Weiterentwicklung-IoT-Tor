@@ -20,14 +20,8 @@ module.exports = function(RED) {
                 return;
             }
 
-            if (msg.__port === 2 && !isNaN(msg.payload) && msg.payload != ""){
-                let timeout = parseFloat(msg.payload);
-                
-                //Update the Editor
-                let combo = lib.FindTimeAndUnitCombo(timeout);
-                node.time = combo[0];
-                node.timeUnit = combo[1];
-                RED.comms.publish("confupdate/" + this.id,{time:node.time,timeUnit:node.timeUnit});
+            if (msg.__port === 2 ){
+                lib.UpdateTimeParameter(this,msg,RED.comms.publish);
             }
 
             //Port 0 == Trigger

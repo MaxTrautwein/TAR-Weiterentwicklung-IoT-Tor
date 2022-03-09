@@ -12,14 +12,8 @@ module.exports = function(RED) {
         node.on('input', function(msg) {
             if (!lib.IsBoolInput(this,msg.payload,msg.__port,[1])) return;
 
-            if (msg.__port === 1 && !isNaN(msg.payload) && msg.payload != ""){
-                let timeout = parseFloat(msg.payload);
-                
-                //Update the Editor
-                let combo = lib.FindTimeAndUnitCombo(timeout);
-                node.time = combo[0];
-                node.timeUnit = combo[1];
-                RED.comms.publish("confupdate/" + this.id,{time:node.time,timeUnit:node.timeUnit});
+            if (msg.__port === 1){
+                lib.UpdateTimeParameter(this,msg,RED.comms.publish);
             }
 
             if (msg.__port != 0) return;
