@@ -1,7 +1,7 @@
 module.exports = function(RED) {
     //Node Functionality
     
-    function AndNode(config) {
+    function OrNode(config) {
         RED.nodes.createNode(this,config);
         const lib  = require("../resources/library")
 
@@ -46,5 +46,5 @@ module.exports = function(RED) {
         });
     }
     //Register Node
-    RED.nodes.registerType("or",AndNode);
+    RED.nodes.registerType("or",OrNode);
 }

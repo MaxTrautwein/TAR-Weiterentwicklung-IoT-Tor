@@ -1,7 +1,7 @@
 module.exports = function(RED) {
     //Node Functionality
     
-    function AndNode(config) {
+    function NorNode(config) {
         RED.nodes.createNode(this,config);
         const lib  = require("../resources/library")
         
@@ -40,5 +40,5 @@ module.exports = function(RED) {
         });
     }
     //Register Node
-    RED.nodes.registerType("nor",AndNode);
+    RED.nodes.registerType("nor",NorNode);
 }
