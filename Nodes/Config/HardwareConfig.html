@@ -1,8 +1,64 @@
 <script type="text/javascript">
+    
+    /**
+    * This Checks if the Provided JSON is a valid Config
+    * @returns Validator for Config Node JSON
+    */
+    function validateConfig(){
+        return function vali(v){
+            let result;
+            try{
+                result = JSON.parse(v);
+                //It is JSON. Now check for required fields
+                if (result["Name"] === undefined  /*Should have a name*/
+                || result["Input"] === undefined  /*Needs a Input section*/
+                || result["Output"] === undefined /*Needs a Output section*/
+                ){
+                    return false;
+                }
+                //If the Toplevel is correct check the Port Definition
+                //https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/wiki/Setup-Hardware-Config-File
+                let rtval = true;
+                result["Input"].forEach(element => {
+                    if(element["Name"] === undefined
+                    || element["Description"] === undefined
+                    || element["Topic"] === undefined
+                    || element["Interpreter"] === undefined){
+                        rtval = false;
+                        return;
+                    }
+                    //Check for special Interpreter
+                    if (element["Interpreter"] == "SwitchModeOnOFF" && element["arg"] === undefined){
+                        rtval = false;
+                        return;
+                    }
+                });
+                result["Output"].forEach(element => {
+                    if(element["Name"] === undefined
+                    || element["Description"] === undefined
+                    || element["Topic"] === undefined
+                    || element["Interpreter"] === undefined){
+                        rtval = false;
+                        return;
+                    }
+                    //Check for special Interpreter
+                    if (element["Interpreter"] == "TrueFalseMessage" && element["payload_alt"] === undefined){
+                        rtval = false;
+                        return;
+                    }
+                });
+                return rtval;
+            }catch{
+                return false;
+            }
+            return true;
+        }
+    }
+
     RED.nodes.registerType('hardware-config',{
         category: 'config',
         defaults: {
-            configur:{value:undefined},
+            configur:{value:undefined,required:true,validate:validateConfig()},
             name: {value:""}
         },
         label: function() {
