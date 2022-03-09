@@ -17,8 +17,7 @@ module.exports = function(RED) {
                     return false;
                     break;
                 default:
-                    console.log("Error unexpected Value for getOnOff_to_TrueFalse");
-                    console.log(val);
+                    console.log("Error unexpected Value for getOnOff_to_TrueFalse: '" + val + "'" );
                     return null;
             }
         }catch (e){
@@ -114,8 +113,8 @@ module.exports = function(RED) {
                 ref.send({ payload:conf["payload_alt"], topic:conf["Topic"] });
                 break;
             default:
-                console.log(msg.payload);
                 //Should not happen
+                ref.error("unexpected input '" + msg.payload + "' is not a bool")
                 break;
         }
     }
