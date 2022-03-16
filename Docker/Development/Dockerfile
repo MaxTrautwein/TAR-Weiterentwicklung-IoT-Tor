@@ -38,6 +38,9 @@ WORKDIR /home
 RUN git clone https://github.com/MaxTrautwein/node-red.git
 #Clone the primary TAR repository
 RUN git clone https://github.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor
+#Get chronyd start script
+RUN wget https://raw.githubusercontent.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/master/Doc/Configs/Setup/chronyd.sh
+RUN chmod a+x chronyd.sh
 
 #Setup Node Link
 WORKDIR /home/TAR-Weiterentwicklung-IoT-Tor/Nodes
@@ -55,4 +58,4 @@ RUN npm install
 #Install Official Dashboard Nodes
 RUN npm install node-red-dashboard
 
-CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; chronyd ; grunt dev
+CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; ../chronyd.sh ; grunt dev

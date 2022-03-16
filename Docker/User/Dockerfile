@@ -14,6 +14,10 @@ RUN mkdir ~/../home/node-red
 WORKDIR /home
 RUN wget http://repo.mosquitto.org/debian/mosquitto-repo.gpg.key
 RUN apt-key add mosquitto-repo.gpg.key
+#Get chronyd start script
+RUN wget https://raw.githubusercontent.com/MaxTrautwein/TAR-Weiterentwicklung-IoT-Tor/master/Doc/Configs/Setup/chronyd.sh
+RUN chmod a+x chronyd.sh
+
 WORKDIR /etc/apt/sources.list.d/
 RUN wget http://repo.mosquitto.org/debian/mosquitto-bullseye.list
 RUN apt-get update
@@ -41,4 +45,4 @@ RUN git checkout $(git describe --tags `git rev-list --tags --max-count=1`)
 
 
 RUN npm install
-CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; chronyd ; grunt dev
+CMD mosquitto -d -c /etc/mosquitto/conf.d/mosquitto_dev.conf ; ../chronyd.sh ; grunt dev
