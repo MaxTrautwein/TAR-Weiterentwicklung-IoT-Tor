@@ -475,10 +475,34 @@ data.append(XdrvMailbox.grpflg ? "true" : "false");
 ```
 
 # addr2line
+Get it here: 
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/tools/idf-tools.html#xtensa-esp32-elf
 
 ```
 xtensa-esp32-elf-addr2line.exe -a -e C:\Users\Max\Desktop\TAR\Git\Tasmota\.pio\build\tasmota32\firmware.elf -p -f <add1> <add_n>
 ```
+
+## Sample Crash Response
+
+
+
+```json
+//No init / Currupt (see ESP Errors Link)
+{"Info3":{"RestartReason":{"Exception":28,"Reason":"LoadProhibited","EPC":"401c78c9","EXCVADDR":"baad568c","CallChain":["401c78c6","401c78fd","400d3658","400d3751","40119de5","40119e24","40144fe9"]}}}
+
+```
+
+```json
+//null ref  (see ESP Errors Link)
+{"Info3":{"RestartReason":{"Exception":28,"Reason":"LoadProhibited","EPC":"401c78c9","EXCVADDR":"00000038","CallChain":["401c78c6","401c78fd","400d3658","400d3751","40119de5","40119e24","40144fe9"]}}}
+
+```
+
+### ESP Errors
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html
+
+https://docs.espressif.com/projects/esp-idf/en/latest/esp32/api-guides/fatal-errors.html#loadprohibited-storeprohibited
+
 
 
 # C# Client
