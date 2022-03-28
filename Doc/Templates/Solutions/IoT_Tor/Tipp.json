@@ -1,1 +1,575 @@
-[{"id":"4c938a209f255ea9","type":"tab","label":"IoT Tor (Tipp)","disabled":false,"info":""},{"id":"f1af33bf3d49ab8b","type":"Output","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","AusgangName":"1","allports":false,"inputs":1,"x":970,"y":340,"wires":[["96a0bf4610d97539"]],"full_wires":[[{"target_port":0}]]},{"id":"720a882ec4b85ca1","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":0,"allportsi":false,"outputs":1,"x":220,"y":340,"wires":[["c870082b7b9cb60e"]],"full_wires":[[{"target_port":0}]]},{"id":"eb52b650977d53ba","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"1","allportsi":false,"outputs":1,"x":230,"y":220,"wires":[["b8bf7e1e67b1d6dd"]],"full_wires":[[{"target_port":1}]]},{"id":"ef309c0a4645db1a","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"2","allportsi":false,"outputs":1,"x":230,"y":500,"wires":[["db4a16d6e77b02b0"]],"full_wires":[[{"target_port":1}]]},{"id":"5a3675ae172a229c","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"5","allportsi":false,"outputs":1,"x":250,"y":300,"wires":[["c870082b7b9cb60e"]],"full_wires":[[{"target_port":0}]]},{"id":"715b9fbde38ce262","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"6","allportsi":false,"outputs":1,"x":210,"y":380,"wires":[["c870082b7b9cb60e"]],"full_wires":[[{"target_port":0}]]},{"id":"63a3dd9a99ef8dd7","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"7","allportsi":false,"outputs":1,"x":230,"y":440,"wires":[["c870082b7b9cb60e"]],"full_wires":[[{"target_port":1}]]},{"id":"657d56fa635f9972","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"8","allportsi":false,"outputs":1,"x":220,"y":540,"wires":[["db4a16d6e77b02b0","5a1739f041140e06"]],"full_wires":[[{"target_port":3},{"target_port":0}]]},{"id":"566dc905a52609f8","type":"Input","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","EingangName":"9","allportsi":false,"outputs":1,"x":210,"y":180,"wires":[["b8bf7e1e67b1d6dd","2644599052018425"]],"full_wires":[[{"target_port":0},{"target_port":0}]]},{"id":"d318325ff035a0c5","type":"Output","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","AusgangName":"2","allports":false,"inputs":1,"x":880,"y":500,"wires":[["3cd6d5a784d4d3ef"]],"full_wires":[[{"target_port":0}]]},{"id":"f53f0c967c6eacb6","type":"Output","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","AusgangName":"3","allports":false,"inputs":1,"x":890,"y":240,"wires":[["96a0bf4610d97539"]],"full_wires":[[{"target_port":0}]]},{"id":"2644599052018425","type":"Output","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","AusgangName":"4","allports":false,"inputs":1,"x":750,"y":180,"wires":[["96a0bf4610d97539"]],"full_wires":[[{"target_port":0}]]},{"id":"5a1739f041140e06","type":"Output","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","AusgangName":"5","allports":false,"inputs":1,"x":740,"y":560,"wires":[["3cd6d5a784d4d3ef"]],"full_wires":[[{"target_port":0}]]},{"id":"056e01de138749b5","type":"Output","z":"4c938a209f255ea9","name":"","configuration":"a134b344c4b4cd5c","AusgangName":"6","allports":false,"inputs":1,"x":740,"y":360,"wires":[["3cd6d5a784d4d3ef"]],"full_wires":[[{"target_port":0}]]},{"id":"b8bf7e1e67b1d6dd","type":"and","z":"4c938a209f255ea9","name":"","x":710,"y":240,"wires":[["f53f0c967c6eacb6","f1af33bf3d49ab8b"]],"full_wires":[[{"target_port":0},{"target_port":0}]]},{"id":"c870082b7b9cb60e","type":"rs","z":"4c938a209f255ea9","name":"","state":false,"x":470,"y":360,"wires":[["658743f76e6d7c25","056e01de138749b5"]],"full_wires":[[{"target_port":0},{"target_port":0}]]},{"id":"658743f76e6d7c25","type":"not","z":"4c938a209f255ea9","name":"","x":575,"y":300,"wires":[["b8bf7e1e67b1d6dd","db4a16d6e77b02b0"]],"full_wires":[[{"target_port":2},{"target_port":0}]],"l":false},{"id":"db4a16d6e77b02b0","type":"and","z":"4c938a209f255ea9","name":"","x":690,"y":500,"wires":[["d318325ff035a0c5","f1af33bf3d49ab8b"]],"full_wires":[[{"target_port":0},{"target_port":0}]]},{"id":"841801c6af671544","type":"mqtt in","z":"4c938a209f255ea9","name":"","topic":"#","qos":"2","datatype":"auto","broker":"b314b6a5a28ea711","nl":false,"rap":true,"rh":0,"x":60,"y":340,"wires":[["566dc905a52609f8","eb52b650977d53ba","5a3675ae172a229c","720a882ec4b85ca1","715b9fbde38ce262","63a3dd9a99ef8dd7","ef309c0a4645db1a","657d56fa635f9972"]],"full_wires":[[{"target_port":0},{"target_port":0},{"target_port":0},{"target_port":0},{"target_port":0},{"target_port":0},{"target_port":0},{"target_port":0}]]},{"id":"96a0bf4610d97539","type":"mqtt out","z":"4c938a209f255ea9","name":"","topic":"","qos":"","retain":"","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"b314b6a5a28ea711","x":1130,"y":240,"wires":[],"full_wires":[]},{"id":"3cd6d5a784d4d3ef","type":"mqtt out","z":"4c938a209f255ea9","name":"","topic":"","qos":"","retain":"","respTopic":"","contentType":"","userProps":"","correl":"","expiry":"","broker":"b314b6a5a28ea711","x":1130,"y":520,"wires":[],"full_wires":[]},{"id":"a134b344c4b4cd5c","type":"hardware-config","configur":"{     \"Name\":\"IoT Tor\",     \"Input\":[         {             \"Name\":\"Notaus\",             \"Description\":\"Notaus Schalter (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":1         },         {             \"Name\":\"Entlage Zu\",             \"Description\":\"S8 (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":2         },         {             \"Name\":\"Entlage Auf\",             \"Description\":\"S9 (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":3         },         {             \"Name\":\"Lischtschranke 1\",             \"Description\":\"B1\",             \"Topic\":\"stat/n2/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":1         },         {             \"Name\":\"Lischtschranke 2\",             \"Description\":\"B2\",             \"Topic\":\"stat/n2/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":2         },         {             \"Name\":\"Kontaktleiste Tor\",             \"Description\":\"S12 Schlißer\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":4         },         {             \"Name\":\"Stopp\",             \"Description\":\"S6 (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\": 5         },         {             \"Name\":\"Tor Freigabe\",             \"Description\":\"S3 (schließer)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":6         },         {             \"Name\":\"Tor auf\",             \"Description\":\"S2 (schließer)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":7         },         {             \"Name\":\"Tor zu\",             \"Description\":\"S1 (schließer)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":8         }              ],     \"Output\":[             {                 \"Name\":\"Horn\",                 \"Description\":\"H8 Ton\",                 \"Topic\":\"cmnd/n1/power1\",                 \"Topic_alt\":\"cmnd/n1/power1\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"V1\",                 \"Description\":\"V1 LED Tor bewegt sich\",                 \"Topic\":\"cmnd/n1/power2\",                 \"Topic_alt\":\"cmnd/n1/power2\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Tor Auf\",                 \"Description\":\"K2 Relais\",                 \"Topic\":\"cmnd/n1/power3\",                 \"Topic_alt\":\"cmnd/n1/power3\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Tor Zu\",                 \"Description\":\"K1 Relais\",                 \"Topic\":\"cmnd/n1/power4\",                 \"Topic_alt\":\"cmnd/n1/power4\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Leuchttaster Tor zu\",                 \"Description\":\"H1 Leuchte Weiß für S1\",                 \"Topic\":\"cmnd/n1/power5\",                 \"Topic_alt\":\"cmnd/n1/power5\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Leuchttaster Tor auf\",                 \"Description\":\"H2 Leuchte Weiß für S2\",                 \"Topic\":\"cmnd/n1/power6\",                 \"Topic_alt\":\"cmnd/n1/power6\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Leuchttaster Tor stopp\",                 \"Description\":\"H6 Leuchte Rot für S6\",                 \"Topic\":\"cmnd/n1/power7\",                 \"Topic_alt\":\"cmnd/n1/power7\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 1\",                 \"Description\":\"M2\",                 \"Topic\":\"cmnd/n2/power1\",                 \"Topic_alt\":\"cmnd/n2/power1\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 2\",                 \"Description\":\"M3\",                 \"Topic\":\"cmnd/n2/power2\",                 \"Topic_alt\":\"cmnd/n2/power2\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 3\",                 \"Description\":\"M4\",                 \"Topic\":\"cmnd/n2/power3\",                 \"Topic_alt\":\"cmnd/n2/power3\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 4\",                 \"Description\":\"M5\",                 \"Topic\":\"cmnd/n2/power4\",                 \"Topic_alt\":\"cmnd/n2/power4\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Ampel Grün\",                 \"Description\":\"P7\",                 \"Topic\":\"cmnd/n2/power5\",                 \"Topic_alt\":\"cmnd/n2/power5\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Ampel Gelb\",                 \"Description\":\"P8\",                 \"Topic\":\"cmnd/n2/power6\",                 \"Topic_alt\":\"cmnd/n2/power6\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Ampel Rot\",                 \"Description\":\"P9\",                 \"Topic\":\"cmnd/n2/power7\",                 \"Topic_alt\":\"cmnd/n2/power7\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             }          ]     }","name":""},{"id":"b314b6a5a28ea711","type":"mqtt-broker","name":"","broker":"localhost","port":"1883","clientid":"","usetls":false,"protocolVersion":"4","keepalive":"60","cleansession":true,"birthTopic":"","birthQos":"0","birthPayload":"","birthMsg":{},"closeTopic":"","closeQos":"0","closePayload":"","closeMsg":{},"willTopic":"","willQos":"0","willPayload":"","willMsg":{},"sessionExpiry":""}]
+[
+    {
+        "id": "4c938a209f255ea9",
+        "type": "tab",
+        "label": "IoT Tor (Tipp)",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f1af33bf3d49ab8b",
+        "type": "Output",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "AusgangName": "1",
+        "allports": false,
+        "inputs": 1,
+        "x": 830,
+        "y": 360,
+        "wires": [
+            [
+                "96a0bf4610d97539"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "720a882ec4b85ca1",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": 0,
+        "allportsi": false,
+        "outputs": 1,
+        "x": 220,
+        "y": 340,
+        "wires": [
+            [
+                "c870082b7b9cb60e"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "eb52b650977d53ba",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "1",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "b8bf7e1e67b1d6dd"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "ef309c0a4645db1a",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "2",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 230,
+        "y": 500,
+        "wires": [
+            [
+                "db4a16d6e77b02b0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5a3675ae172a229c",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "5",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 250,
+        "y": 300,
+        "wires": [
+            [
+                "c870082b7b9cb60e"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "715b9fbde38ce262",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "6",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "c870082b7b9cb60e"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "63a3dd9a99ef8dd7",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "7",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 230,
+        "y": 440,
+        "wires": [
+            [
+                "c870082b7b9cb60e"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "657d56fa635f9972",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "8",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 220,
+        "y": 540,
+        "wires": [
+            [
+                "db4a16d6e77b02b0",
+                "5a1739f041140e06"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "566dc905a52609f8",
+        "type": "Input",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "EingangName": "9",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 210,
+        "y": 180,
+        "wires": [
+            [
+                "b8bf7e1e67b1d6dd",
+                "2644599052018425"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d318325ff035a0c5",
+        "type": "Output",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "AusgangName": "2",
+        "allports": false,
+        "inputs": 1,
+        "x": 820,
+        "y": 500,
+        "wires": [
+            [
+                "3cd6d5a784d4d3ef"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "f53f0c967c6eacb6",
+        "type": "Output",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "AusgangName": "3",
+        "allports": false,
+        "inputs": 1,
+        "x": 830,
+        "y": 220,
+        "wires": [
+            [
+                "96a0bf4610d97539"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "2644599052018425",
+        "type": "Output",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "AusgangName": "4",
+        "allports": false,
+        "inputs": 1,
+        "x": 790,
+        "y": 140,
+        "wires": [
+            [
+                "96a0bf4610d97539"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5a1739f041140e06",
+        "type": "Output",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "AusgangName": "5",
+        "allports": false,
+        "inputs": 1,
+        "x": 780,
+        "y": 580,
+        "wires": [
+            [
+                "3cd6d5a784d4d3ef"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "056e01de138749b5",
+        "type": "Output",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "configuration": "a134b344c4b4cd5c",
+        "AusgangName": "6",
+        "allports": false,
+        "inputs": 1,
+        "x": 620,
+        "y": 420,
+        "wires": [
+            [
+                "3cd6d5a784d4d3ef"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b8bf7e1e67b1d6dd",
+        "type": "and",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "x": 630,
+        "y": 220,
+        "wires": [
+            [
+                "f53f0c967c6eacb6",
+                "f1af33bf3d49ab8b"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c870082b7b9cb60e",
+        "type": "rs",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "state": false,
+        "x": 430,
+        "y": 360,
+        "wires": [
+            [
+                "658743f76e6d7c25",
+                "056e01de138749b5"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "658743f76e6d7c25",
+        "type": "not",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "x": 535,
+        "y": 360,
+        "wires": [
+            [
+                "b8bf7e1e67b1d6dd",
+                "db4a16d6e77b02b0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ],
+        "l": false
+    },
+    {
+        "id": "db4a16d6e77b02b0",
+        "type": "and",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "x": 630,
+        "y": 500,
+        "wires": [
+            [
+                "d318325ff035a0c5",
+                "f1af33bf3d49ab8b"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "841801c6af671544",
+        "type": "mqtt in",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "b314b6a5a28ea711",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 60,
+        "y": 340,
+        "wires": [
+            [
+                "566dc905a52609f8",
+                "eb52b650977d53ba",
+                "5a3675ae172a229c",
+                "720a882ec4b85ca1",
+                "715b9fbde38ce262",
+                "63a3dd9a99ef8dd7",
+                "ef309c0a4645db1a",
+                "657d56fa635f9972"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "96a0bf4610d97539",
+        "type": "mqtt out",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b314b6a5a28ea711",
+        "x": 1050,
+        "y": 240,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "3cd6d5a784d4d3ef",
+        "type": "mqtt out",
+        "z": "4c938a209f255ea9",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b314b6a5a28ea711",
+        "x": 1050,
+        "y": 500,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "a134b344c4b4cd5c",
+        "type": "hardware-config",
+        "configur": "{     \"Name\":\"IoT Tor\",     \"Input\":[         {             \"Name\":\"Notaus\",             \"Description\":\"Notaus Schalter (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":1         },         {             \"Name\":\"Entlage Zu\",             \"Description\":\"S8 (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":2         },         {             \"Name\":\"Entlage Auf\",             \"Description\":\"S9 (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":3         },         {             \"Name\":\"Lischtschranke 1\",             \"Description\":\"B1\",             \"Topic\":\"stat/n2/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":1         },         {             \"Name\":\"Lischtschranke 2\",             \"Description\":\"B2\",             \"Topic\":\"stat/n2/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":2         },         {             \"Name\":\"Kontaktleiste Tor\",             \"Description\":\"S12 Schlißer\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":4         },         {             \"Name\":\"Stopp\",             \"Description\":\"S6 (öffner)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\": 5         },         {             \"Name\":\"Tor Freigabe\",             \"Description\":\"S3 (schließer)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":6         },         {             \"Name\":\"Tor auf\",             \"Description\":\"S2 (schließer)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":7         },         {             \"Name\":\"Tor zu\",             \"Description\":\"S1 (schließer)\",             \"Topic\":\"stat/n1/RESULT\",             \"Interpreter\":\"SwitchModeOnOFF\",             \"arg\":8         }              ],     \"Output\":[             {                 \"Name\":\"Horn\",                 \"Description\":\"H8 Ton\",                 \"Topic\":\"cmnd/n1/power1\",                 \"Topic_alt\":\"cmnd/n1/power1\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"V1\",                 \"Description\":\"V1 LED Tor bewegt sich\",                 \"Topic\":\"cmnd/n1/power2\",                 \"Topic_alt\":\"cmnd/n1/power2\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Tor Auf\",                 \"Description\":\"K2 Relais\",                 \"Topic\":\"cmnd/n1/power3\",                 \"Topic_alt\":\"cmnd/n1/power3\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Tor Zu\",                 \"Description\":\"K1 Relais\",                 \"Topic\":\"cmnd/n1/power4\",                 \"Topic_alt\":\"cmnd/n1/power4\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Leuchttaster Tor zu\",                 \"Description\":\"H1 Leuchte Weiß für S1\",                 \"Topic\":\"cmnd/n1/power5\",                 \"Topic_alt\":\"cmnd/n1/power5\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Leuchttaster Tor auf\",                 \"Description\":\"H2 Leuchte Weiß für S2\",                 \"Topic\":\"cmnd/n1/power6\",                 \"Topic_alt\":\"cmnd/n1/power6\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Leuchttaster Tor stopp\",                 \"Description\":\"H6 Leuchte Rot für S6\",                 \"Topic\":\"cmnd/n1/power7\",                 \"Topic_alt\":\"cmnd/n1/power7\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 1\",                 \"Description\":\"M2\",                 \"Topic\":\"cmnd/n2/power1\",                 \"Topic_alt\":\"cmnd/n2/power1\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 2\",                 \"Description\":\"M3\",                 \"Topic\":\"cmnd/n2/power2\",                 \"Topic_alt\":\"cmnd/n2/power2\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 3\",                 \"Description\":\"M4\",                 \"Topic\":\"cmnd/n2/power3\",                 \"Topic_alt\":\"cmnd/n2/power3\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Lüfter 4\",                 \"Description\":\"M5\",                 \"Topic\":\"cmnd/n2/power4\",                 \"Topic_alt\":\"cmnd/n2/power4\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Ampel Grün\",                 \"Description\":\"P7\",                 \"Topic\":\"cmnd/n2/power5\",                 \"Topic_alt\":\"cmnd/n2/power5\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Ampel Gelb\",                 \"Description\":\"P8\",                 \"Topic\":\"cmnd/n2/power6\",                 \"Topic_alt\":\"cmnd/n2/power6\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             },             {                 \"Name\":\"Ampel Rot\",                 \"Description\":\"P9\",                 \"Topic\":\"cmnd/n2/power7\",                 \"Topic_alt\":\"cmnd/n2/power7\",                 \"Interpreter\":\"TrueFalseMessage\",                 \"payload\":\"1\",                 \"payload_alt\":\"0\"             }          ]     }",
+        "name": ""
+    },
+    {
+        "id": "b314b6a5a28ea711",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "10",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    }
+]

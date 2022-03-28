@@ -1,0 +1,2814 @@
+[
+    {
+        "id": "3fdcf7cb067e4708",
+        "type": "tab",
+        "label": "RelayBoard - Web Interface",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6a1d770c6c860cbd",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 4,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "58dd16cf094df471",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 5,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 160,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "89cebf953628d0ca",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Relay X On",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x06\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x01\",\n        \"0x00\"\n    ]\n}",
+        "output": "json",
+        "x": 730,
+        "y": 240,
+        "wires": [
+            [
+                "4a5f857c10358c60"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "cbc5b6b9f0e5e082",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Relay x Off",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x06\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x02\",\n        \"0x00\"\n    ]\n}",
+        "output": "str",
+        "x": 730,
+        "y": 300,
+        "wires": [
+            [
+                "4a5f857c10358c60"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "f7733e10a192e1ba",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 6,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 220,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "8f66b6a93ef29b36",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 7,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 260,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "0be352b272967554",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 8,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 320,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "4129140d62875b67",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 9,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 360,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b2d54506fd576657",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 10,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 420,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5b2c3816ed0d8855",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 11,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 460,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "9375cdce71bcf603",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 12,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 520,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "e6359bac8db2bb3f",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 13,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 560,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c3b350deb701b5be",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 14,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 620,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "bceaa553d861446a",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 15,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 660,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "92a612157c8be962",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 2,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 20,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "45e9f0758fa3d875",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 3,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 60,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "a6401beeeb96ea02",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 16,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8 On",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 720,
+        "wires": [
+            [
+                "89cebf953628d0ca"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "169dfa5f5b3fb723",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c7ae7ec31d0ecd9",
+        "order": 17,
+        "width": "10",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8 Off",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 760,
+        "wires": [
+            [
+                "cbc5b6b9f0e5e082"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "e789b578be590f0d",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 20,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1060,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "3b9eecd18b5cc865",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Relay X Toggle",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x06\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x03\",\n        \"0x00\"\n    ]\n}",
+        "output": "json",
+        "x": 600,
+        "y": 1160,
+        "wires": [
+            [
+                "4a5f857c10358c60"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "093efebe6daba7f2",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 21,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1100,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "36e98da242dc98fc",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 22,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1140,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b741a14eec947d3e",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 23,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1180,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "dda68d219e279835",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 24,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1220,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "998dc0041294c5b2",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 25,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1260,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b0af973ae5f7325e",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 19,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1020,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "027d621b337e2250",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "0ed519d127b90ef3",
+        "order": 26,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1300,
+        "wires": [
+            [
+                "3b9eecd18b5cc865"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5ae37bc6c4e0a004",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 20,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1400,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "0d50a93730c25ebc",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Relay X Latch",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x06\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x04\",\n        \"0x00\"\n    ]\n}",
+        "output": "json",
+        "x": 600,
+        "y": 1500,
+        "wires": [
+            [
+                "4a7faeeff952284f"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "835f4426b9551f9c",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 21,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1440,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "a4b8b72a76e2ed91",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 22,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1480,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "4153bfc6c4ac9a7f",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 23,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1520,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "527d498762460a50",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 24,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1560,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "414bfa93696abd7d",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 25,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1600,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "42665b81df0af5fa",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 19,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1360,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "acdf88a2bf54b446",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "02d5e478dc1fddd0",
+        "order": 26,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1640,
+        "wires": [
+            [
+                "0d50a93730c25ebc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "430d4ed5b1f7d441",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 20,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1740,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "778b0d269e0bc492",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Relay X Moment",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x06\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x05\",\n        \"0x00\"\n    ]\n}",
+        "output": "json",
+        "x": 600,
+        "y": 1840,
+        "wires": [
+            [
+                "4a7faeeff952284f"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "26ad0243733935aa",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 21,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1780,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "1fac9532bc001cc3",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 22,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1820,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "1ae44f2833674ac5",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 23,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1860,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "7846c0aa084d1e30",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 24,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1900,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "2d297a4eb2166be6",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 25,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1940,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "66d3cbf4e55b3ea9",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 19,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1700,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "9622d31d4c999105",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "eaa3fa217ab8a8b6",
+        "order": 26,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 1980,
+        "wires": [
+            [
+                "778b0d269e0bc492"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d6b57b0eebce1e96",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 20,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2080,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c29b13c2be6802a3",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Relay X 5s",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x06\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x06\",\n        \"0x05\"\n    ]\n}",
+        "output": "json",
+        "x": 590,
+        "y": 2180,
+        "wires": [
+            [
+                "4a7faeeff952284f"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "4cc796583245328f",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 21,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2120,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "49167f6734bf7a1e",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 22,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2160,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5217445f15394865",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 23,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2200,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b143cf71ad1f467d",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 24,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2240,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "e56ee19d812540c8",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 25,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2280,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5b0c1324e294ed41",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 19,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2040,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "da07691597c2538a",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "ab78d59f6ed5895d",
+        "order": 26,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2320,
+        "wires": [
+            [
+                "c29b13c2be6802a3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "4efbd0b2e210f0d2",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "c064e26edfaacc50",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Alle An",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0x00\",\"0x07\",\"0x00\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2420,
+        "wires": [
+            [
+                "a89a7f21538cdd94"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "6c571e4a5ce79732",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "c064e26edfaacc50",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Alle Aus",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0x00\",\"0x08\",\"0x00\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2460,
+        "wires": [
+            [
+                "a89a7f21538cdd94"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "a89a7f21538cdd94",
+        "type": "mqtt out",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "topic": "cmnd/dev/test/mqttbridge",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "80db84d3f6e08fda",
+        "x": 620,
+        "y": 2440,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "4a7faeeff952284f",
+        "type": "mqtt out",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "topic": "cmnd/dev/test/mqttbridge",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "80db84d3f6e08fda",
+        "x": 1010,
+        "y": 1800,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "4a5f857c10358c60",
+        "type": "mqtt out",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "topic": "cmnd/dev/test/mqttbridge",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "80db84d3f6e08fda",
+        "x": 1160,
+        "y": 660,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "1f3e4cf8ce49066c",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 20,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "2",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2580,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "ea93b6bd173aad99",
+        "type": "template",
+        "z": "3fdcf7cb067e4708",
+        "name": "Read Relay X",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\n    \"Address\": \"0x01\",\n    \"Function\": \"0x03\",\n    \"Data\": [\n        \"0x00\",\n        \"0x0{{payload}}\",\n        \"0x00\",\n        \"0x01\"\n    ]\n}",
+        "output": "json",
+        "x": 600,
+        "y": 2680,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d01fa4d1f5bec183",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 21,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 3",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "3",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2620,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "971aa40ae4ff9b4c",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 22,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 4",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "4",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2660,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "99baf5366506a582",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 23,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 5",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "5",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2700,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "bb49ecac0d171738",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 24,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 6",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "6",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2740,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "1bd060173e76eb00",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 25,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 7",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "7",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2780,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "4c7b633cf47d0906",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 19,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 1 ",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2540,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c3945be9eec3b3b8",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "311d2d1ce3c068d0",
+        "order": 26,
+        "width": "20",
+        "height": "1",
+        "passthru": false,
+        "label": "Relay 8",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "8",
+        "payloadType": "num",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2820,
+        "wires": [
+            [
+                "ea93b6bd173aad99"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "fbaf39f38ed37171",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "8522422cfdb20808",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "All Inputs",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x03\",\"Data\":[\"0x00\",\"0x81\",\"0x00\",\"0x08\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2920,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "6b39d178a0f528d7",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "8522422cfdb20808",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "All Relay",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x03\",\"Data\":[\"0x00\",\"0x00\",\"0x00\",\"0x08\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 2960,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "6dd9e6b6b55d1252",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "8522422cfdb20808",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "I/O Link",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x03\",\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x01\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 300,
+        "y": 3000,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "44112f6681a970c5",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "8522422cfdb20808",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Baud",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x03\",\"Data\":[\"0x00\",\"0xFE\",\"0x00\",\"0x01\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 290,
+        "y": 3040,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "3281194b16af56b6",
+        "type": "mqtt out",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "topic": "cmnd/dev/test/mqttbridge",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "80db84d3f6e08fda",
+        "x": 850,
+        "y": 2960,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "48049597e4983e0b",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Set - I/O Link - Unrelated",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x00\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 350,
+        "y": 3140,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c8464ad0afb2d443",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Set - I/O Link - Toggle",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x01\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 340,
+        "y": 3180,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "94b61090f39022e7",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Set - I/O Link - Latch",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x02\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 340,
+        "y": 3220,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "a841e9649c960831",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Set - I/O Link - Momentary",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x03\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 360,
+        "y": 3260,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "14b6378dd63ac2d5",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Invalid Request",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Address\":\"0x01\",\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x03\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 320,
+        "y": 3320,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "9c73b6fe96a6f1a5",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Invalid Request 2",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Data\":[\"0x00\",\"0xFD\",\"0x00\",\"0x03\"]}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 3360,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "27468ba0ecd38d2f",
+        "type": "ui_button",
+        "z": "3fdcf7cb067e4708",
+        "name": "",
+        "group": "6c770a72866287f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Invalid Request 3",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "{\"Junk\":1}",
+        "payloadType": "json",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 3400,
+        "wires": [
+            [
+                "3281194b16af56b6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "6c7ae7ec31d0ecd9",
+        "type": "ui_group",
+        "name": "Relay Switch",
+        "tab": "159eb7309bfa7f86",
+        "order": 1,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "0ed519d127b90ef3",
+        "type": "ui_group",
+        "name": "Toggle",
+        "tab": "159eb7309bfa7f86",
+        "order": 3,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "02d5e478dc1fddd0",
+        "type": "ui_group",
+        "name": "Latch",
+        "tab": "159eb7309bfa7f86",
+        "order": 4,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "eaa3fa217ab8a8b6",
+        "type": "ui_group",
+        "name": "Momentary",
+        "tab": "159eb7309bfa7f86",
+        "order": 2,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ab78d59f6ed5895d",
+        "type": "ui_group",
+        "name": "Delay",
+        "tab": "159eb7309bfa7f86",
+        "order": 5,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c064e26edfaacc50",
+        "type": "ui_group",
+        "name": "Special",
+        "tab": "159eb7309bfa7f86",
+        "order": 6,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "80db84d3f6e08fda",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "10",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "311d2d1ce3c068d0",
+        "type": "ui_group",
+        "name": "Read Relay",
+        "tab": "159eb7309bfa7f86",
+        "order": 7,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8522422cfdb20808",
+        "type": "ui_group",
+        "name": "Read Special",
+        "tab": "159eb7309bfa7f86",
+        "order": 8,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "6c770a72866287f8",
+        "type": "ui_group",
+        "name": "Write IO Link",
+        "tab": "159eb7309bfa7f86",
+        "order": 9,
+        "disp": true,
+        "width": "20",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "159eb7309bfa7f86",
+        "type": "ui_tab",
+        "name": "eletechsup_RelayBoard",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

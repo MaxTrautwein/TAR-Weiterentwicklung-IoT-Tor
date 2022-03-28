@@ -1,0 +1,1314 @@
+[
+    {
+        "id": "b2eb9d6a4d27ef64",
+        "type": "tab",
+        "label": "And",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "05b31cd3081ffbfc",
+        "type": "tab",
+        "label": "Or",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "5a146026820e5102",
+        "type": "tab",
+        "label": "Not",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "04d8aa6eec4ca7fd",
+        "type": "tab",
+        "label": "XOR",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "ead7ce56ffb82547",
+        "type": "tab",
+        "label": "NOR",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "df3df016f5422aa3",
+        "type": "tab",
+        "label": "NAND",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "756576f09ddb28a2",
+        "type": "tab",
+        "label": "RS",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "741865d42b998135",
+        "type": "tab",
+        "label": "TON / TOF",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "d2eb57b01a9d501c",
+        "type": "tab",
+        "label": "Counter",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "50bb4cd10e5abf41",
+        "type": "and",
+        "z": "b2eb9d6a4d27ef64",
+        "name": "And",
+        "data": "[\"\",\"\",\"\",\"\"]",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "5613c7e80f13a792"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5613c7e80f13a792",
+        "type": "debug",
+        "z": "b2eb9d6a4d27ef64",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 160,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "f91bf3cd8643d738",
+        "type": "or",
+        "z": "05b31cd3081ffbfc",
+        "name": "",
+        "x": 390,
+        "y": 160,
+        "wires": [
+            [
+                "a5bf741f458a8b34"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "a5bf741f458a8b34",
+        "type": "debug",
+        "z": "05b31cd3081ffbfc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 160,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "2dbf4afc62b17c5c",
+        "type": "ton",
+        "z": "741865d42b998135",
+        "name": "",
+        "time": "5",
+        "timeUnit": "1000",
+        "x": 440,
+        "y": 80,
+        "wires": [
+            [
+                "9739c685329053fa"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "9739c685329053fa",
+        "type": "debug",
+        "z": "741865d42b998135",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 80,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "5eb8619ec81b64cd",
+        "type": "tof",
+        "z": "741865d42b998135",
+        "name": "",
+        "time": 5,
+        "timeUnit": 1000,
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "60b08a53d210ec02"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "60b08a53d210ec02",
+        "type": "debug",
+        "z": "741865d42b998135",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 320,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "c0f089b32109762a",
+        "type": "not",
+        "z": "5a146026820e5102",
+        "name": "",
+        "x": 310,
+        "y": 140,
+        "wires": [
+            [
+                "d0e5b1c93a960652"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d0e5b1c93a960652",
+        "type": "debug",
+        "z": "5a146026820e5102",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 140,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "c0284596756bccdc",
+        "type": "xor",
+        "z": "04d8aa6eec4ca7fd",
+        "name": "",
+        "debugmode": false,
+        "x": 390,
+        "y": 120,
+        "wires": [
+            [
+                "9191e0c677149495"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "147ce0e2b84335d0",
+        "type": "nor",
+        "z": "ead7ce56ffb82547",
+        "name": "",
+        "debugmode": true,
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "c18ebb42453f9a1a"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c18ebb42453f9a1a",
+        "type": "debug",
+        "z": "ead7ce56ffb82547",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 160,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "9191e0c677149495",
+        "type": "debug",
+        "z": "04d8aa6eec4ca7fd",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 120,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "b9bfdba3ec8346f6",
+        "type": "nand",
+        "z": "df3df016f5422aa3",
+        "name": "",
+        "debugmode": true,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "33814b57446278c3"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "33814b57446278c3",
+        "type": "debug",
+        "z": "df3df016f5422aa3",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 140,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "87f8be03d9b800e8",
+        "type": "rs",
+        "z": "756576f09ddb28a2",
+        "name": "",
+        "x": 370,
+        "y": 160,
+        "wires": [
+            [
+                "17c9b1dacfd9aeb2"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "17c9b1dacfd9aeb2",
+        "type": "debug",
+        "z": "756576f09ddb28a2",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 160,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "6447a7815fd3c706",
+        "type": "counter",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "trigger": "3",
+        "reset": "0",
+        "debugmode": true,
+        "x": 380,
+        "y": 240,
+        "wires": [
+            [
+                "90dfc9ecf607087b"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "90dfc9ecf607087b",
+        "type": "debug",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 240,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "d7b44cb33782ac79",
+        "type": "injecttoggle",
+        "z": "b2eb9d6a4d27ef64",
+        "name": "",
+        "oval": false,
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "50bb4cd10e5abf41"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "97014eb0eb030cd0",
+        "type": "injecttoggle",
+        "z": "b2eb9d6a4d27ef64",
+        "name": "",
+        "oval": false,
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "50bb4cd10e5abf41"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "68b5259931daefad",
+        "type": "injecttoggle",
+        "z": "b2eb9d6a4d27ef64",
+        "name": "",
+        "oval": false,
+        "x": 160,
+        "y": 180,
+        "wires": [
+            [
+                "50bb4cd10e5abf41"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "1481fd0dd03b5bc4",
+        "type": "injecttoggle",
+        "z": "b2eb9d6a4d27ef64",
+        "name": "",
+        "oval": false,
+        "x": 160,
+        "y": 220,
+        "wires": [
+            [
+                "50bb4cd10e5abf41"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "fedd81c7ec878aba",
+        "type": "injecttoggle",
+        "z": "05b31cd3081ffbfc",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 100,
+        "wires": [
+            [
+                "f91bf3cd8643d738"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "593432b70122f471",
+        "type": "injecttoggle",
+        "z": "05b31cd3081ffbfc",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 140,
+        "wires": [
+            [
+                "f91bf3cd8643d738"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "664bea1a467b01bd",
+        "type": "injecttoggle",
+        "z": "05b31cd3081ffbfc",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 180,
+        "wires": [
+            [
+                "f91bf3cd8643d738"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d941b5f0867a5823",
+        "type": "injecttoggle",
+        "z": "05b31cd3081ffbfc",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 220,
+        "wires": [
+            [
+                "f91bf3cd8643d738"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "07f55024f2512bdc",
+        "type": "injecttoggle",
+        "z": "741865d42b998135",
+        "name": "",
+        "oval": false,
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "2dbf4afc62b17c5c"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "ad7457d088e7ed20",
+        "type": "injecttoggle",
+        "z": "741865d42b998135",
+        "name": "",
+        "oval": false,
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "5eb8619ec81b64cd"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "19c8d79c5f52d1ac",
+        "type": "injecttoggle",
+        "z": "741865d42b998135",
+        "name": "",
+        "oval": false,
+        "x": 130,
+        "y": 320,
+        "wires": [
+            [
+                "5eb8619ec81b64cd"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5e47684c9682c94c",
+        "type": "inject",
+        "z": "741865d42b998135",
+        "name": "5s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5000",
+        "payloadType": "num",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "2dbf4afc62b17c5c"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "8701822fe4e2b734",
+        "type": "inject",
+        "z": "741865d42b998135",
+        "name": "500ms",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "500",
+        "payloadType": "num",
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "2dbf4afc62b17c5c"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "734f5b8cb695d0e1",
+        "type": "inject",
+        "z": "741865d42b998135",
+        "name": "5s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5000",
+        "payloadType": "num",
+        "x": 130,
+        "y": 380,
+        "wires": [
+            [
+                "5eb8619ec81b64cd"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "474d1e817edc028f",
+        "type": "inject",
+        "z": "741865d42b998135",
+        "name": "500ms",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "500",
+        "payloadType": "num",
+        "x": 130,
+        "y": 420,
+        "wires": [
+            [
+                "5eb8619ec81b64cd"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5f7140848bcc63e9",
+        "type": "injecttoggle",
+        "z": "5a146026820e5102",
+        "name": "",
+        "oval": false,
+        "x": 110,
+        "y": 140,
+        "wires": [
+            [
+                "c0f089b32109762a"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b0afe5c6a266246b",
+        "type": "injecttoggle",
+        "z": "04d8aa6eec4ca7fd",
+        "name": "",
+        "oval": false,
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "c0284596756bccdc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "3d9c33b40956f77d",
+        "type": "injecttoggle",
+        "z": "04d8aa6eec4ca7fd",
+        "name": "",
+        "oval": false,
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "c0284596756bccdc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "e4598f5ce25fa433",
+        "type": "injecttoggle",
+        "z": "04d8aa6eec4ca7fd",
+        "name": "",
+        "oval": false,
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "c0284596756bccdc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "997a785a46b8d5d4",
+        "type": "injecttoggle",
+        "z": "04d8aa6eec4ca7fd",
+        "name": "",
+        "oval": false,
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "c0284596756bccdc"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "88f989327a0f8e84",
+        "type": "injecttoggle",
+        "z": "ead7ce56ffb82547",
+        "name": "",
+        "oval": false,
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "147ce0e2b84335d0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "75042bf538111066",
+        "type": "injecttoggle",
+        "z": "ead7ce56ffb82547",
+        "name": "",
+        "oval": false,
+        "x": 150,
+        "y": 140,
+        "wires": [
+            [
+                "147ce0e2b84335d0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d0a0f835ee8e3334",
+        "type": "injecttoggle",
+        "z": "ead7ce56ffb82547",
+        "name": "",
+        "oval": false,
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "147ce0e2b84335d0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "8c4e9dcbbb033000",
+        "type": "injecttoggle",
+        "z": "ead7ce56ffb82547",
+        "name": "",
+        "oval": false,
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "147ce0e2b84335d0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "cf8c97147c466321",
+        "type": "injecttoggle",
+        "z": "df3df016f5422aa3",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "b9bfdba3ec8346f6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "49163b0ef3df6b48",
+        "type": "injecttoggle",
+        "z": "df3df016f5422aa3",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "b9bfdba3ec8346f6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "bfe787d5e666d7f1",
+        "type": "injecttoggle",
+        "z": "df3df016f5422aa3",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "b9bfdba3ec8346f6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "5969d808c2baa8a0",
+        "type": "injecttoggle",
+        "z": "df3df016f5422aa3",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "b9bfdba3ec8346f6"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "30ae3f60c5d7fe52",
+        "type": "injecttoggle",
+        "z": "756576f09ddb28a2",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "87f8be03d9b800e8"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c020ebce37882157",
+        "type": "injecttoggle",
+        "z": "756576f09ddb28a2",
+        "name": "",
+        "oval": false,
+        "x": 170,
+        "y": 200,
+        "wires": [
+            [
+                "87f8be03d9b800e8"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "14a96ddffc97da4d",
+        "type": "injecttoggle",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "oval": false,
+        "x": 90,
+        "y": 100,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "bd50cd363e30780d",
+        "type": "injecttoggle",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "oval": false,
+        "x": 90,
+        "y": 140,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 1
+                }
+            ]
+        ]
+    },
+    {
+        "id": "48754a9d4934b050",
+        "type": "injecttoggle",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "oval": false,
+        "x": 90,
+        "y": 200,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 2
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c550fea710084255",
+        "type": "inject",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "3",
+        "payloadType": "num",
+        "x": 90,
+        "y": 260,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "60f5d0c36fa261e2",
+        "type": "inject",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 90,
+        "y": 300,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 3
+                }
+            ]
+        ]
+    },
+    {
+        "id": "dd2ca0a2f22828d8",
+        "type": "inject",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "2",
+        "payloadType": "num",
+        "x": 90,
+        "y": 360,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 4
+                }
+            ]
+        ]
+    },
+    {
+        "id": "e9992a89e3f9bc0e",
+        "type": "inject",
+        "z": "d2eb57b01a9d501c",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 90,
+        "y": 400,
+        "wires": [
+            [
+                "6447a7815fd3c706"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 4
+                }
+            ]
+        ]
+    }
+]
