@@ -33,7 +33,8 @@ module.exports = function(RED) {
         var node = this;
         node.on('input', function(msg) {
             //TODO Check expected Logic & maybe add options
-           
+            let changed = false;
+
             var pflank = (msg.payload !== config.data[msg.__port] ) && msg.payload === true;
             
             if (lib.IsBoolInput(this,msg.payload,msg.__port,[3,4])) {
@@ -75,8 +76,11 @@ module.exports = function(RED) {
 
             var result = config.cnt >= config.trigger;
 
+            changed = config.state != result;
+            config.state = result;
+
             var msg = { payload: result}
-            node.send(msg);
+            if (changed) node.send(msg);
 
             lib.DebugMode_UpdateStatus(config.debugmode,this,["Dir: "," Val: "," Target: "," Out: "],[mapDirLable(config.data[2]),config.cnt,config.trigger,result]);
         });

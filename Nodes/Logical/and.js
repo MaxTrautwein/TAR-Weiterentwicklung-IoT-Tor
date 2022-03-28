@@ -12,9 +12,10 @@ module.exports = function(RED) {
         lib.InputDetection(this.id,RED,config.data)
 
         lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "],[config.data[0],config.data[1],config.data[2],config.data[3]]);
-        
+         
         var node = this;
         node.on('input', function(msg) {
+            let changed = false;
             if (msg.__port === undefined){
                 console.log("FATAL AND " + this.id + " recived msg on undefined port!");
                 lib.DebugObject(msg);
@@ -35,7 +36,11 @@ module.exports = function(RED) {
                 }
             });
 
-            node.send({ payload:result });
+            //Check if Output has changed
+            changed = config.sate != result;
+            config.sate = result;
+
+            if (changed) node.send({ payload:result });
             lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "," Out: "],[config.data[0],config.data[1],config.data[2],config.data[3],result]);
         });
     }

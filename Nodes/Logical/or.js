@@ -16,7 +16,8 @@ module.exports = function(RED) {
 
         var node = this;
         node.on('input', function(msg) {
-            
+            let changed = false;
+
             if (msg.__port === undefined){
                 node.error("Error msg.__port is undefined");
             }
@@ -37,8 +38,12 @@ module.exports = function(RED) {
                 }
             });
 
+            //Check if Output has changed
+            changed = config.sate != result;
+            config.sate = result;
+            
             var msg = { payload:result }
-            node.send(msg);
+            if (changed) node.send(msg);
 
             //Debug Mode Handeling
             lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "," Out: "],[config.data[0],config.data[1],config.data[2],config.data[3],result]);

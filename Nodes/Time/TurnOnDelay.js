@@ -10,6 +10,8 @@ module.exports = function(RED) {
 
         var node = this;
         node.on('input', function(msg) {
+            let changed = false;
+
             if (!lib.IsBoolInput(this,msg.payload,msg.__port,[1])) return;
 
             if (msg.__port === 1){
@@ -22,7 +24,14 @@ module.exports = function(RED) {
             var timeout = this.time * this.timeUnit;
 
             if (config.lastval === false && Input === true){
-               config.trimer = setTimeout(function(){  config.trimer = undefined; node.send(msg); },timeout);
+               config.trimer = setTimeout(function()
+               {  
+                   //No changed check needed. is per definition alway a change
+                   config.sate = Input;
+                   config.trimer = undefined;
+                   node.send(msg);
+                }
+               ,timeout);
             }
             if (config.trimer !== undefined &&  Input === false){
                 clearTimeout(config.trimer)
@@ -31,7 +40,9 @@ module.exports = function(RED) {
             config.lastval = Input
 
             if (Input === false){
-                node.send(msg);
+                changed = config.sate != Input;
+                config.sate = Input;
+                if (changed) node.send(msg);
             }
         });
     }

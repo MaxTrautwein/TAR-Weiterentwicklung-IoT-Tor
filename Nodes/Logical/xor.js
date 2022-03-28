@@ -16,6 +16,8 @@ module.exports = function(RED) {
 
         var node = this;
         node.on('input', function(msg) {
+            let changed = false;
+
             //cache Recived Value
             if (lib.IsBoolInput(this,msg.payload,msg.__port,[])) {
                 config.data[msg.__port] = msg.payload;
@@ -34,8 +36,12 @@ module.exports = function(RED) {
             if (cntTrue === 1){
                 result = true;
             }
+            //Check if Output has changed
+            changed = config.sate != result;
+            config.sate = result;
+            
             var msg = { payload:result }
-            node.send(msg);
+            if (changed) node.send(msg);
             
             //Debug Mode Handeling
             lib.DebugMode_UpdateStatus(config.debugmode,this,["0: "," 1: "," 2: "," 3: "," Out: "],[config.data[0],config.data[1],config.data[2],config.data[3],result]);
