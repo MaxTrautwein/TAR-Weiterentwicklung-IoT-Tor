@@ -1,0 +1,263 @@
+[
+    {
+        "id": "535398d382c5b477",
+        "type": "tab",
+        "label": "System Demo",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0488103f1fb241f2",
+        "type": "mqtt in",
+        "z": "535398d382c5b477",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "b314b6a5a28ea711",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "c45e9056b040018a"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "c45e9056b040018a",
+        "type": "debug",
+        "z": "535398d382c5b477",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 120,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "bb80ee094a0f21d1",
+        "type": "Output",
+        "z": "535398d382c5b477",
+        "name": "",
+        "configuration": "cca57e0363acda30",
+        "AusgangName": "2",
+        "allports": false,
+        "inputs": 1,
+        "x": 660,
+        "y": 260,
+        "wires": [
+            [
+                "54649ae33557124e"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "54649ae33557124e",
+        "type": "mqtt out",
+        "z": "535398d382c5b477",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "b314b6a5a28ea711",
+        "x": 860,
+        "y": 260,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "9d989d999dd6f315",
+        "type": "Input",
+        "z": "535398d382c5b477",
+        "name": "",
+        "configuration": "cca57e0363acda30",
+        "EingangName": "1",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "bb80ee094a0f21d1"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "d918526564a5e72e",
+        "type": "mqtt in",
+        "z": "535398d382c5b477",
+        "name": "",
+        "topic": "#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "b314b6a5a28ea711",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "x": 160,
+        "y": 260,
+        "wires": [
+            [
+                "9d989d999dd6f315",
+                "3e20ceee1acb24ef"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                },
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "8086de127b927ba4",
+        "type": "comment",
+        "z": "535398d382c5b477",
+        "name": "'#' Subscribes to all Topics - Show all messages",
+        "info": "",
+        "x": 520,
+        "y": 60,
+        "wires": [],
+        "full_wires": []
+    },
+    {
+        "id": "3e20ceee1acb24ef",
+        "type": "Input",
+        "z": "535398d382c5b477",
+        "name": "",
+        "configuration": "cca57e0363acda30",
+        "EingangName": "0",
+        "allportsi": false,
+        "outputs": 1,
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "fdf66e7fbb105df0"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "e66806e1c0da6543",
+        "type": "Output",
+        "z": "535398d382c5b477",
+        "name": "",
+        "configuration": "cca57e0363acda30",
+        "AusgangName": "0",
+        "allports": false,
+        "inputs": 1,
+        "x": 710,
+        "y": 400,
+        "wires": [
+            [
+                "54649ae33557124e"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "fdf66e7fbb105df0",
+        "type": "tof",
+        "z": "535398d382c5b477",
+        "name": "",
+        "time": 5,
+        "timeUnit": 1000,
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "e66806e1c0da6543"
+            ]
+        ],
+        "full_wires": [
+            [
+                {
+                    "target_port": 0
+                }
+            ]
+        ]
+    },
+    {
+        "id": "b314b6a5a28ea711",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "10",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "cca57e0363acda30",
+        "type": "hardware-config",
+        "configur": "{\"Name\":\"DevSetup\",\"Input\":[{\"Name\":\"Taster\",\"Description\":\"Taster für XYZ\",\"Topic\":\"cmnd/but/POWER\",\"Interpreter\":\"PulseTrue\"},{\"Name\":\"Schalter\",\"Description\":\"Schalter für XYZ\",\"Topic\":\"stat/dev/test/RESULT\",\"Interpreter\":\"SwitchModeOnOFF\",\"arg\":1}],\"Output\":[{\"Name\":\"LED\",\"Description\":\"Change LED State\",\"Topic\":\"cmnd/dev/test/LedPower\",\"Interpreter\":\"TrueFalseMessage\",\"payload\":\"1\",\"payload_alt\":\"0\"},{\"Name\":\"Relay 1 5s Puls\",\"Description\":\"Send A message to Trigger a 5s Puls for Relay 1\",\"Topic\":\"cmnd/dev/test/mqttbridge\",\"Interpreter\":\"SingleOnTrue\",\"payload\":{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0x01\",\"0x06\",\"0x0A\"]}},{\"Name\":\"Relay 2\",\"Description\":\"Used to directly Control Relay 2\",\"Topic\":\"cmnd/dev/test/mqttbridge\",\"Interpreter\":\"TrueFalseMessage\",\"payload\":{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0x02\",\"0x01\",\"0x00\"]},\"payload_alt\":{\"Address\":\"0x01\",\"Function\":\"0x06\",\"Data\":[\"0x00\",\"0x02\",\"0x02\",\"0x00\"]}}]}",
+        "name": "abc"
+    }
+]
