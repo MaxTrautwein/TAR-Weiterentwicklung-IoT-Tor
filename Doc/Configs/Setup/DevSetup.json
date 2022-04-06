@@ -23,8 +23,9 @@
             "Name":"LED",
             "Description":"Change LED State",
             "Topic":"cmnd/dev/test/LedPower",
-            "Interpreter":"DoubleOnTrue",
-            "payload":"2"
+            "Interpreter":"TrueFalseMessage",
+            "payload":"1",
+            "payload_alt":"0"
         },
         {
             "Name":"Relay 1 5s Puls",
