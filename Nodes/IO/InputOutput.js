@@ -124,11 +124,12 @@ module.exports = function(RED) {
      * @param {*} conf Json Port config
      * @param {*} msg Tasmota msg object
      * @param {*} ref Node
+     * @param {*} lib Libary ref
      * @param {*} port Node Red Output Port
      */
-    function HandleOI(conf,msg,ref,port = 0){
+    function HandleOI(conf,msg,ref,lib,port = 0){
         switch(conf["Interpreter"]){
-            case "DoubleOnTrueDelay":
+            case "DoubleOnTrueDelay": 
                 //Back Compat
                 if (msg.payload !== true) break;
                 DoubleOnTrue(conf["Topic"],conf["payload"],ref);
@@ -147,6 +148,7 @@ module.exports = function(RED) {
                 break;
             case "SwitchModeOnOFF":
                 if(msg.topic !== conf["Topic"]) break;
+                if (!lib.TryParseJson(msg.payload)) return;
                 SwitchModeOnOFF(conf,msg.payload,ref,port);
                 break;
             case "TrueFalseMessage":
@@ -160,6 +162,7 @@ module.exports = function(RED) {
      */
     function OutputNode(config) {
         RED.nodes.createNode(this,config);
+        const lib  = require("../resources/library");
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.AusgangName = config.AusgangName;
@@ -171,11 +174,11 @@ module.exports = function(RED) {
             if (this.allports){
                 //Handle allports
                 let outputConfig = this.jsonC["Output"][msg.__port];
-                HandleOI(outputConfig,msg,this);
+                HandleOI(outputConfig,msg,this,lib);
             }else{
                 //Handle Single
                 let outputConfig = this.jsonC["Output"][parseInt(this.AusgangName)];
-                HandleOI(outputConfig,msg,this);
+                HandleOI(outputConfig,msg,this,lib);
             }
         });
     }
@@ -188,7 +191,7 @@ module.exports = function(RED) {
      */
     function InputNode(config) {
         RED.nodes.createNode(this,config);
-        const lib  = require("../resources/library")
+        const lib  = require("../resources/library");
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.EingangName = config.EingangName;
@@ -198,16 +201,15 @@ module.exports = function(RED) {
         this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
         node.on('input', function(msg) {
-            if (!lib.TryParseJson(msg.payload)) return;
             if (this.allportsi){
                 //Handle allports
                 for(let i = 0; i< this.jsonC["Input"].length;i++){
-                    HandleOI(this.jsonC["Input"][i],msg,this,i);
+                    HandleOI(this.jsonC["Input"][i],msg,this,lib,i);
                 }
             }else{
                 //Handle Single
                 let outputConfig = this.jsonC["Input"][parseInt(this.EingangName)];
-                HandleOI(outputConfig,msg,this);
+                HandleOI(outputConfig,msg,this,lib);
             }
         });
     }
