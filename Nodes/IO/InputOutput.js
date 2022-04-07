@@ -71,6 +71,8 @@ module.exports = function(RED) {
         }
     }
 
+
+
     /**
      * (Node Red -> MQTT) Sends a Msg twice
      * @param {*} t MQTT Topic
@@ -79,8 +81,16 @@ module.exports = function(RED) {
      */
     function DoubleOnTrue(t,payload,ref){
         var msg = { payload:payload, topic:t };
-        ref.send(msg);
-        ref.send(msg);
+        ref.brokerConn.publish(msg, function(err) {
+            let args = arguments;
+            let l = args.length;
+            ref.done(err);
+        });
+        ref.brokerConn.publish(msg, function(err) {
+            let args = arguments;
+            let l = args.length;
+            ref.done(err);
+        });
     }
 
     /**
@@ -91,7 +101,12 @@ module.exports = function(RED) {
      */
     function SingleOnTrue(t,payload,ref){
         var msg = { payload:payload, topic:t };
-        ref.send(msg);
+        ref.brokerConn.publish(msg, function(err) {
+            let args = arguments;
+            let l = args.length;
+            ref.done(err);
+        });
+        //ref.send(msg);
     }
 
     /**
@@ -107,10 +122,21 @@ module.exports = function(RED) {
         }
         switch (msg.payload) {
             case true:
-                ref.send({ payload:conf["payload"], topic:conf["Topic"] });
+                ref.brokerConn.publish({ payload:conf["payload"], topic:conf["Topic"] }, function(err) {
+                    let args = arguments;
+                    let l = args.length;
+                    ref.done(err);
+                });
+                //ref.send();
                 break;
             case false:
-                ref.send({ payload:conf["payload_alt"], topic:conf["Topic"] });
+                //TODO
+                ref.brokerConn.publish({ payload:conf["payload_alt"], topic:conf["Topic"] }, function(err) {
+                    let args = arguments;
+                    let l = args.length;
+                    ref.done(err);
+                });
+                //ref.send({ payload:conf["payload_alt"], topic:conf["Topic"] });
                 break;
             default:
                 //Should not happen
@@ -163,6 +189,8 @@ module.exports = function(RED) {
     function OutputNode(config) {
         RED.nodes.createNode(this,config);
         const lib  = require("../resources/library");
+        const mqttHandler  = require("../resources/mqttHandler");
+        this.broker = config.broker;
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.AusgangName = config.AusgangName;
@@ -170,17 +198,32 @@ module.exports = function(RED) {
 
         this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
-        node.on('input', function(msg) {
-            if (this.allports){
-                //Handle allports
-                let outputConfig = this.jsonC["Output"][msg.__port];
-                HandleOI(outputConfig,msg,this,lib);
-            }else{
-                //Handle Single
-                let outputConfig = this.jsonC["Output"][parseInt(this.AusgangName)];
-                HandleOI(outputConfig,msg,this,lib);
+        this.brokerConn = RED.nodes.getNode(this.broker);
+
+        if (this.brokerConn) {
+
+            this.status({fill:"red",shape:"ring",text:"node-red:common.status.disconnected"});
+            
+            node.on('input', function(msg) {
+                if (this.allports){
+                    //Handle allports
+                    let outputConfig = this.jsonC["Output"][msg.__port];
+                    HandleOI(outputConfig,msg,this,lib);
+                }else{
+                    //Handle Single
+                    let outputConfig = this.jsonC["Output"][parseInt(this.AusgangName)];
+                    HandleOI(outputConfig,msg,this,lib);
+                }
+            });
+            if (this.brokerConn.connected) {
+                node.status({fill:"green",shape:"dot",text:"node-red:common.status.connected"});
             }
-        });
+            node.brokerConn.register(node);
+            this.on('close', function(done) {
+                node.brokerConn.deregister(node,done);
+            });
+    
+        }
     }
     //Register Node
     RED.nodes.registerType("Output",OutputNode);
@@ -192,26 +235,46 @@ module.exports = function(RED) {
     function InputNode(config) {
         RED.nodes.createNode(this,config);
         const lib  = require("../resources/library");
+        const mqttHandler  = require("../resources/mqttHandler");
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.EingangName = config.EingangName;
         this.allportsi = config.allportsi;
         this.outputs = config.outputs;
+        this.broker = config.broker;
 
         this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
-        node.on('input', function(msg) {
-            if (this.allportsi){
-                //Handle allports
-                for(let i = 0; i< this.jsonC["Input"].length;i++){
-                    HandleOI(this.jsonC["Input"][i],msg,this,lib,i);
+        this.brokerConn = RED.nodes.getNode(this.broker);
+
+        if (this.brokerConn) {
+            this.status({fill:"red",shape:"ring",text:"node-red:common.status.disconnected"});
+            mqttHandler.SubscribeHandler(this.brokerConn,node,0 ,function(msg) {
+                if (node.jsonC){
+                    if (node.allportsi){
+                        //Handle allports
+                        for(let i = 0; i< node.jsonC["Input"].length;i++){
+                            HandleOI(node.jsonC["Input"][i],msg,node,lib,i);
+                        }
+                    }else{
+                        //Handle Single
+                        let outputConfig = node.jsonC["Input"][parseInt(node.EingangName)];
+                        HandleOI(outputConfig,msg,node,lib);
+                    }
                 }
-            }else{
-                //Handle Single
-                let outputConfig = this.jsonC["Input"][parseInt(this.EingangName)];
-                HandleOI(outputConfig,msg,this,lib);
+                
+            });
+            if (this.brokerConn.connected) {
+                node.status({fill:"green",shape:"dot",text:"node-red:common.status.connected"});
             }
-        });
+            this.brokerConn.register(node);
+            this.on('close', function(removed, done) {
+                if (this.brokerConn) {
+                    this.brokerConn.unsubscribe("#",node.id, removed);
+                    this.brokerConn.deregister(node,done);
+                }
+            });
+        }
     }
     //Register Node
     RED.nodes.registerType("Input",InputNode);

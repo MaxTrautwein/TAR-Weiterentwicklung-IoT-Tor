@@ -100,11 +100,11 @@
         defaults: {
             name: {value:""},
             configuration: {value:"",type:"hardware-config" , required:true},
+            broker: {type:"mqtt-broker", required:true},
             AusgangName: {value:0},
             allports:{value:false},
             inputs: {value:1}
         },
-        outputLabels:["Connect to MQTT Out Node"],
         inputLabels:function(index){
             let cval = this.configuration
             let jval = undefined;
@@ -121,12 +121,13 @@
             return "";
         },
         inputs:1,
-        outputs:1,
+        outputs:0,
         icon: "output.svg",
         label: function() {
             return getNodeName(this.AusgangName,"Output",this.allports,this.configuration);
         },
         oneditprepare: function(){
+            
             var dataconf_o = getJsonConfig(this.configuration);
 
             $("#node-input-allports").change(function(){
@@ -170,14 +171,14 @@
         defaults: {
             name: {value:""},
             configuration: {value:"",type:"hardware-config"},
+            broker: {type:"mqtt-broker", required:true},
             EingangName: {value:0},
             allportsi:{value:false},
             outputs: {value:1},
         },
-        inputs:1,
+        inputs:0,
         outputs:1,
         icon: "input.svg",
-        inputLabels:["Connect to MQTT Input #"],
         outputLabels: function(index){
             let cval = this.configuration
             let jval = undefined;
@@ -245,7 +246,10 @@
         <label for="node-input-configuration"><i class="fa fa-globe"></i>Configuration</label>
         <input type="text" id="node-input-configuration">
     </div>
-
+    <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
+    </div>
     <div class="form-row">
         <label for="node-input-allports"></i>All in One</label>
         <input type="checkbox" id="node-input-allports">
@@ -274,6 +278,10 @@
     <div class="form-row">
         <label for="node-input-configuration"><i class="fa fa-globe"></i>Configuration</label>
         <input type="text" id="node-input-configuration">
+    </div>
+    <div class="form-row">
+        <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
+        <input type="text" id="node-input-broker">
     </div>
 
     <div class="form-row">
