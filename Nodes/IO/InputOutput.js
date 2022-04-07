@@ -33,20 +33,10 @@ module.exports = function(RED) {
      * @param {*} port Node Port
      */
     function PulseTrue(t,payload,ref,port){
-        var sendarr =  Array(ref.outputs).fill(null);
-        sendarr[port] = {payload:true};
-        if (ref.outputs === 1){
-            ref.send(sendarr[port]);
-        }else{
-            ref.send(sendarr);
-        }
-        sendarr[port] = {payload:false};
-        if (ref.outputs === 1){
-            ref.send(sendarr[port]);
-        }else{
-            ref.send(sendarr);
-        }
-
+        var msg = {payload:true};
+        ref.send(msg);
+        msg = {payload:false};
+        ref.send(msg);
     }
     /**
      * (MQTT -> Node Red) Translates Tasmota Switch msgs
@@ -57,18 +47,13 @@ module.exports = function(RED) {
      * @returns nothing
      */
     function SwitchModeOnOFF(conf,payload,ref,port){
-        let sendarr =  Array(ref.outputs).fill(null);
         let switchN = "Switch" + conf["arg"];
         let val = getOnOff_to_TrueFalse(JSON.parse(payload),switchN,"Action");
         if (val === null){
             return;
         }
-        sendarr[port] = {payload:val};
-        if (ref.outputs === 1){
-            ref.send(sendarr[port]);
-        }else{
-            ref.send(sendarr);
-        }
+        var msg = {payload:val};
+        ref.send(msg);
     }
 
 
@@ -84,12 +69,12 @@ module.exports = function(RED) {
         ref.brokerConn.publish(msg, function(err) {
             let args = arguments;
             let l = args.length;
-            ref.done(err);
+            //ref.done(err);
         });
         ref.brokerConn.publish(msg, function(err) {
             let args = arguments;
             let l = args.length;
-            ref.done(err);
+            //ref.done(err);
         });
     }
 
@@ -104,7 +89,7 @@ module.exports = function(RED) {
         ref.brokerConn.publish(msg, function(err) {
             let args = arguments;
             let l = args.length;
-            ref.done(err);
+            //ref.done(err);
         });
         //ref.send(msg);
     }
@@ -125,7 +110,7 @@ module.exports = function(RED) {
                 ref.brokerConn.publish({ payload:conf["payload"], topic:conf["Topic"] }, function(err) {
                     let args = arguments;
                     let l = args.length;
-                    ref.done(err);
+                    //ref.done(err);
                 });
                 //ref.send();
                 break;
@@ -134,7 +119,7 @@ module.exports = function(RED) {
                 ref.brokerConn.publish({ payload:conf["payload_alt"], topic:conf["Topic"] }, function(err) {
                     let args = arguments;
                     let l = args.length;
-                    ref.done(err);
+                    //ref.done(err);
                 });
                 //ref.send({ payload:conf["payload_alt"], topic:conf["Topic"] });
                 break;
@@ -194,7 +179,6 @@ module.exports = function(RED) {
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.AusgangName = config.AusgangName;
-        this.allports = config.allports;
 
         this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
@@ -205,15 +189,9 @@ module.exports = function(RED) {
             this.status({fill:"red",shape:"ring",text:"node-red:common.status.disconnected"});
             
             node.on('input', function(msg) {
-                if (this.allports){
-                    //Handle allports
-                    let outputConfig = this.jsonC["Output"][msg.__port];
-                    HandleOI(outputConfig,msg,this,lib);
-                }else{
-                    //Handle Single
-                    let outputConfig = this.jsonC["Output"][parseInt(this.AusgangName)];
-                    HandleOI(outputConfig,msg,this,lib);
-                }
+                //Handle Single
+                let outputConfig = this.jsonC["Output"][parseInt(this.AusgangName)];
+                HandleOI(outputConfig,msg,this,lib);
             });
             if (this.brokerConn.connected) {
                 node.status({fill:"green",shape:"dot",text:"node-red:common.status.connected"});
@@ -239,7 +217,6 @@ module.exports = function(RED) {
 
         this.configuration = RED.nodes.getNode(config.configuration);
         this.EingangName = config.EingangName;
-        this.allportsi = config.allportsi;
         this.outputs = config.outputs;
         this.broker = config.broker;
 
@@ -251,18 +228,10 @@ module.exports = function(RED) {
             this.status({fill:"red",shape:"ring",text:"node-red:common.status.disconnected"});
             mqttHandler.SubscribeHandler(this.brokerConn,node,0 ,function(msg) {
                 if (node.jsonC){
-                    if (node.allportsi){
-                        //Handle allports
-                        for(let i = 0; i< node.jsonC["Input"].length;i++){
-                            HandleOI(node.jsonC["Input"][i],msg,node,lib,i);
-                        }
-                    }else{
-                        //Handle Single
-                        let outputConfig = node.jsonC["Input"][parseInt(node.EingangName)];
-                        HandleOI(outputConfig,msg,node,lib);
-                    }
+                    //Handle Single
+                    let outputConfig = node.jsonC["Input"][parseInt(node.EingangName)];
+                    HandleOI(outputConfig,msg,node,lib);
                 }
-                
             });
             if (this.brokerConn.connected) {
                 node.status({fill:"green",shape:"dot",text:"node-red:common.status.connected"});

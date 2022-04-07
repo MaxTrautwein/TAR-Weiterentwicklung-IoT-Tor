@@ -83,15 +83,12 @@
      * @param {*} config HardwareConfig Node id
      * @returns Lable String
      */
-    function getNodeName(id,dir,all,config){
+    function getNodeName(id,dir,config){
         let name = dir;
         if (config === "_ADD_" || config === undefined || config === "") return name;
-        if(all){
-            return "All " + name + "s";
-        }else{
-            let dataconf_l = getJsonConfig(config);
-            return dataconf_l[dir][id]["Name"];
-        }
+        let dataconf_l = getJsonConfig(config);
+        return dataconf_l[dir][id]["Name"];
+        
     }
     
     RED.nodes.registerType('Output',{
@@ -102,7 +99,6 @@
             configuration: {value:"",type:"hardware-config" , required:true},
             broker: {type:"mqtt-broker", required:true},
             AusgangName: {value:0},
-            allports:{value:false},
             inputs: {value:1}
         },
         inputLabels:function(index){
@@ -112,11 +108,9 @@
                 jval = getJsonConfig(cval);
             }
             if (jval !== undefined){
-                if (this.allports === true){
-                    return get_Labels(jval,index,"Output");
-                }else if (this.allports === false && this.AusgangName !== undefined){
+               if ( this.AusgangName !== undefined){
                     return get_Labels(jval,this.AusgangName,"Output");
-                }
+            }
             }
             return "";
         },
@@ -124,26 +118,11 @@
         outputs:0,
         icon: "output.svg",
         label: function() {
-            return getNodeName(this.AusgangName,"Output",this.allports,this.configuration);
+            return getNodeName(this.AusgangName,"Output",this.configuration);
         },
         oneditprepare: function(){
             
             var dataconf_o = getJsonConfig(this.configuration);
-
-            $("#node-input-allports").change(function(){
-                if (dataconf_o === undefined) return;
-                this.allports =  $("#node-input-allports").prop('checked');
-                if(this.allports === true){
-                    $("#div-node-input-AusgangName").hide();
-                    $("#node-input-inputs").val( dataconf_o["Output"].length);
-                }else{
-                    $("#div-node-input-AusgangName").show();
-                    
-                    $("#node-input-inputs").val(1);                 
-                }
-                //TODO Figgur out how to redraw
-                //Working for outputs
-            });
 
             configureTypedName(dataconf_o,"Output","#node-input-AusgangName");
 
@@ -173,7 +152,6 @@
             configuration: {value:"",type:"hardware-config"},
             broker: {type:"mqtt-broker", required:true},
             EingangName: {value:0},
-            allportsi:{value:false},
             outputs: {value:1},
         },
         inputs:0,
@@ -186,31 +164,17 @@
                 jval = getJsonConfig(cval);
             }
             if (jval !== undefined){
-                if (this.allportsi === true){
-                    return get_Labels(jval,index,"Input");
-                }else if (this.allportsi === false && this.EingangName !== undefined){
+                if (this.EingangName !== undefined){
                     return get_Labels(jval,this.EingangName,"Input");
                 }
             }
             return "";
         },
         label: function() {
-            return getNodeName(this.EingangName,"Input",this.allportsi,this.configuration);
+            return getNodeName(this.EingangName,"Input",this.configuration);
         },
         oneditprepare: function(){
             var dataconf = getJsonConfig(this.configuration);
-
-            $("#node-input-allportsi").change(function(){
-                if (dataconf === undefined) return;
-                this.allportsi =  $("#node-input-allportsi").prop('checked');
-                if(this.allportsi === true){
-                    $("#div-node-input-EingangName").hide();
-                    $("#node-input-outputs").val( dataconf["Input"].length);
-                }else{
-                    $("#div-node-input-EingangName").show();
-                    $("#node-input-outputs").val(1);
-                }
-            });
             
             configureTypedName(dataconf,"Input","#node-input-EingangName");
 
@@ -250,11 +214,6 @@
         <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
         <input type="text" id="node-input-broker">
     </div>
-    <div class="form-row">
-        <label for="node-input-allports"></i>All in One</label>
-        <input type="checkbox" id="node-input-allports">
-        <input type="hidden" id="node-input-inputs" value="1">
-    </div>
 
     <div id="div-node-input-AusgangName" class="form-row">
         <label for="node-input-AusgangName"></i>Output</label>
@@ -282,12 +241,6 @@
     <div class="form-row">
         <label for="node-input-broker"><i class="fa fa-globe"></i> <span data-i18n="mqtt.label.broker"></span></label>
         <input type="text" id="node-input-broker">
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-allportsi"></i>All in One</label>
-        <input type="checkbox" id="node-input-allportsi">
-        <input type="hidden" id="node-input-outputs" value="1">
     </div>
 
     <div id="div-node-input-EingangName" class="form-row">
