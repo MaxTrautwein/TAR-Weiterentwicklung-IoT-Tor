@@ -30,9 +30,8 @@ module.exports = function(RED) {
      * @param {*} t unused
      * @param {*} payload unused
      * @param {*} ref Node
-     * @param {*} port Node Port
      */
-    function PulseTrue(t,payload,ref,port){
+    function PulseTrue(t,payload,ref){
         var msg = {payload:true};
         ref.send(msg);
         msg = {payload:false};
@@ -43,10 +42,9 @@ module.exports = function(RED) {
      * @param {*} conf Json Port config
      * @param {*} payload msg Playload
      * @param {*} ref Node
-     * @param {*} port Node Port
      * @returns nothing
      */
-    function SwitchModeOnOFF(conf,payload,ref,port){
+    function SwitchModeOnOFF(conf,payload,ref){
         let switchN = "Switch" + conf["arg"];
         let val = getOnOff_to_TrueFalse(JSON.parse(payload),switchN,"Action");
         if (val === null){
@@ -54,6 +52,24 @@ module.exports = function(RED) {
         }
         var msg = {payload:val};
         ref.send(msg);
+    }
+
+    /**
+     * (MQTT -> Node Red) Matches a True & False Pattern to a range in the Data ModbusResponse Packet
+     * @param {*} conf Json Port config
+     * @param {*} payload Json payload object
+     * @param {*} ref Node
+     */
+    function ModbusMatchData(conf,payload,ref){
+        let data = payload["Data"];
+        let patternLength = conf["TruePattern"].length;
+        let checkportion = JSON.stringify(data.slice(conf["PatternPos"],conf["PatternPos"] + patternLength));
+
+        if (checkportion === JSON.stringify(conf["TruePattern"])){
+            ref.send({payload:true});
+        }else if (checkportion === JSON.stringify(conf["FalsePattern"])){
+            ref.send({payload:false});
+        }
     }
 
 
@@ -136,9 +152,8 @@ module.exports = function(RED) {
      * @param {*} msg Tasmota msg object
      * @param {*} ref Node
      * @param {*} lib Libary ref
-     * @param {*} port Node Red Output Port
      */
-    function HandleOI(conf,msg,ref,lib,port = 0){
+    function HandleOI(conf,msg,ref,lib){
         switch(conf["Interpreter"]){
             case "DoubleOnTrueDelay": 
                 //Back Compat
@@ -155,15 +170,23 @@ module.exports = function(RED) {
                 break;
             case "PulseTrue":
                 if(msg.topic !== conf["Topic"]) break;
-                PulseTrue(conf["Topic"],msg.payload,ref,port);
+                PulseTrue(conf["Topic"],msg.payload,ref);
                 break;
             case "SwitchModeOnOFF":
                 if(msg.topic !== conf["Topic"]) break;
                 if (!lib.TryParseJson(msg.payload)) return;
-                SwitchModeOnOFF(conf,msg.payload,ref,port);
+                SwitchModeOnOFF(conf,msg.payload,ref);
                 break;
             case "TrueFalseMessage":
                 TrueFalseMessage(conf,ref,msg);
+                break;
+            case "ModbusMatchData":
+                payloadJson = lib.TryParseJson(msg.payload);  
+                if(msg.topic !== conf["Topic"]) break;
+                if(payloadJson === null || payloadJson["LastRequest"] !=  conf["crc"] ) break;
+                ModbusMatchData(conf,payloadJson,ref);
+                break;
+
         }
     }
 
@@ -223,6 +246,8 @@ module.exports = function(RED) {
         this.jsonC = JSON.parse( this.configuration.configur);
         var node = this;
         this.brokerConn = RED.nodes.getNode(this.broker);
+
+        this.SentPull = false;
 
         if (this.brokerConn) {
             this.status({fill:"red",shape:"ring",text:"node-red:common.status.disconnected"});
