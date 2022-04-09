@@ -1,74 +1,246 @@
 {
-"Name":"DevSetup",
-"Input":[
-    {
-        "Name":"Taster",
-        "Description":"Taster für XYZ",
-        "Topic":"cmnd/but/POWER",
-        "Interpreter":"PulseTrue"
-    },
-    {
-        "Name":"Schalter",
-        "Description":"Schalter für XYZ",
-        "Topic":"stat/dev/test/RESULT",
-        "Interpreter":"SwitchModeOnOFF",
-        "arg":1
-        }
-    
-    
-],
-"Output":[
-
+    "Name":"DevSetup",
+    "Input":[
         {
-            "Name":"LED",
-            "Description":"Change LED State",
-            "Topic":"cmnd/dev/test/LedPower",
-            "Interpreter":"TrueFalseMessage",
-            "payload":"1",
-            "payload_alt":"0"
+            "Name":"Taster",
+            "Description":"Taster für XYZ",
+            "Topic":"cmnd/but/POWER",
+            "Interpreter":"PulseTrue"
         },
         {
-            "Name":"Relay 1 5s Puls",
-            "Description":"Send A message to Trigger a 5s Puls for Relay 1",
-            "Topic":"cmnd/dev/test/mqttbridge",
-            "Interpreter":"SingleOnTrue",
-            "payload":{
-                    "Address": "0x01",
-                    "Function": "0x06",
-                    "Data": [
-                        "0x00",
-                        "0x01",
-                        "0x06",
-                        "0x0A"
-                    ]
-                }
+            "Name":"Schalter",
+            "Description":"Schalter für XYZ",
+            "Topic":"stat/dev/test/RESULT",
+            "Interpreter":"SwitchModeOnOFF",
+            "arg":1
         },
         {
-            "Name":"Relay 2",
-            "Description":"Used to directly Control Relay 2",
-            "Topic":"cmnd/dev/test/mqttbridge",
-            "Interpreter":"TrueFalseMessage",
-            "payload":{
-                    "Address": "0x01",
-                    "Function": "0x06",
-                    "Data": [
-                        "0x00",
-                        "0x02",
-                        "0x01",
-                        "0x00"
-                    ]
-                },
-                "payload_alt":{
-                    "Address": "0x01",
-                    "Function": "0x06",
-                    "Data": [
-                        "0x00",
-                        "0x02",
-                        "0x02",
-                        "0x00"
-                    ]
-                }
+            "Name":"Input1",
+            "Description":"Digital Input 1",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":1
+        },
+        {
+            "Name":"Input2",
+            "Description":"Digital Input 2",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":3
+        },{
+            "Name":"Input3",
+            "Description":"Digital Input 3",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":5
+        },
+        {
+            "Name":"Input4",
+            "Description":"Digital Input 4",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":7
+        },
+        {
+            "Name":"Input5",
+            "Description":"Digital Input 5",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":9
+        },
+        {
+            "Name":"Input6",
+            "Description":"Digital Input 6",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":11
+        },{
+            "Name":"Input7",
+            "Description":"Digital Input 7",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":13
+        },
+        {
+            "Name":"Input8",
+            "Description":"Digital Input 8",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0x2414",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":15
+        },
+        {
+            "Name":"Output1",
+            "Description":"Output 1",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":1
+        },
+        {
+            "Name":"Output2",
+            "Description":"Output 2",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":3
+        },{
+            "Name":"Output3",
+            "Description":"Output 3",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":5
+        },
+        {
+            "Name":"Output4",
+            "Description":"Output 4",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":7
+        },
+        {
+            "Name":"Output5",
+            "Description":"Output 5",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":9
+        },
+        {
+            "Name":"Output6",
+            "Description":"Output 6",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":11
+        },{
+            "Name":"Output7",
+            "Description":"Output 7",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":13
+        },
+        {
+            "Name":"Output8",
+            "Description":"Output 8",
+            "Topic":"tasmota/modbusbridge/rx",
+            "Interpreter":"ModbusMatchData",
+            "crc":"0xCC15",
+            "TruePattern":["0x00","0x01"],
+            "FalsePattern":["0x00","0x00"],
+            "PatternPos":15
         }
-
-]
-}
+    
+        
+    ],
+    "Output":[
+    
+            {
+                "Name":"LED",
+                "Description":"Change LED State",
+                "Topic":"cmnd/dev/test/LedPower",
+                "Interpreter":"TrueFalseMessage",
+                "payload":"1",
+                "payload_alt":"0"
+            },
+            {
+                "Name":"Read All Inputs",
+                "Description":"Read all Inputs",
+                "Topic":"cmnd/dev/test/mqttbridge",
+                "Interpreter":"SingleOnTrue",
+                "payload":{
+                        "Address": "0x01",
+                        "Function": "0x03",
+                        "Data": [
+                            "0x00",
+                            "0x81",
+                            "0x00",
+                            "0x08"
+                        ]
+                    }
+            },
+            {
+                "Name":"Read All Outputs",
+                "Description":"Read all Outputs",
+                "Topic":"cmnd/dev/test/mqttbridge",
+                "Interpreter":"SingleOnTrue",
+                "payload":{
+                        "Address": "0x01",
+                        "Function": "0x03",
+                        "Data": [
+                            "0x00",
+                            "0x01",
+                            "0x00",
+                            "0x08"
+                        ]
+                    }
+            },
+            {
+                "Name":"Relay 2",
+                "Description":"Used to directly Control Relay 2",
+                "Topic":"cmnd/dev/test/mqttbridge",
+                "Interpreter":"TrueFalseMessage",
+                "payload":{
+                        "Address": "0x01",
+                        "Function": "0x06",
+                        "Data": [
+                            "0x00",
+                            "0x02",
+                            "0x01",
+                            "0x00"
+                        ]
+                    },
+                    "payload_alt":{
+                        "Address": "0x01",
+                        "Function": "0x06",
+                        "Data": [
+                            "0x00",
+                            "0x02",
+                            "0x02",
+                            "0x00"
+                        ]
+                    }
+            }
+    
+    ]
+    }
