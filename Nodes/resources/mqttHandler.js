@@ -1,26 +1,8 @@
-
-//var isUtf8 = require('is-utf8');
-
-function matchTopic(ts,t) {
-    if (ts == "#") {
-        return true;
-    }
-    /* The following allows shared subscriptions (as in MQTT v5)
-       http://docs.oasis-open.org/mqtt/mqtt/v5.0/cs02/mqtt-v5.0-cs02.html#_Toc514345522
-
-       4.8.2 describes shares like:
-       $share/{ShareName}/{filter}
-       $share is a literal string that marks the Topic Filter as being a Shared Subscription Topic Filter.
-       {ShareName} is a character string that does not include "/", "+" or "#"
-       {filter} The remainder of the string has the same syntax and semantics as a Topic Filter in a non-shared subscription. Refer to section 4.7.
-    */
-    else if(ts.startsWith("$share")){
-        ts = ts.replace(/^\$share\/[^#+/]+\/(.*)/g,"$1");
-
-    }
-    var re = new RegExp("^"+ts.replace(/([\[\]\?\(\)\\\\$\^\*\.|])/g,"\\$1").replace(/\+/g,"[^/]+").replace(/\/#$/,"(\/.*)?")+"$");
-    return re.test(t);
-}
+/**
+ * Mostly a copy of Contained in official MQTT Nodes
+ * 
+ * This File serves as a Handler for the additional stepps needed to subscribe to a Topic
+ */
 
 /**
  * Helper function for setting integer property values in the MQTT V5 properties object
@@ -125,6 +107,13 @@ function setBufferProp(src, dst, propName, def) {
     }
 }
 
+/**
+ * Subscribe to a Topic
+ * @param {*} brokerConn MQTT-Brocker Config Node
+ * @param {*} node Subscribing Node
+ * @param {int} _qos QOS Level
+ * @param {*} callback Callback Function. gets calld with the msg as the single parameter
+ */
 function SubscribeHandler(brokerConn ,node, _qos ,callback){
     
     let v5 = brokerConn.options && brokerConn.options.protocolVersion == 5;
@@ -140,7 +129,7 @@ function SubscribeHandler(brokerConn ,node, _qos ,callback){
     brokerConn.subscribe("#",options,function(topic,payload,packet) {
       
         //Auto Type
-        /*if (isUtf8(payload)) {*/ payload = payload.toString();/* }*/
+        payload = payload.toString();
         
         var msg = {topic:topic, payload:payload, qos:packet.qos, retain:packet.retain};
         if(v5 && packet.properties) {
@@ -162,13 +151,4 @@ function SubscribeHandler(brokerConn ,node, _qos ,callback){
 }
 
 
-function SendHandler(brokerConn,msg){
-    brokerConn.publish(msg, function(err) {
-        let args = arguments;
-        let l = args.length;
-        done(err);
-    });
-}
-
-
-module.exports = {SubscribeHandler,SendHandler};
+module.exports = {SubscribeHandler};
