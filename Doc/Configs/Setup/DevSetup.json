@@ -97,7 +97,7 @@
             "Description":"Output 1",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":1
@@ -107,7 +107,7 @@
             "Description":"Output 2",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":3
@@ -116,7 +116,7 @@
             "Description":"Output 3",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":5
@@ -126,7 +126,7 @@
             "Description":"Output 4",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":7
@@ -136,7 +136,7 @@
             "Description":"Output 5",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":9
@@ -146,7 +146,7 @@
             "Description":"Output 6",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":11
@@ -155,7 +155,7 @@
             "Description":"Output 7",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":13
@@ -165,7 +165,7 @@
             "Description":"Output 8",
             "Topic":"tasmota/modbusbridge/rx",
             "Interpreter":"ModbusMatchData",
-            "crc":"0x0CD4",
+            "crc":"0xCC15",
             "TruePattern":["0x00","0x01"],
             "FalsePattern":["0x00","0x00"],
             "PatternPos":15
@@ -211,7 +211,7 @@
                             "0x00",
                             "0x01",
                             "0x00",
-                            "0x09"
+                            "0x08"
                         ]
                     }
             },
